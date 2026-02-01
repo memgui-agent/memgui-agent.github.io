@@ -150,6 +150,63 @@ a:hover {
   margin-top: 2rem;
 }
 
+/* Hero Authors */
+.hero-authors {
+  margin-top: 2rem;
+  padding: 1.5rem 0;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.authors-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.author {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.author-name {
+  color: var(--text-primary);
+}
+
+.author sup {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+
+.affiliations-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.affiliation sup {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.author-notes {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 /* Hero Institutions Logos */
 .hero-institutions {
   display: flex;
