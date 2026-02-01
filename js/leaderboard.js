@@ -1,191 +1,303 @@
-// MemGUI-Bench Leaderboard JavaScript
-document.addEventListener("DOMContentLoaded", function() {
-  let currentData = null;
-  let currentSort = { key: 'overall', direction: 'desc' };
-  let currentView = 'shortTerm';
+// Leaderboard JavaScript
+let leaderboardData = null;
+let currentFilters = {
+  hasUITree: false,
+  hasLTM: false,
+  sortBy: 'avg_p3'
+};
 
-  // Fetch data and initialize
-  fetch('data/results.json')
-    .then(response => response.json())
-    .then(data => {
-      currentData = data;
-      renderTable('shortTerm');
-      renderTable('longTerm');
-    })
-    .catch(error => {
-      console.error('Failed to load data:', error);
-      document.getElementById('shortTermTable').innerHTML = 
-        '<div class="text-center text-danger p-5">Error loading data. Please try again later.</div>';
-    });
-
-  // View toggle event listeners
-  document.getElementById('shortTerm').addEventListener('change', function() {
-    if (this.checked) {
-      currentView = 'shortTerm';
-      document.getElementById('shortTermTable').style.display = 'block';
-      document.getElementById('longTermTable').style.display = 'none';
-    }
-  });
-
-  document.getElementById('longTerm').addEventListener('change', function() {
-    if (this.checked) {
-      currentView = 'longTerm';
-      document.getElementById('shortTermTable').style.display = 'none';
-      document.getElementById('longTermTable').style.display = 'block';
-    }
-  });
-
-  function renderTable(viewType) {
-    const container = document.getElementById(viewType + 'Table');
-    const agents = currentData.agents;
-    
-    // Sort agents by overall score
-    const sortedAgents = [...agents].sort((a, b) => {
-      const aVal = viewType === 'shortTerm' ? a.shortTerm.overall : a.longTerm.overall;
-      const bVal = viewType === 'shortTerm' ? b.shortTerm.overall : b.longTerm.overall;
-      return bVal - aVal;
-    });
-
-    // Find best values for highlighting
-    const bestValues = findBestValues(sortedAgents, viewType);
-
-    let html = '<table class="leaderboard-table">';
-    
-    // Header
-    if (viewType === 'shortTerm') {
-      html += `
-        <thead>
-          <tr>
-            <th rowspan="2">#</th>
-            <th rowspan="2">Agent</th>
-            <th rowspan="2">Type</th>
-            <th colspan="4">Success Rate (%)</th>
-            <th colspan="3">Memory Metrics</th>
-          </tr>
-          <tr>
-            <th class="sortable" data-key="easy">Easy</th>
-            <th class="sortable" data-key="medium">Med</th>
-            <th class="sortable" data-key="hard">Hard</th>
-            <th class="sortable" data-key="overall">Overall</th>
-            <th class="sortable" data-key="irr">IRR (%)</th>
-            <th class="sortable" data-key="mtpr">MTPR</th>
-            <th>Time/Step</th>
-          </tr>
-        </thead>`;
-    } else {
-      html += `
-        <thead>
-          <tr>
-            <th rowspan="2">#</th>
-            <th rowspan="2">Agent</th>
-            <th rowspan="2">Type</th>
-            <th colspan="4">Success Rate @ 3 (%)</th>
-            <th colspan="2">Learning Metrics</th>
-          </tr>
-          <tr>
-            <th class="sortable" data-key="easy">Easy</th>
-            <th class="sortable" data-key="medium">Med</th>
-            <th class="sortable" data-key="hard">Hard</th>
-            <th class="sortable" data-key="overall">Overall</th>
-            <th class="sortable" data-key="frr">FRR (%)</th>
-            <th>Improvement</th>
-          </tr>
-        </thead>`;
-    }
-
-    html += '<tbody>';
-
-    // Group agents by type
-    const workflowAgents = sortedAgents.filter(a => a.type === 'Agentic Workflow');
-    const modelAgents = sortedAgents.filter(a => a.type === 'Agent-as-a-Model');
-
-    let rank = 1;
-
-    // Agentic Workflow section
-    html += '<tr class="category-divider"><td colspan="10">Agentic Workflow</td></tr>';
-    workflowAgents.forEach(agent => {
-      html += renderAgentRow(agent, rank++, viewType, bestValues);
-    });
-
-    // Agent-as-a-Model section
-    html += '<tr class="category-divider"><td colspan="10">Agent-as-a-Model</td></tr>';
-    modelAgents.forEach(agent => {
-      html += renderAgentRow(agent, rank++, viewType, bestValues);
-    });
-
-    html += '</tbody></table>';
-    container.innerHTML = html;
-
-    // Add sort event listeners
-    container.querySelectorAll('th.sortable').forEach(th => {
-      th.addEventListener('click', () => handleSort(th.dataset.key, viewType));
-    });
-  }
-
-  function renderAgentRow(agent, rank, viewType, bestValues) {
-    const data = viewType === 'shortTerm' ? agent.shortTerm : agent.longTerm;
-    const rankClass = rank <= 3 ? `rank-${rank}` : '';
-    const badgeClass = agent.type === 'Agentic Workflow' ? 'badge-workflow' : 'badge-model';
-
-    let row = `
-      <tr>
-        <td class="rank-cell ${rankClass}">${rank}</td>
-        <td class="agent-name">
-          ${agent.link ? `<a href="${agent.link}" target="_blank">${agent.name}</a>` : agent.name}
-          ${agent.hasLongTermMemory ? '<span title="Has Long-Term Memory">🧠</span>' : ''}
-        </td>
-        <td><span class="agent-badge ${badgeClass}">${agent.type === 'Agentic Workflow' ? 'Workflow' : 'Model'}</span></td>
-        <td class="value-cell ${isBest(data.easy, bestValues.easy) ? 'value-best' : ''}">${formatValue(data.easy)}</td>
-        <td class="value-cell ${isBest(data.medium, bestValues.medium) ? 'value-best' : ''}">${formatValue(data.medium)}</td>
-        <td class="value-cell ${isBest(data.hard, bestValues.hard) ? 'value-best' : ''}">${formatValue(data.hard)}</td>
-        <td class="value-cell ${isBest(data.overall, bestValues.overall) ? 'value-best' : ''}">${formatValue(data.overall)}</td>`;
-
-    if (viewType === 'shortTerm') {
-      row += `
-        <td class="value-cell ${isBest(data.irr, bestValues.irr) ? 'value-best' : ''}">${formatValue(data.irr)}</td>
-        <td class="value-cell ${isBest(data.mtpr, bestValues.mtpr) ? 'value-best' : ''}">${formatValue(data.mtpr, 2)}</td>
-        <td class="value-cell">${data.timePerStep}s</td>`;
-    } else {
-      row += `
-        <td class="value-cell ${isBest(data.frr, bestValues.frr) ? 'value-best' : ''}">${formatValue(data.frr)}</td>
-        <td class="value-cell">${data.improvement > 0 ? '+' : ''}${formatValue(data.improvement)} pp</td>`;
-    }
-
-    row += '</tr>';
-    return row;
-  }
-
-  function findBestValues(agents, viewType) {
-    const key = viewType === 'shortTerm' ? 'shortTerm' : 'longTerm';
-    const values = {
-      easy: Math.max(...agents.map(a => a[key].easy)),
-      medium: Math.max(...agents.map(a => a[key].medium)),
-      hard: Math.max(...agents.map(a => a[key].hard)),
-      overall: Math.max(...agents.map(a => a[key].overall))
-    };
-
-    if (viewType === 'shortTerm') {
-      values.irr = Math.max(...agents.map(a => a[key].irr));
-      values.mtpr = Math.max(...agents.map(a => a[key].mtpr));
-    } else {
-      values.frr = Math.max(...agents.map(a => a[key].frr));
-    }
-
-    return values;
-  }
-
-  function isBest(value, best) {
-    return value === best && value > 0;
-  }
-
-  function formatValue(value, decimals = 1) {
-    if (value === null || value === undefined) return '-';
-    return typeof value === 'number' ? value.toFixed(decimals) : value;
-  }
-
-  function handleSort(key, viewType) {
-    // Sort logic can be implemented here
-    console.log('Sorting by:', key, 'for view:', viewType);
-  }
+// Initialize
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadData();
+  setupEventListeners();
+  renderTables();
 });
 
+// Load data from JSON
+async function loadData() {
+  try {
+    const response = await fetch('data/results.json');
+    leaderboardData = await response.json();
+  } catch (error) {
+    console.error('Error loading leaderboard data:', error);
+    document.getElementById('allTable').innerHTML = '<p class="text-center text-danger">Error loading data.</p>';
+  }
+}
+
+// Setup event listeners
+function setupEventListeners() {
+  // Filter checkboxes
+  document.getElementById('filterUITree').addEventListener('change', (e) => {
+    currentFilters.hasUITree = e.target.checked;
+    renderTables();
+  });
+  
+  document.getElementById('filterLTM').addEventListener('change', (e) => {
+    currentFilters.hasLTM = e.target.checked;
+    renderTables();
+  });
+  
+  // Sort selector
+  document.getElementById('sortBy').addEventListener('change', (e) => {
+    currentFilters.sortBy = e.target.value;
+    renderTables();
+  });
+  
+  // Clear filters
+  document.getElementById('clearFilters').addEventListener('click', () => {
+    currentFilters = { hasUITree: false, hasLTM: false, sortBy: 'avg_p3' };
+    document.getElementById('filterUITree').checked = false;
+    document.getElementById('filterLTM').checked = false;
+    document.getElementById('sortBy').value = 'avg_p3';
+    renderTables();
+  });
+  
+  // Copy bibtex
+  document.getElementById('copyBibtex').addEventListener('click', () => {
+    const bibtex = document.getElementById('bibtexContent').textContent;
+    navigator.clipboard.writeText(bibtex).then(() => {
+      const btn = document.getElementById('copyBibtex');
+      btn.innerHTML = '<i class="bi bi-check"></i> Copied!';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy';
+      }, 2000);
+    });
+  });
+}
+
+// Filter and sort data
+function getFilteredData(modelOnly = false) {
+  if (!leaderboardData) return [];
+  
+  let data = [...leaderboardData.agents];
+  
+  // Filter by type if model only
+  if (modelOnly) {
+    data = data.filter(agent => agent.type === 'Agent-as-a-Model');
+  }
+  
+  // Apply tag filters
+  if (currentFilters.hasUITree) {
+    data = data.filter(agent => agent.hasUITree);
+  }
+  if (currentFilters.hasLTM) {
+    data = data.filter(agent => agent.hasLongTermMemory);
+  }
+  
+  // Sort
+  data.sort((a, b) => {
+    if (currentFilters.sortBy === 'avg_p3') {
+      return b.avg.p3 - a.avg.p3;
+    } else {
+      return b.avg.p1 - a.avg.p1;
+    }
+  });
+  
+  return data;
+}
+
+// Find best and second best values
+function findBestValues(data) {
+  const metrics = ['app1_p1', 'app1_p3', 'app2_p1', 'app2_p3', 'app3_p1', 'app3_p3', 'app4_p1', 'app4_p3',
+                   'easy_p1', 'easy_p3', 'med_p1', 'med_p3', 'hard_p1', 'hard_p3', 'avg_p1', 'avg_p3'];
+  const best = {};
+  const second = {};
+  
+  metrics.forEach(metric => {
+    const values = data.map(agent => {
+      const [category, level] = metric.split('_');
+      if (category.startsWith('app')) {
+        const appKey = category.replace('app', 'app');
+        return agent.crossApp[appKey] ? agent.crossApp[appKey][level] : 0;
+      } else if (category === 'avg') {
+        return agent.avg[level];
+      } else {
+        return agent.difficulty[category] ? agent.difficulty[category][level] : 0;
+      }
+    }).sort((a, b) => b - a);
+    
+    best[metric] = values[0] || 0;
+    second[metric] = values[1] || 0;
+  });
+  
+  return { best, second };
+}
+
+// Format score cell
+function formatScore(value, metricKey, bestValues) {
+  if (value === 0) {
+    return `<td class="score-cell zero">0.0</td>`;
+  }
+  
+  let className = 'score-cell';
+  if (value === bestValues.best[metricKey] && value > 0) {
+    className += ' best';
+  } else if (value === bestValues.second[metricKey] && value > 0) {
+    className += ' second';
+  }
+  
+  return `<td class="${className}">${value.toFixed(1)}</td>`;
+}
+
+// Render tables
+function renderTables() {
+  const allData = getFilteredData(false);
+  const modelData = getFilteredData(true);
+  
+  document.getElementById('allTable').innerHTML = createTableHTML(allData);
+  document.getElementById('modelTable').innerHTML = createTableHTML(modelData);
+}
+
+// Create table HTML
+function createTableHTML(data) {
+  if (data.length === 0) {
+    return '<p class="text-center text-muted py-4">No agents match the current filters.</p>';
+  }
+  
+  const bestValues = findBestValues(data);
+  
+  let html = `
+    <table class="leaderboard-table">
+      <thead>
+        <tr class="header-group">
+          <th rowspan="3">Rank</th>
+          <th rowspan="3">Model & Date</th>
+          <th rowspan="3">Type</th>
+          <th colspan="8">#Cross App</th>
+          <th colspan="6">Difficulty Level</th>
+          <th colspan="2" rowspan="2">Avg</th>
+        </tr>
+        <tr class="header-group">
+          <th colspan="2">1 App</th>
+          <th colspan="2">2 App</th>
+          <th colspan="2">3 App</th>
+          <th colspan="2">4 App</th>
+          <th colspan="2">Easy</th>
+          <th colspan="2">Med</th>
+          <th colspan="2">Hard</th>
+        </tr>
+        <tr class="header-subgroup">
+          <th>p@1</th><th>p@3</th>
+          <th>p@1</th><th>p@3</th>
+          <th>p@1</th><th>p@3</th>
+          <th>p@1</th><th>p@3</th>
+          <th>p@1</th><th>p@3</th>
+          <th>p@1</th><th>p@3</th>
+          <th>p@1</th><th>p@3</th>
+          <th>p@1</th><th>p@3</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+  
+  data.forEach((agent, index) => {
+    const rank = index + 1;
+    const isFirst = rank === 1;
+    
+    // Build tags
+    let tags = '';
+    if (agent.hasUITree) {
+      tags += '<span class="tag tag-uitree" title="Uses UI Tree">🌳</span>';
+    }
+    if (agent.hasLongTermMemory) {
+      tags += '<span class="tag tag-ltm" title="Long-Term Memory">🧠</span>';
+    }
+    
+    // Build action links
+    let actionLinks = '';
+    if (agent.paperLink) {
+      actionLinks += `<a href="${agent.paperLink}" target="_blank" class="action-link"><i class="bi bi-file-text"></i> Paper</a>`;
+    }
+    if (agent.codeLink) {
+      actionLinks += `<a href="${agent.codeLink}" target="_blank" class="action-link"><i class="bi bi-github"></i> Code</a>`;
+    }
+    if (agent.bibtex) {
+      actionLinks += `<span class="action-link" onclick="showBibtex('${escapeHtml(agent.bibtex)}')"><i class="bi bi-quote"></i> BibTeX</span>`;
+    }
+    
+    // Display name with backbone for workflow types
+    let displayName = agent.name;
+    if (agent.type === 'Agentic Workflow' && agent.backbone && agent.backbone !== '-') {
+      displayName = `${agent.name} w/ ${agent.backbone}`;
+    }
+    
+    html += `
+      <tr class="${isFirst ? 'first-rank' : ''}">
+        <td class="rank-cell">
+          ${rank}${isFirst ? '<span class="rank-star">★</span>' : ''}
+        </td>
+        <td class="model-cell">
+          <div class="model-name">
+            ${displayName}
+            <div class="tags">${tags}</div>
+          </div>
+          <div class="model-institution">${agent.institution}</div>
+          <div class="model-date"><i class="bi bi-calendar"></i> ${formatDate(agent.date)}</div>
+          <div class="model-authors">
+            ${agent.paperLink ? 
+              `<a href="${agent.paperLink}" target="_blank">${agent.authors}</a>` : 
+              `<span style="color: #6c757d; font-size: 0.85em;">${agent.authors}</span>`}
+          </div>
+          <div class="action-links">${actionLinks}</div>
+        </td>
+        <td class="type-cell">
+          <span class="type-badge ${agent.type === 'Agentic Workflow' ? 'workflow' : 'model'}">
+            ${agent.memoryType}
+          </span>
+        </td>
+        ${formatScore(agent.crossApp.app1.p1, 'app1_p1', bestValues)}
+        ${formatScore(agent.crossApp.app1.p3, 'app1_p3', bestValues)}
+        ${formatScore(agent.crossApp.app2.p1, 'app2_p1', bestValues)}
+        ${formatScore(agent.crossApp.app2.p3, 'app2_p3', bestValues)}
+        ${formatScore(agent.crossApp.app3.p1, 'app3_p1', bestValues)}
+        ${formatScore(agent.crossApp.app3.p3, 'app3_p3', bestValues)}
+        ${formatScore(agent.crossApp.app4.p1, 'app4_p1', bestValues)}
+        ${formatScore(agent.crossApp.app4.p3, 'app4_p3', bestValues)}
+        ${formatScore(agent.difficulty.easy.p1, 'easy_p1', bestValues)}
+        ${formatScore(agent.difficulty.easy.p3, 'easy_p3', bestValues)}
+        ${formatScore(agent.difficulty.medium.p1, 'med_p1', bestValues)}
+        ${formatScore(agent.difficulty.medium.p3, 'med_p3', bestValues)}
+        ${formatScore(agent.difficulty.hard.p1, 'hard_p1', bestValues)}
+        ${formatScore(agent.difficulty.hard.p3, 'hard_p3', bestValues)}
+        <td class="score-cell avg-score ${agent.avg.p1 === findBestValues(data).best.avg_p1 ? 'best' : ''}">${agent.avg.p1.toFixed(1)}</td>
+        <td class="score-cell avg-score ${agent.avg.p3 === findBestValues(data).best.avg_p3 ? 'best' : ''}">${agent.avg.p3.toFixed(1)}</td>
+      </tr>
+    `;
+  });
+  
+  html += `
+      </tbody>
+    </table>
+  `;
+  
+  return html;
+}
+
+// Format date
+function formatDate(dateStr) {
+  const date = new Date(dateStr);
+  const options = { year: 'numeric', month: 'short', day: 'numeric' };
+  return date.toLocaleDateString('en-US', options);
+}
+
+// Escape HTML for bibtex
+function escapeHtml(text) {
+  return text
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/"/g, '\\"')
+    .replace(/\n/g, '\\n');
+}
+
+// Show bibtex modal
+function showBibtex(bibtexEscaped) {
+  const bibtex = bibtexEscaped
+    .replace(/\\n/g, '\n')
+    .replace(/\\'/g, "'")
+    .replace(/\\"/g, '"')
+    .replace(/\\\\/g, '\\');
+  
+  document.getElementById('bibtexContent').textContent = bibtex;
+  const modal = new bootstrap.Modal(document.getElementById('bibtexModal'));
+  modal.show();
+}

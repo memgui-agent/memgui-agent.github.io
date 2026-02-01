@@ -44,34 +44,75 @@
     <div class="container text-center">
       <h1><i class="bi bi-trophy-fill text-warning"></i> Leaderboard</h1>
       <p class="lead text-secondary">
-        Comprehensive evaluation of Mobile GUI agents on MemGUI-Bench
+        Results on MemGUI-Bench. p@k denotes pass@k.
       </p>
     </div>
   </header>
 
   <!-- Main Content -->
   <main class="container-fluid leaderboard-main">
-    <!-- View Toggle -->
-    <div class="view-controls">
-      <div class="btn-group" role="group">
-        <input type="radio" class="btn-check" name="memoryType" id="shortTerm" checked>
-        <label class="btn btn-outline-success" for="shortTerm">
-          <span class="metric-icon">♣</span> Short-Term Memory (pass@1)
-        </label>
-        <input type="radio" class="btn-check" name="memoryType" id="longTerm">
-        <label class="btn btn-outline-warning" for="longTerm">
-          <span class="metric-icon">♠</span> Long-Term Memory (pass@3)
-        </label>
-      </div>
+    <!-- Tab Selection -->
+    <div class="tab-controls">
+      <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+        <li class="nav-item">
+          <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-panel" type="button">All</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" id="model-tab" data-bs-toggle="tab" data-bs-target="#model-panel" type="button">Model Only</button>
+        </li>
+      </ul>
     </div>
 
-    <!-- Leaderboard Tables Container -->
-    <div class="table-container">
-      <div id="shortTermTable" class="leaderboard-table-wrapper">
-        <!-- Will be populated by JS -->
+    <!-- Filters -->
+    <div class="filters-section">
+      <div class="filter-group">
+        <label>Tags:</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="filterUITree">
+          <label class="form-check-label" for="filterUITree">
+            <span class="tag tag-uitree">🌳 UI Tree</span>
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="filterLTM">
+          <label class="form-check-label" for="filterLTM">
+            <span class="tag tag-ltm">🧠 Long-Term Memory</span>
+          </label>
+        </div>
       </div>
-      <div id="longTermTable" class="leaderboard-table-wrapper" style="display: none;">
-        <!-- Will be populated by JS -->
+      <div class="filter-group">
+        <label>Sort by:</label>
+        <select class="form-select form-select-sm" id="sortBy">
+          <option value="avg_p3">Avg p@3 (Highest first)</option>
+          <option value="avg_p1">Avg p@1 (Highest first)</option>
+        </select>
+      </div>
+      <button class="btn btn-sm btn-outline-secondary" id="clearFilters">Clear Filters</button>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend-section">
+      <span class="legend-item"><span class="tag tag-uitree">🌳</span> Uses UI Tree</span>
+      <span class="legend-item"><span class="tag tag-ltm">🧠</span> Has Long-Term Memory</span>
+      <span class="legend-item"><code>AO</code> Action-Only</span>
+      <span class="legend-item"><code>AT</code> Action-Thought</span>
+      <span class="legend-item"><code>MC</code> Multi-turn Context</span>
+      <span class="legend-item"><code>MW</code> Multi-agent Workflow</span>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="leaderboardContent">
+      <!-- All Tab -->
+      <div class="tab-pane fade show active" id="all-panel" role="tabpanel">
+        <div class="table-container">
+          <div id="allTable" class="leaderboard-table-wrapper"></div>
+        </div>
+      </div>
+      <!-- Model Only Tab -->
+      <div class="tab-pane fade" id="model-panel" role="tabpanel">
+        <div class="table-container">
+          <div id="modelTable" class="leaderboard-table-wrapper"></div>
+        </div>
       </div>
     </div>
 
@@ -79,15 +120,36 @@
     <div class="notes-section">
       <h4><i class="bi bi-info-circle"></i> Notes</h4>
       <ul>
-        <li><strong>SR</strong>: Success Rate - percentage of tasks completed successfully</li>
-        <li><strong>IRR</strong>: Information Retention Rate - memory fidelity metric</li>
-        <li><strong>MTPR</strong>: Memory-Task Proficiency Ratio - memory-specific capability</li>
-        <li><strong>FRR</strong>: Failure Recovery Rate - learning from failure efficiency</li>
-        <li>Results are collected using pass@k (k=3) evaluation protocol</li>
+        <li>Results marked with <strong>*</strong> are evaluated by us with tool usage</li>
+        <li><strong>p@k</strong> denotes pass@k evaluation protocol</li>
+        <li>The best performance in each column is highlighted in <strong>bold</strong>, and the second best is <u>underlined</u></li>
+        <li><strong>AO</strong>: Action-Only rollout without history. <strong>AT</strong>: Action-Thought history management</li>
+        <li><strong>MC</strong>: Multi-turn Context. <strong>MW</strong>: Multi-agent Workflow with Gemini-2.5 Pro</li>
         <li>See <a href="submission.html">submission guidelines</a> to add your results</li>
       </ul>
     </div>
   </main>
+
+  <!-- BibTeX Modal -->
+  <div class="modal fade" id="bibtexModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">BibTeX Citation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <pre><code id="bibtexContent"></code></pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="copyBibtex">
+            <i class="bi bi-clipboard"></i> Copy
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -101,4 +163,3 @@
   <script src="js/leaderboard.js"></script>
 </body>
 </html>
-

@@ -3,268 +3,347 @@
   "agents": [
     {
       "name": "Agent-S2",
+      "backbone": "Gemini-2.5-Pro",
       "type": "Agentic Workflow",
-      "link": "",
+      "memoryType": "MW",
+      "institution": "UCSB",
+      "date": "2025-04-01",
+      "authors": "Agashe et al., '25",
+      "paperLink": "https://arxiv.org/abs/2504.00906",
+      "codeLink": "https://github.com/simular-ai/Agent-S",
+      "hasUITree": false,
       "hasLongTermMemory": true,
-      "shortTerm": {
-        "easy": 41.7,
-        "medium": 19.0,
-        "hard": 18.4,
-        "overall": 27.3,
-        "irr": 39.5,
-        "mtpr": 0.45,
-        "timePerStep": 28.1,
-        "costPerStep": 0.051
+      "bibtex": "@article{agashe2025agent,\n  title={Agent s2: A compositional generalist-specialist framework for computer use agents},\n  author={Agashe, Saaket and Wong, Kyle and Tu, Vincent and Yang, Jiachen and Li, Ang and Wang, Xin Eric},\n  journal={arXiv preprint arXiv:2504.00906},\n  year={2025}\n}",
+      "crossApp": {
+        "app1": { "p1": 50.0, "p3": 78.6 },
+        "app2": { "p1": 19.6, "p3": 35.7 },
+        "app3": { "p1": 26.5, "p3": 52.9 },
+        "app4": { "p1": 10.0, "p3": 30.0 }
       },
-      "longTerm": {
-        "easy": 64.6,
-        "medium": 42.9,
-        "hard": 36.8,
-        "overall": 49.2,
-        "frr": 21.5,
-        "improvement": 21.9
-      }
+      "difficulty": {
+        "easy": { "p1": 41.7, "p3": 64.6 },
+        "medium": { "p1": 19.0, "p3": 42.9 },
+        "hard": { "p1": 18.4, "p3": 36.8 }
+      },
+      "avg": { "p1": 27.3, "p3": 49.2 }
     },
     {
       "name": "M3A",
+      "backbone": "Gemini-2.5-Pro",
       "type": "Agentic Workflow",
-      "link": "",
+      "memoryType": "MW",
+      "institution": "Google DeepMind",
+      "date": "2025-07-01",
+      "authors": "Comanici et al., '25",
+      "paperLink": "https://arxiv.org/abs/2507.06261",
+      "codeLink": "",
+      "hasUITree": true,
       "hasLongTermMemory": false,
-      "shortTerm": {
-        "easy": 39.6,
-        "medium": 35.7,
-        "hard": 21.1,
-        "overall": 32.8,
-        "irr": 39.3,
-        "mtpr": 0.41,
-        "timePerStep": 14.7,
-        "costPerStep": 0.0165
+      "bibtex": "@article{comanici2025gemini,\n  title={Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities},\n  author={Comanici, Gheorghe and others},\n  journal={arXiv preprint arXiv:2507.06261},\n  year={2025}\n}",
+      "crossApp": {
+        "app1": { "p1": 46.4, "p3": 64.3 },
+        "app2": { "p1": 28.6, "p3": 41.1 },
+        "app3": { "p1": 29.4, "p3": 44.1 },
+        "app4": { "p1": 30.0, "p3": 50.0 }
       },
-      "longTerm": {
-        "easy": 47.9,
-        "medium": 50.0,
-        "hard": 44.7,
-        "overall": 47.7,
-        "frr": 16.3,
-        "improvement": 14.9
-      }
+      "difficulty": {
+        "easy": { "p1": 39.6, "p3": 47.9 },
+        "medium": { "p1": 35.7, "p3": 50.0 },
+        "hard": { "p1": 21.1, "p3": 44.7 }
+      },
+      "avg": { "p1": 32.8, "p3": 47.7 }
     },
     {
       "name": "T3A",
+      "backbone": "Gemini-2.5-Pro",
       "type": "Agentic Workflow",
-      "link": "",
+      "memoryType": "MW",
+      "institution": "Google DeepMind",
+      "date": "2025-07-01",
+      "authors": "Comanici et al., '25",
+      "paperLink": "https://arxiv.org/abs/2507.06261",
+      "codeLink": "",
+      "hasUITree": true,
       "hasLongTermMemory": false,
-      "shortTerm": {
-        "easy": 31.2,
-        "medium": 16.7,
-        "hard": 18.4,
-        "overall": 22.7,
-        "irr": 29.6,
-        "mtpr": 0.30,
-        "timePerStep": 13.9,
-        "costPerStep": 0.0176
+      "bibtex": "@article{comanici2025gemini,\n  title={Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities},\n  author={Comanici, Gheorghe and others},\n  journal={arXiv preprint arXiv:2507.06261},\n  year={2025}\n}",
+      "crossApp": {
+        "app1": { "p1": 42.9, "p3": 60.7 },
+        "app2": { "p1": 16.1, "p3": 37.5 },
+        "app3": { "p1": 23.5, "p3": 38.2 },
+        "app4": { "p1": 0.0, "p3": 30.0 }
       },
-      "longTerm": {
-        "easy": 45.8,
-        "medium": 45.2,
-        "hard": 34.2,
-        "overall": 42.2,
-        "frr": 20.7,
-        "improvement": 19.5
-      }
+      "difficulty": {
+        "easy": { "p1": 31.2, "p3": 45.8 },
+        "medium": { "p1": 16.7, "p3": 45.2 },
+        "hard": { "p1": 18.4, "p3": 34.2 }
+      },
+      "avg": { "p1": 22.7, "p3": 42.2 }
     },
     {
       "name": "Mobile-Agent-E",
+      "backbone": "Gemini-2.5-Pro",
       "type": "Agentic Workflow",
-      "link": "",
+      "memoryType": "MW",
+      "institution": "UIUC & Alibaba",
+      "date": "2025-01-20",
+      "authors": "Wang et al., '25",
+      "paperLink": "https://arxiv.org/abs/2501.11733",
+      "codeLink": "https://github.com/X-PLUG/MobileAgent",
+      "hasUITree": false,
       "hasLongTermMemory": true,
-      "shortTerm": {
-        "easy": 12.5,
-        "medium": 2.4,
-        "hard": 0.0,
-        "overall": 5.5,
-        "irr": 2.4,
-        "mtpr": 0.02,
-        "timePerStep": 39.3,
-        "costPerStep": 0.0696
+      "bibtex": "@article{wang2025mobile,\n  title={Mobile-agent-e: Self-evolving mobile assistant for complex tasks},\n  author={Wang, Zhenhailong and Xu, Haiyang and Wang, Junyang and Zhang, Xi and Yan, Ming and Zhang, Ji and Huang, Fei and Ji, Heng},\n  journal={arXiv preprint arXiv:2501.11733},\n  year={2025}\n}",
+      "crossApp": {
+        "app1": { "p1": 25.0, "p3": 42.9 },
+        "app2": { "p1": 0.0, "p3": 1.8 },
+        "app3": { "p1": 0.0, "p3": 0.0 },
+        "app4": { "p1": 0.0, "p3": 0.0 }
       },
-      "longTerm": {
-        "easy": 22.9,
-        "medium": 2.4,
-        "hard": 2.6,
-        "overall": 10.2,
-        "frr": 4.1,
-        "improvement": 4.7
-      }
-    },
-    {
-      "name": "AppAgent",
-      "type": "Agentic Workflow",
-      "link": "",
-      "hasLongTermMemory": false,
-      "shortTerm": {
-        "easy": 8.3,
-        "medium": 0.0,
-        "hard": 0.0,
-        "overall": 3.1,
-        "irr": 1.5,
-        "mtpr": 0.04,
-        "timePerStep": 27.3,
-        "costPerStep": 0.0078
+      "difficulty": {
+        "easy": { "p1": 12.5, "p3": 22.9 },
+        "medium": { "p1": 2.4, "p3": 2.4 },
+        "hard": { "p1": 0.0, "p3": 2.6 }
       },
-      "longTerm": {
-        "easy": 22.9,
-        "medium": 2.4,
-        "hard": 0.0,
-        "overall": 9.4,
-        "frr": 4.4,
-        "improvement": 6.3
-      }
-    },
-    {
-      "name": "SeeAct",
-      "type": "Agentic Workflow",
-      "link": "",
-      "hasLongTermMemory": false,
-      "shortTerm": {
-        "easy": 6.2,
-        "medium": 0.0,
-        "hard": 0.0,
-        "overall": 2.3,
-        "irr": 0.2,
-        "mtpr": 0.00,
-        "timePerStep": 15.9,
-        "costPerStep": 0.0133
-      },
-      "longTerm": {
-        "easy": 12.5,
-        "medium": 2.4,
-        "hard": 0.0,
-        "overall": 5.5,
-        "frr": 2.4,
-        "improvement": 3.2
-      }
+      "avg": { "p1": 5.5, "p3": 10.2 }
     },
     {
       "name": "Mobile-Agent-V2",
+      "backbone": "Gemini-2.5-Pro",
       "type": "Agentic Workflow",
-      "link": "",
+      "memoryType": "MW",
+      "institution": "Alibaba",
+      "date": "2024-06-03",
+      "authors": "Wang et al., '24",
+      "paperLink": "https://arxiv.org/abs/2406.01014",
+      "codeLink": "https://github.com/X-PLUG/MobileAgent",
+      "hasUITree": false,
       "hasLongTermMemory": false,
-      "shortTerm": {
-        "easy": 8.3,
-        "medium": 0.0,
-        "hard": 0.0,
-        "overall": 3.1,
-        "irr": 0.0,
-        "mtpr": 0.00,
-        "timePerStep": 29.4,
-        "costPerStep": 0.066
+      "bibtex": "@article{wang2024mobile,\n  title={Mobile-agent-v2: Mobile device operation assistant with effective navigation via multi-agent collaboration},\n  author={Wang, Junyang and others},\n  journal={arXiv preprint arXiv:2406.01014},\n  year={2024}\n}",
+      "crossApp": {
+        "app1": { "p1": 14.3, "p3": 17.9 },
+        "app2": { "p1": 0.0, "p3": 0.0 },
+        "app3": { "p1": 0.0, "p3": 0.0 },
+        "app4": { "p1": 0.0, "p3": 0.0 }
       },
-      "longTerm": {
-        "easy": 10.4,
-        "medium": 0.0,
-        "hard": 0.0,
-        "overall": 3.9,
-        "frr": 0.8,
-        "improvement": 0.8
-      }
+      "difficulty": {
+        "easy": { "p1": 8.3, "p3": 10.4 },
+        "medium": { "p1": 0.0, "p3": 0.0 },
+        "hard": { "p1": 0.0, "p3": 0.0 }
+      },
+      "avg": { "p1": 3.1, "p3": 3.9 }
     },
     {
-      "name": "GUI-Owl-7B",
-      "type": "Agent-as-a-Model",
-      "link": "",
+      "name": "SeeAct",
+      "backbone": "Gemini-2.5-Pro",
+      "type": "Agentic Workflow",
+      "memoryType": "MW",
+      "institution": "OSU NLP",
+      "date": "2024-01-24",
+      "authors": "Zheng et al., '24",
+      "paperLink": "https://arxiv.org/abs/2401.01614",
+      "codeLink": "https://github.com/OSU-NLP-Group/SeeAct",
+      "hasUITree": true,
       "hasLongTermMemory": false,
-      "shortTerm": {
-        "easy": 14.6,
-        "medium": 0.0,
-        "hard": 2.6,
-        "overall": 6.2,
-        "irr": 5.7,
-        "mtpr": 0.07,
-        "timePerStep": 9.6,
-        "costPerStep": null
+      "bibtex": "@article{zheng2024gpt,\n  title={GPT-4V(ision) is a Generalist Web Agent, if Grounded},\n  author={Zheng, Boyuan and Gou, Boyu and Kil, Jihyung and Sun, Huan and Su, Yu},\n  journal={arXiv preprint arXiv:2401.01614},\n  year={2024}\n}",
+      "crossApp": {
+        "app1": { "p1": 10.7, "p3": 25.0 },
+        "app2": { "p1": 0.0, "p3": 0.0 },
+        "app3": { "p1": 0.0, "p3": 0.6 },
+        "app4": { "p1": 0.0, "p3": 0.0 }
       },
-      "longTerm": {
-        "easy": 22.9,
-        "medium": 2.4,
-        "hard": 2.6,
-        "overall": 10.2,
-        "frr": 3.3,
-        "improvement": 4.0
-      }
+      "difficulty": {
+        "easy": { "p1": 6.2, "p3": 12.5 },
+        "medium": { "p1": 0.0, "p3": 2.4 },
+        "hard": { "p1": 0.0, "p3": 0.0 }
+      },
+      "avg": { "p1": 2.3, "p3": 5.5 }
     },
     {
-      "name": "UI-Venus-7B",
-      "type": "Agent-as-a-Model",
-      "link": "",
+      "name": "AppAgent",
+      "backbone": "Gemini-2.5-Pro",
+      "type": "Agentic Workflow",
+      "memoryType": "MW",
+      "institution": "Tencent",
+      "date": "2023-12-21",
+      "authors": "Zhang et al., '23",
+      "paperLink": "https://arxiv.org/abs/2312.13771",
+      "codeLink": "https://github.com/mnotgod96/AppAgent",
+      "hasUITree": true,
       "hasLongTermMemory": false,
-      "shortTerm": {
-        "easy": 14.6,
-        "medium": 0.0,
-        "hard": 0.0,
-        "overall": 5.5,
-        "irr": 2.6,
-        "mtpr": 0.05,
-        "timePerStep": 12.2,
-        "costPerStep": null
+      "bibtex": "@article{zhang2023appagent,\n  title={AppAgent: Multimodal Agents as Smartphone Users},\n  author={Zhang, Chi and Zhao, Zhao Yang and others},\n  journal={arXiv preprint arXiv:2312.13771},\n  year={2023}\n}",
+      "crossApp": {
+        "app1": { "p1": 14.3, "p3": 42.9 },
+        "app2": { "p1": 0.0, "p3": 0.0 },
+        "app3": { "p1": 0.0, "p3": 0.0 },
+        "app4": { "p1": 0.0, "p3": 0.0 }
       },
-      "longTerm": {
-        "easy": 20.8,
-        "medium": 0.0,
-        "hard": 0.0,
-        "overall": 7.8,
-        "frr": 1.7,
-        "improvement": 2.3
-      }
-    },
-    {
-      "name": "UI-TARS-1.5-7B",
-      "type": "Agent-as-a-Model",
-      "link": "",
-      "hasLongTermMemory": false,
-      "shortTerm": {
-        "easy": 8.3,
-        "medium": 0.0,
-        "hard": 0.0,
-        "overall": 3.1,
-        "irr": 3.8,
-        "mtpr": 0.04,
-        "timePerStep": 9.9,
-        "costPerStep": null
+      "difficulty": {
+        "easy": { "p1": 8.3, "p3": 22.9 },
+        "medium": { "p1": 0.0, "p3": 2.4 },
+        "hard": { "p1": 0.0, "p3": 0.0 }
       },
-      "longTerm": {
-        "easy": 16.7,
-        "medium": 0.0,
-        "hard": 0.0,
-        "overall": 6.2,
-        "frr": 2.4,
-        "improvement": 3.1
-      }
+      "avg": { "p1": 3.1, "p3": 9.4 }
     },
     {
       "name": "CogAgent",
+      "backbone": "-",
       "type": "Agent-as-a-Model",
-      "link": "",
+      "memoryType": "AO",
+      "institution": "Tsinghua & Zhipu",
+      "date": "2023-12-14",
+      "authors": "Hong et al., '23",
+      "paperLink": "https://arxiv.org/abs/2312.08914",
+      "codeLink": "https://github.com/THUDM/CogVLM",
+      "hasUITree": false,
       "hasLongTermMemory": false,
-      "shortTerm": {
-        "easy": 0.0,
-        "medium": 0.0,
-        "hard": 0.0,
-        "overall": 0.0,
-        "irr": 0.0,
-        "mtpr": 0.00,
-        "timePerStep": 33.2,
-        "costPerStep": null
+      "bibtex": "@article{hong2023cogagent,\n  title={CogAgent: A Visual Language Model for GUI Agents},\n  author={Hong, Wenyi and Wang, Weihan and Lv, Qingsong and Xu, Jiazheng and Yu, Wenmeng and Ji, Junhui and Wang, Yan and Wang, Zihan and Zhang, Yuxuan and Li, Juanzi and others},\n  journal={arXiv preprint arXiv:2312.08914},\n  year={2023}\n}",
+      "crossApp": {
+        "app1": { "p1": 0.0, "p3": 0.0 },
+        "app2": { "p1": 0.0, "p3": 0.0 },
+        "app3": { "p1": 0.0, "p3": 0.0 },
+        "app4": { "p1": 0.0, "p3": 0.0 }
       },
-      "longTerm": {
-        "easy": 0.0,
-        "medium": 0.0,
-        "hard": 0.0,
-        "overall": 0.0,
-        "frr": 0.0,
-        "improvement": 0.0
-      }
+      "difficulty": {
+        "easy": { "p1": 0.0, "p3": 0.0 },
+        "medium": { "p1": 0.0, "p3": 0.0 },
+        "hard": { "p1": 0.0, "p3": 0.0 }
+      },
+      "avg": { "p1": 0.0, "p3": 0.0 }
+    },
+    {
+      "name": "Qwen2.5VL-7B",
+      "backbone": "-",
+      "type": "Agent-as-a-Model",
+      "memoryType": "AT",
+      "institution": "Alibaba",
+      "date": "2024-10-01",
+      "authors": "Bai et al., '24",
+      "paperLink": "https://arxiv.org/abs/2409.12191",
+      "codeLink": "https://github.com/QwenLM/Qwen2-VL",
+      "hasUITree": false,
+      "hasLongTermMemory": false,
+      "bibtex": "@article{bai2024qwen2vl,\n  title={Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution},\n  author={Bai, Junyang and others},\n  journal={arXiv preprint arXiv:2409.12191},\n  year={2024}\n}",
+      "crossApp": {
+        "app1": { "p1": 14.3, "p3": 17.9 },
+        "app2": { "p1": 1.8, "p3": 1.8 },
+        "app3": { "p1": 0.0, "p3": 0.0 },
+        "app4": { "p1": 0.0, "p3": 0.0 }
+      },
+      "difficulty": {
+        "easy": { "p1": 10.4, "p3": 12.5 },
+        "medium": { "p1": 0.0, "p3": 0.0 },
+        "hard": { "p1": 0.0, "p3": 0.0 }
+      },
+      "avg": { "p1": 3.9, "p3": 4.7 }
+    },
+    {
+      "name": "UI-Venus-7B",
+      "backbone": "-",
+      "type": "Agent-as-a-Model",
+      "memoryType": "AT",
+      "institution": "ByteDance",
+      "date": "2024-10-01",
+      "authors": "ByteDance",
+      "paperLink": "",
+      "codeLink": "",
+      "hasUITree": false,
+      "hasLongTermMemory": false,
+      "bibtex": "",
+      "crossApp": {
+        "app1": { "p1": 21.4, "p3": 28.6 },
+        "app2": { "p1": 1.8, "p3": 1.8 },
+        "app3": { "p1": 0.0, "p3": 2.9 },
+        "app4": { "p1": 0.0, "p3": 0.0 }
+      },
+      "difficulty": {
+        "easy": { "p1": 14.6, "p3": 20.8 },
+        "medium": { "p1": 0.0, "p3": 0.0 },
+        "hard": { "p1": 0.0, "p3": 0.0 }
+      },
+      "avg": { "p1": 5.5, "p3": 7.8 }
+    },
+    {
+      "name": "UI-S1-7B",
+      "backbone": "-",
+      "type": "Agent-as-a-Model",
+      "memoryType": "MC",
+      "institution": "ByteDance",
+      "date": "2025-01-01",
+      "authors": "ByteDance",
+      "paperLink": "",
+      "codeLink": "",
+      "hasUITree": false,
+      "hasLongTermMemory": false,
+      "bibtex": "",
+      "crossApp": {
+        "app1": { "p1": 17.9, "p3": 21.4 },
+        "app2": { "p1": 3.6, "p3": 3.6 },
+        "app3": { "p1": 0.0, "p3": 0.0 },
+        "app4": { "p1": 0.0, "p3": 0.0 }
+      },
+      "difficulty": {
+        "easy": { "p1": 12.5, "p3": 14.6 },
+        "medium": { "p1": 2.6, "p3": 2.6 },
+        "hard": { "p1": 0.0, "p3": 0.0 }
+      },
+      "avg": { "p1": 5.5, "p3": 6.2 }
+    },
+    {
+      "name": "UI-TARS-1.5-7B",
+      "backbone": "-",
+      "type": "Agent-as-a-Model",
+      "memoryType": "MC",
+      "institution": "ByteDance Seed",
+      "date": "2025-01-23",
+      "authors": "Qin et al., '25",
+      "paperLink": "https://arxiv.org/abs/2501.12326",
+      "codeLink": "https://github.com/bytedance/UI-TARS",
+      "hasUITree": false,
+      "hasLongTermMemory": false,
+      "bibtex": "@article{qin2025uitars,\n  title={UI-TARS: Pioneering Automated GUI Interaction with Native Agents},\n  author={Qin, Yujia and others},\n  journal={arXiv preprint arXiv:2501.12326},\n  year={2025}\n}",
+      "crossApp": {
+        "app1": { "p1": 14.3, "p3": 21.4 },
+        "app2": { "p1": 0.0, "p3": 1.8 },
+        "app3": { "p1": 0.0, "p3": 2.9 },
+        "app4": { "p1": 0.0, "p3": 0.0 }
+      },
+      "difficulty": {
+        "easy": { "p1": 8.3, "p3": 16.7 },
+        "medium": { "p1": 0.0, "p3": 0.0 },
+        "hard": { "p1": 0.0, "p3": 0.0 }
+      },
+      "avg": { "p1": 3.1, "p3": 6.2 }
+    },
+    {
+      "name": "GUI-Owl-7B",
+      "backbone": "-",
+      "type": "Agent-as-a-Model",
+      "memoryType": "MC",
+      "institution": "ByteDance",
+      "date": "2024-09-01",
+      "authors": "ByteDance",
+      "paperLink": "",
+      "codeLink": "",
+      "hasUITree": false,
+      "hasLongTermMemory": false,
+      "bibtex": "",
+      "crossApp": {
+        "app1": { "p1": 21.4, "p3": 35.7 },
+        "app2": { "p1": 1.8, "p3": 1.8 },
+        "app3": { "p1": 2.9, "p3": 7.1 },
+        "app4": { "p1": 0.0, "p3": 4.0 }
+      },
+      "difficulty": {
+        "easy": { "p1": 14.6, "p3": 22.9 },
+        "medium": { "p1": 0.0, "p3": 2.4 },
+        "hard": { "p1": 2.6, "p3": 2.6 }
+      },
+      "avg": { "p1": 6.2, "p3": 10.2 }
     }
-  ]
+  ],
+  "memoryTypeLabels": {
+    "AO": "Action-Only rollout without history",
+    "AT": "Action-Thought history management",
+    "MC": "Multi-turn Context",
+    "MW": "Multi-agent Workflow"
+  }
 }
-
