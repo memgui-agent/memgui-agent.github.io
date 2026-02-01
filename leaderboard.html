@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard | MemGUI-Bench</title>
+  <link rel="icon" href="assets/favicon.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/leaderboard.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <span class="brand-icon">🧠</span> MemGUI-Bench
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="leaderboard.html">Leaderboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="submission.html">Submit</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="leaderboard-header">
+    <div class="container text-center">
+      <h1><i class="bi bi-trophy-fill text-warning"></i> Leaderboard</h1>
+      <p class="lead text-secondary">
+        Comprehensive evaluation of Mobile GUI agents on MemGUI-Bench
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container-fluid leaderboard-main">
+    <!-- View Toggle -->
+    <div class="view-controls">
+      <div class="btn-group" role="group">
+        <input type="radio" class="btn-check" name="memoryType" id="shortTerm" checked>
+        <label class="btn btn-outline-success" for="shortTerm">
+          <span class="metric-icon">♣</span> Short-Term Memory (pass@1)
+        </label>
+        <input type="radio" class="btn-check" name="memoryType" id="longTerm">
+        <label class="btn btn-outline-warning" for="longTerm">
+          <span class="metric-icon">♠</span> Long-Term Memory (pass@3)
+        </label>
+      </div>
+    </div>
+
+    <!-- Leaderboard Tables Container -->
+    <div class="table-container">
+      <div id="shortTermTable" class="leaderboard-table-wrapper">
+        <!-- Will be populated by JS -->
+      </div>
+      <div id="longTermTable" class="leaderboard-table-wrapper" style="display: none;">
+        <!-- Will be populated by JS -->
+      </div>
+    </div>
+
+    <!-- Notes Section -->
+    <div class="notes-section">
+      <h4><i class="bi bi-info-circle"></i> Notes</h4>
+      <ul>
+        <li><strong>SR</strong>: Success Rate - percentage of tasks completed successfully</li>
+        <li><strong>IRR</strong>: Information Retention Rate - memory fidelity metric</li>
+        <li><strong>MTPR</strong>: Memory-Task Proficiency Ratio - memory-specific capability</li>
+        <li><strong>FRR</strong>: Failure Recovery Rate - learning from failure efficiency</li>
+        <li>Results are collected using pass@k (k=3) evaluation protocol</li>
+        <li>See <a href="submission.html">submission guidelines</a> to add your results</li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>MemGUI-Bench © 2026 | <a href="index.html">Home</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/leaderboard.js"></script>
+</body>
+</html>
+

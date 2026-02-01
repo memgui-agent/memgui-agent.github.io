@@ -1,0 +1,270 @@
+{
+  "lastUpdated": "2026-02-01",
+  "agents": [
+    {
+      "name": "Agent-S2",
+      "type": "Agentic Workflow",
+      "link": "",
+      "hasLongTermMemory": true,
+      "shortTerm": {
+        "easy": 41.7,
+        "medium": 19.0,
+        "hard": 18.4,
+        "overall": 27.3,
+        "irr": 39.5,
+        "mtpr": 0.45,
+        "timePerStep": 28.1,
+        "costPerStep": 0.051
+      },
+      "longTerm": {
+        "easy": 64.6,
+        "medium": 42.9,
+        "hard": 36.8,
+        "overall": 49.2,
+        "frr": 21.5,
+        "improvement": 21.9
+      }
+    },
+    {
+      "name": "M3A",
+      "type": "Agentic Workflow",
+      "link": "",
+      "hasLongTermMemory": false,
+      "shortTerm": {
+        "easy": 39.6,
+        "medium": 35.7,
+        "hard": 21.1,
+        "overall": 32.8,
+        "irr": 39.3,
+        "mtpr": 0.41,
+        "timePerStep": 14.7,
+        "costPerStep": 0.0165
+      },
+      "longTerm": {
+        "easy": 47.9,
+        "medium": 50.0,
+        "hard": 44.7,
+        "overall": 47.7,
+        "frr": 16.3,
+        "improvement": 14.9
+      }
+    },
+    {
+      "name": "T3A",
+      "type": "Agentic Workflow",
+      "link": "",
+      "hasLongTermMemory": false,
+      "shortTerm": {
+        "easy": 31.2,
+        "medium": 16.7,
+        "hard": 18.4,
+        "overall": 22.7,
+        "irr": 29.6,
+        "mtpr": 0.30,
+        "timePerStep": 13.9,
+        "costPerStep": 0.0176
+      },
+      "longTerm": {
+        "easy": 45.8,
+        "medium": 45.2,
+        "hard": 34.2,
+        "overall": 42.2,
+        "frr": 20.7,
+        "improvement": 19.5
+      }
+    },
+    {
+      "name": "Mobile-Agent-E",
+      "type": "Agentic Workflow",
+      "link": "",
+      "hasLongTermMemory": true,
+      "shortTerm": {
+        "easy": 12.5,
+        "medium": 2.4,
+        "hard": 0.0,
+        "overall": 5.5,
+        "irr": 2.4,
+        "mtpr": 0.02,
+        "timePerStep": 39.3,
+        "costPerStep": 0.0696
+      },
+      "longTerm": {
+        "easy": 22.9,
+        "medium": 2.4,
+        "hard": 2.6,
+        "overall": 10.2,
+        "frr": 4.1,
+        "improvement": 4.7
+      }
+    },
+    {
+      "name": "AppAgent",
+      "type": "Agentic Workflow",
+      "link": "",
+      "hasLongTermMemory": false,
+      "shortTerm": {
+        "easy": 8.3,
+        "medium": 0.0,
+        "hard": 0.0,
+        "overall": 3.1,
+        "irr": 1.5,
+        "mtpr": 0.04,
+        "timePerStep": 27.3,
+        "costPerStep": 0.0078
+      },
+      "longTerm": {
+        "easy": 22.9,
+        "medium": 2.4,
+        "hard": 0.0,
+        "overall": 9.4,
+        "frr": 4.4,
+        "improvement": 6.3
+      }
+    },
+    {
+      "name": "SeeAct",
+      "type": "Agentic Workflow",
+      "link": "",
+      "hasLongTermMemory": false,
+      "shortTerm": {
+        "easy": 6.2,
+        "medium": 0.0,
+        "hard": 0.0,
+        "overall": 2.3,
+        "irr": 0.2,
+        "mtpr": 0.00,
+        "timePerStep": 15.9,
+        "costPerStep": 0.0133
+      },
+      "longTerm": {
+        "easy": 12.5,
+        "medium": 2.4,
+        "hard": 0.0,
+        "overall": 5.5,
+        "frr": 2.4,
+        "improvement": 3.2
+      }
+    },
+    {
+      "name": "Mobile-Agent-V2",
+      "type": "Agentic Workflow",
+      "link": "",
+      "hasLongTermMemory": false,
+      "shortTerm": {
+        "easy": 8.3,
+        "medium": 0.0,
+        "hard": 0.0,
+        "overall": 3.1,
+        "irr": 0.0,
+        "mtpr": 0.00,
+        "timePerStep": 29.4,
+        "costPerStep": 0.066
+      },
+      "longTerm": {
+        "easy": 10.4,
+        "medium": 0.0,
+        "hard": 0.0,
+        "overall": 3.9,
+        "frr": 0.8,
+        "improvement": 0.8
+      }
+    },
+    {
+      "name": "GUI-Owl-7B",
+      "type": "Agent-as-a-Model",
+      "link": "",
+      "hasLongTermMemory": false,
+      "shortTerm": {
+        "easy": 14.6,
+        "medium": 0.0,
+        "hard": 2.6,
+        "overall": 6.2,
+        "irr": 5.7,
+        "mtpr": 0.07,
+        "timePerStep": 9.6,
+        "costPerStep": null
+      },
+      "longTerm": {
+        "easy": 22.9,
+        "medium": 2.4,
+        "hard": 2.6,
+        "overall": 10.2,
+        "frr": 3.3,
+        "improvement": 4.0
+      }
+    },
+    {
+      "name": "UI-Venus-7B",
+      "type": "Agent-as-a-Model",
+      "link": "",
+      "hasLongTermMemory": false,
+      "shortTerm": {
+        "easy": 14.6,
+        "medium": 0.0,
+        "hard": 0.0,
+        "overall": 5.5,
+        "irr": 2.6,
+        "mtpr": 0.05,
+        "timePerStep": 12.2,
+        "costPerStep": null
+      },
+      "longTerm": {
+        "easy": 20.8,
+        "medium": 0.0,
+        "hard": 0.0,
+        "overall": 7.8,
+        "frr": 1.7,
+        "improvement": 2.3
+      }
+    },
+    {
+      "name": "UI-TARS-1.5-7B",
+      "type": "Agent-as-a-Model",
+      "link": "",
+      "hasLongTermMemory": false,
+      "shortTerm": {
+        "easy": 8.3,
+        "medium": 0.0,
+        "hard": 0.0,
+        "overall": 3.1,
+        "irr": 3.8,
+        "mtpr": 0.04,
+        "timePerStep": 9.9,
+        "costPerStep": null
+      },
+      "longTerm": {
+        "easy": 16.7,
+        "medium": 0.0,
+        "hard": 0.0,
+        "overall": 6.2,
+        "frr": 2.4,
+        "improvement": 3.1
+      }
+    },
+    {
+      "name": "CogAgent",
+      "type": "Agent-as-a-Model",
+      "link": "",
+      "hasLongTermMemory": false,
+      "shortTerm": {
+        "easy": 0.0,
+        "medium": 0.0,
+        "hard": 0.0,
+        "overall": 0.0,
+        "irr": 0.0,
+        "mtpr": 0.00,
+        "timePerStep": 33.2,
+        "costPerStep": null
+      },
+      "longTerm": {
+        "easy": 0.0,
+        "medium": 0.0,
+        "hard": 0.0,
+        "overall": 0.0,
+        "frr": 0.0,
+        "improvement": 0.0
+      }
+    }
+  ]
+}
+

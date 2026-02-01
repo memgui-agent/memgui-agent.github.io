@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MemGUI-Bench: Memory-Centric Benchmark for Mobile GUI Agents</title>
+  <link rel="icon" href="assets/favicon.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <span class="brand-icon">🧠</span> MemGUI-Bench
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="submission.html">Submit</a></li>
+          <li class="nav-item"><a class="nav-link" href="#citation">Citation</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content text-center">
+        <h1 class="hero-title">
+          <span class="gradient-text">MemGUI-Bench</span>
+        </h1>
+        <p class="hero-subtitle">
+          A Comprehensive Memory-Centric Benchmark for Mobile GUI Agents
+        </p>
+        <p class="hero-venue">
+          <i class="bi bi-trophy"></i> ICML 2026
+        </p>
+        
+        <!-- Action Buttons -->
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-primary btn-lg">
+            <i class="bi bi-file-earmark-pdf"></i> Paper
+          </a>
+          <a href="#" class="btn btn-outline-light btn-lg">
+            <i class="bi bi-github"></i> Code
+          </a>
+          <a href="#" class="btn btn-outline-light btn-lg">
+            <i class="bi bi-database"></i> Dataset
+          </a>
+          <a href="leaderboard.html" class="btn btn-accent btn-lg">
+            <i class="bi bi-bar-chart-line"></i> Leaderboard
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Overview Section -->
+  <section id="overview" class="section-padding">
+    <div class="container">
+      <h2 class="section-title text-center">Overview</h2>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="overview-text">
+            <p class="lead">
+              Current mobile GUI agent benchmarks systematically fail to assess memory capabilities, 
+              with only <strong>5.2-11.8%</strong> memory-related tasks and no cross-session learning evaluation.
+            </p>
+            <p>
+              <strong>MemGUI-Bench</strong> introduces a comprehensive memory-centric benchmark with 
+              pass@k evaluation and staged LLM-as-judge evaluation, designed to rigorously test 
+              agents' ability to retain and utilize information across complex, multi-application workflows.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number">128</div>
+              <div class="stat-label">Tasks</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">26</div>
+              <div class="stat-label">Applications</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">89.8%</div>
+              <div class="stat-label">Memory-Intensive</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">7</div>
+              <div class="stat-label">Metrics</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section-padding bg-dark-alt">
+    <div class="container">
+      <h2 class="section-title text-center">Key Contributions</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h4>Memory Taxonomy</h4>
+            <p>Systematic analysis of 11 agents across 5 architectures, identifying key memory mechanisms.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h4>128 Curated Tasks</h4>
+            <p>Cross-temporal and cross-spatial retention challenges across 26 real-world applications.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <div class="feature-icon">⚖️</div>
+            <h4>MemGUI-Eval</h4>
+            <p>Automated Progressive Scrutiny pipeline with 7 hierarchical metrics for accurate evaluation.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <div class="feature-icon">🔬</div>
+            <h4>RQ-Driven Analysis</h4>
+            <p>Comprehensive assessment revealing 5 distinct failure modes and design implications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics Section -->
+  <section id="metrics" class="section-padding">
+    <div class="container">
+      <h2 class="section-title text-center">Evaluation Metrics</h2>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="metric-group">
+            <h4><span class="metric-badge short-term">♣</span> Short-Term Memory (pass@1)</h4>
+            <ul class="metric-list">
+              <li><strong>SR</strong> - Success Rate: Baseline performance measurement</li>
+              <li><strong>IRR</strong> - Information Retention Rate: Memory fidelity metric</li>
+              <li><strong>MTPR</strong> - Memory-Task Proficiency Ratio: Memory-specific capability isolation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="metric-group">
+            <h4><span class="metric-badge long-term">♠</span> Long-Term Memory (pass@k)</h4>
+            <ul class="metric-list">
+              <li><strong>SR@k</strong> - Multi-Attempt Success Rate: Cross-session learning capability</li>
+              <li><strong>FRR</strong> - Failure Recovery Rate: Learning from failure efficiency</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Citation Section -->
+  <section id="citation" class="section-padding bg-dark-alt">
+    <div class="container">
+      <h2 class="section-title text-center">Citation</h2>
+      <div class="citation-box">
+        <pre><code>@inproceedings{memguibench2026,
+  title={MemGUI-Bench: A Comprehensive Memory-Centric Benchmark for Mobile GUI Agents},
+  author={Anonymous},
+  booktitle={International Conference on Machine Learning (ICML)},
+  year={2026}
+}</code></pre>
+        <button class="btn btn-sm btn-outline-light copy-btn" onclick="copyBibtex()">
+          <i class="bi bi-clipboard"></i> Copy
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>MemGUI-Bench © 2026 | Built with ❤️ for the research community</p>
+      <p class="text-muted">Last updated: February 2026</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function copyBibtex() {
+      const bibtex = document.querySelector('.citation-box code').textContent;
+      navigator.clipboard.writeText(bibtex);
+      const btn = document.querySelector('.copy-btn');
+      btn.innerHTML = '<i class="bi bi-check"></i> Copied!';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
+
