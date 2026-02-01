@@ -31,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
-          <li class="nav-item"><a class="nav-link" href="#benchmark">Benchmark</a></li>
+          <li class="nav-item"><a class="nav-link" href="#benchmark">Comparison</a></li>
           <li class="nav-item"><a class="nav-link" href="#results">Results</a></li>
           <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
           <li class="nav-item"><a class="nav-link" href="submission.html">Submit</a></li>
@@ -201,7 +201,7 @@
 
       <!-- Evaluation Metrics -->
       <h3 class="subsection-title text-center mb-4">Evaluation Metrics</h3>
-      <div class="row">
+      <div class="row mb-5">
         <div class="col-lg-6">
           <div class="metric-group">
             <h4><span class="metric-badge short-term">♣</span> Short-Term Memory (pass@1)</h4>
@@ -222,14 +222,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Benchmark Section -->
-  <section id="benchmark" class="section-padding bg-light-alt">
-    <div class="container">
-      <h2 class="section-title text-center">Benchmark</h2>
-      
       <!-- Framework Overview -->
       <h3 class="subsection-title text-center mb-4">Framework Overview</h3>
       
@@ -284,9 +277,13 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Comparison with Existing Benchmarks -->
-      <h3 class="subsection-title text-center mt-5 mb-4">Comparison with Existing Benchmarks</h3>
+  <!-- Benchmark Comparison Section -->
+  <section id="benchmark" class="section-padding bg-light-alt">
+    <div class="container">
+      <h2 class="section-title text-center">Benchmark Comparison</h2>
       <p class="text-center text-secondary mb-4">Comprehensive comparison across evaluation environment, pipeline, and agent support dimensions</p>
       <div class="table-responsive">
         <table class="table table-bordered table-hover comparison-table">
@@ -333,38 +330,13 @@
   <section id="results" class="section-padding">
     <div class="container">
       <h2 class="section-title text-center">Key Results</h2>
-      
-      <!-- Main Leaderboard Table -->
-      <div class="table-responsive mb-4">
-        <h4 class="text-center mb-3">Performance Comparison (Table 2)</h4>
-        <table class="table table-bordered table-hover results-table">
-          <thead>
-            <tr>
-              <th rowspan="2">Agent</th>
-              <th colspan="4" class="bg-success-subtle">♣ Short-Term Memory (pass@1)</th>
-              <th colspan="4" class="bg-warning-subtle">♠ Long-Term Memory (pass@3)</th>
-            </tr>
-            <tr>
-              <th>Easy</th><th>Med</th><th>Hard</th><th>Overall</th>
-              <th>Easy</th><th>Med</th><th>Hard</th><th>Overall</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="table-light"><td colspan="9" class="fw-bold text-primary">Agentic Workflow</td></tr>
-            <tr><td>Agent-S2</td><td class="fw-bold">41.7</td><td>19.0</td><td>18.4</td><td>27.3</td><td class="fw-bold">64.6</td><td>42.9</td><td>36.8</td><td class="fw-bold">49.2</td></tr>
-            <tr><td>M3A</td><td>39.6</td><td class="fw-bold">35.7</td><td class="fw-bold">21.1</td><td class="fw-bold">32.8</td><td>47.9</td><td class="fw-bold">50.0</td><td class="fw-bold">44.7</td><td>47.7</td></tr>
-            <tr><td>T3A</td><td>31.2</td><td>16.7</td><td>18.4</td><td>22.7</td><td>45.8</td><td>45.2</td><td>34.2</td><td>42.2</td></tr>
-            <tr><td>Mobile-Agent-E</td><td>12.5</td><td>2.4</td><td>0.0</td><td>5.5</td><td>22.9</td><td>2.4</td><td>2.6</td><td>10.2</td></tr>
-            <tr class="table-light"><td colspan="9" class="fw-bold text-warning">Agent-as-a-Model</td></tr>
-            <tr><td>GUI-Owl-7B</td><td>14.6</td><td>0.0</td><td>2.6</td><td>6.2</td><td>22.9</td><td>2.4</td><td>2.6</td><td>10.2</td></tr>
-            <tr><td>UI-Venus-7B</td><td>14.6</td><td>0.0</td><td>0.0</td><td>5.5</td><td>20.8</td><td>0.0</td><td>0.0</td><td>7.8</td></tr>
-            <tr><td>CogAgent</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p class="text-center text-secondary mb-5">
+        Comprehensive evaluation of 11 GUI agents reveals critical insights about memory capabilities. 
+        <a href="leaderboard.html" class="text-primary">View full leaderboard →</a>
+      </p>
 
       <!-- Research Questions & Conclusions -->
-      <h4 class="text-center mt-5 mb-4">Research Questions & Key Findings</h4>
+      <h3 class="subsection-title text-center mb-4">Research Questions & Key Findings</h3>
       <div class="rq-grid">
         <div class="rq-card">
           <div class="rq-header">
