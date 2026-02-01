@@ -69,8 +69,14 @@ a:hover {
   gap: 0.5rem;
 }
 
-.brand-icon {
-  font-size: 1.6rem;
+.brand-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-text {
+  font-weight: 700;
 }
 
 .nav-link {
