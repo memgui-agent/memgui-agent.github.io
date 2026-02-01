@@ -45,38 +45,37 @@
   <main class="section-padding">
     <div class="container">
       
-      <!-- Overview Section -->
+      <!-- Overview & Comparison Section (Side by Side) -->
       <section class="gallery-section mb-5">
-        <h2 class="section-title">Pipeline Overview</h2>
-        <p class="section-desc">
-          MemGUI-Eval employs a novel "Progressive Scrutiny" pipeline that mimics efficient human expert verification: 
-          starting with minimal, high-efficiency evidence and progressively deepening analysis only when necessary.
-        </p>
-        
-        <div class="gallery-grid">
-          <div class="gallery-item full-width">
-            <a href="images/eval-pipeline/eval-pipeline-overview.png" class="gallery-link" data-lightbox="eval">
-              <img src="images/eval-pipeline/eval-pipeline-overview.png" alt="MemGUI-Eval Pipeline Overview">
-            </a>
-            <div class="gallery-caption">
-              <h5>MemGUI-Eval Three-Stage Progressive Scrutiny Pipeline</h5>
-              <p>The pipeline orchestrates four specialized agents: Triage Judge, Step Descriptor, Semantic Judge, and Visual Judge.</p>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h3 class="subsection-title">Pipeline Overview</h3>
+            <p class="section-desc-sm">
+              MemGUI-Eval employs a novel "Progressive Scrutiny" pipeline that mimics efficient human expert verification.
+            </p>
+            <div class="gallery-item">
+              <a href="images/eval-pipeline/eval-pipeline-overview.png" class="gallery-link" data-lightbox="eval">
+                <img src="images/eval-pipeline/eval-pipeline-overview.png" alt="MemGUI-Eval Pipeline Overview">
+              </a>
+              <div class="gallery-caption">
+                <h6>Three-Stage Progressive Scrutiny Pipeline</h6>
+                <p class="small">Four specialized agents: Triage Judge, Step Descriptor, Semantic Judge, and Visual Judge.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- Evaluator Comparison -->
-      <section class="gallery-section mb-5">
-        <h2 class="section-title">Comparison with Existing Approaches</h2>
-        <div class="gallery-grid">
-          <div class="gallery-item full-width">
-            <a href="images/eval-pipeline/evaluator-comparison.png" class="gallery-link" data-lightbox="eval">
-              <img src="images/eval-pipeline/evaluator-comparison.png" alt="Evaluator Comparison">
-            </a>
-            <div class="gallery-caption">
-              <h5>Limitations of Existing Evaluation Approaches</h5>
-              <p>Traditional methods range from rigid rule-based matching to inefficient "LLM-as-Judge" approaches that overwhelm models with complete trajectories.</p>
+          <div class="col-lg-6">
+            <h3 class="subsection-title">Comparison with Existing Approaches</h3>
+            <p class="section-desc-sm">
+              Traditional methods face critical limitations in handling diverse GUI agent trajectories.
+            </p>
+            <div class="gallery-item">
+              <a href="images/eval-pipeline/evaluator-comparison.png" class="gallery-link" data-lightbox="eval">
+                <img src="images/eval-pipeline/evaluator-comparison.png" alt="Evaluator Comparison">
+              </a>
+              <div class="gallery-caption">
+                <h6>Limitations of Existing Approaches</h6>
+                <p class="small">From rigid rule-based matching to inefficient "LLM-as-Judge" approaches.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -157,22 +156,6 @@
                 <h5>Stage 3: Failed Case with IRR</h5>
                 <p>Visual verification with targeted historical evidence determines task failure with precise IRR calculation.</p>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Learning Curves -->
-      <section class="gallery-section mb-5">
-        <h2 class="section-title">Learning Potential Analysis</h2>
-        <div class="gallery-grid">
-          <div class="gallery-item full-width">
-            <a href="images/eval-pipeline/learning-curves.png" class="gallery-link" data-lightbox="eval">
-              <img src="images/eval-pipeline/learning-curves.png" alt="Learning Curves">
-            </a>
-            <div class="gallery-caption">
-              <h5>Learning Potential Across Multiple Attempts</h5>
-              <p>Analysis of how different GUI agents improve their performance across multiple attempts (pass@k evaluation).</p>
             </div>
           </div>
         </div>
