@@ -20,7 +20,7 @@
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">
         <span class="brand-icon">🧠</span> MemGUI-Bench
@@ -31,7 +31,8 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
-          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#framework">Framework</a></li>
+          <li class="nav-item"><a class="nav-link" href="#results">Results</a></li>
           <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
           <li class="nav-item"><a class="nav-link" href="submission.html">Submit</a></li>
           <li class="nav-item"><a class="nav-link" href="#citation">Citation</a></li>
@@ -114,7 +115,7 @@
   </section>
 
   <!-- Features Section -->
-  <section id="features" class="section-padding bg-dark-alt">
+  <section id="features" class="section-padding bg-light-alt">
     <div class="container">
       <h2 class="section-title text-center">Key Contributions</h2>
       <div class="row g-4">
@@ -178,8 +179,165 @@
     </div>
   </section>
 
+  <!-- Framework Section -->
+  <section id="framework" class="section-padding bg-light-alt">
+    <div class="container">
+      <h2 class="section-title text-center">Framework Overview</h2>
+      
+      <!-- Main Overview Figure -->
+      <div class="figure-card mb-4">
+        <img src="images/fig1-overview.png" alt="MemGUI-Bench Overview">
+        <div class="figure-caption">
+          <h5>Figure 1: MemGUI-Bench Overview</h5>
+          <p>First comprehensive benchmark for GUI agent memory evaluation, featuring memory taxonomy, task suite, and specialized metrics.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Task Suite Statistics -->
+        <div class="col-lg-6">
+          <div class="figure-card">
+            <img src="images/fig2-task-suite.png" alt="Task Suite Statistics">
+            <div class="figure-caption">
+              <h5>Figure 2: Task Suite Statistics</h5>
+              <p>68 real-world scenarios, 26 applications, 3 difficulty levels, and 4 app-crossing spans.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Unified Architecture -->
+        <div class="col-lg-6">
+          <div class="figure-card">
+            <img src="images/fig3-architecture.png" alt="Unified Architecture">
+            <div class="figure-caption">
+              <h5>Figure 3: Plug-and-Play Framework</h5>
+              <p>Snapshot-based architecture with parallel execution, automatic evaluation, and retry mechanisms.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MemGUI-Eval Pipeline -->
+      <div class="figure-card mt-4">
+        <img src="images/fig4-eval-pipeline.png" alt="MemGUI-Eval Pipeline">
+        <div class="figure-caption">
+          <h5>Figure 4: MemGUI-Eval Progressive Scrutiny Pipeline</h5>
+          <p>Three-stage evaluation: Cost-effective triage → Full semantic analysis → Targeted visual verification.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section id="results" class="section-padding">
+    <div class="container">
+      <h2 class="section-title text-center">Key Results</h2>
+      
+      <!-- Main Leaderboard Table -->
+      <div class="table-responsive mb-4">
+        <h4 class="text-center mb-3">Performance Comparison (Table 2)</h4>
+        <table class="table table-bordered table-hover results-table">
+          <thead>
+            <tr>
+              <th rowspan="2">Agent</th>
+              <th colspan="4" class="bg-success-subtle">♣ Short-Term Memory (pass@1)</th>
+              <th colspan="4" class="bg-warning-subtle">♠ Long-Term Memory (pass@3)</th>
+            </tr>
+            <tr>
+              <th>Easy</th><th>Med</th><th>Hard</th><th>Overall</th>
+              <th>Easy</th><th>Med</th><th>Hard</th><th>Overall</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-light"><td colspan="9" class="fw-bold text-primary">Agentic Workflow</td></tr>
+            <tr><td>Agent-S2</td><td class="fw-bold">41.7</td><td>19.0</td><td>18.4</td><td>27.3</td><td class="fw-bold">64.6</td><td>42.9</td><td>36.8</td><td class="fw-bold">49.2</td></tr>
+            <tr><td>M3A</td><td>39.6</td><td class="fw-bold">35.7</td><td class="fw-bold">21.1</td><td class="fw-bold">32.8</td><td>47.9</td><td class="fw-bold">50.0</td><td class="fw-bold">44.7</td><td>47.7</td></tr>
+            <tr><td>T3A</td><td>31.2</td><td>16.7</td><td>18.4</td><td>22.7</td><td>45.8</td><td>45.2</td><td>34.2</td><td>42.2</td></tr>
+            <tr><td>Mobile-Agent-E</td><td>12.5</td><td>2.4</td><td>0.0</td><td>5.5</td><td>22.9</td><td>2.4</td><td>2.6</td><td>10.2</td></tr>
+            <tr class="table-light"><td colspan="9" class="fw-bold text-warning">Agent-as-a-Model</td></tr>
+            <tr><td>GUI-Owl-7B</td><td>14.6</td><td>0.0</td><td>2.6</td><td>6.2</td><td>22.9</td><td>2.4</td><td>2.6</td><td>10.2</td></tr>
+            <tr><td>UI-Venus-7B</td><td>14.6</td><td>0.0</td><td>0.0</td><td>5.5</td><td>20.8</td><td>0.0</td><td>0.0</td><td>7.8</td></tr>
+            <tr><td>CogAgent</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Key Findings -->
+      <div class="row g-4 mt-3">
+        <div class="col-md-6">
+          <div class="feature-card">
+            <div class="feature-icon">📉</div>
+            <h4>4-10× Capability Gap</h4>
+            <p>Standard benchmarks systematically overestimate agent capabilities. Performance drops dramatically from AndroidWorld to MemGUI-Bench.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h4>Memory is Essential</h4>
+            <p>Short-term memory is mandatory (removing it causes SR to collapse). Long-term memory enables +21.9pp improvement.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h4>Cross-App Bottleneck</h4>
+            <p>16-40pp performance degradation from 1-app to 4-app tasks, revealing cross-application transfer as the primary challenge.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h4>Context Length Matters</h4>
+            <p>Long-context capability yields +18.8pp improvement, demonstrating untapped potential in current architectures.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="leaderboard.html" class="btn btn-primary btn-lg">
+          <i class="bi bi-bar-chart-line"></i> View Full Leaderboard
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benchmark Comparison Section -->
+  <section id="comparison" class="section-padding bg-light-alt">
+    <div class="container">
+      <h2 class="section-title text-center">Benchmark Comparison</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover results-table">
+          <thead>
+            <tr>
+              <th>Benchmark</th>
+              <th>Memory Tasks</th>
+              <th>Cross-app Tasks</th>
+              <th>Total Tasks</th>
+              <th>3rd-party Apps</th>
+              <th>Auto Reset</th>
+              <th>Long-term Memory</th>
+              <th>Auto Eval</th>
+              <th>Memory Metrics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>AndroidArena</td><td>22</td><td>22</td><td>221</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>1/4</td></tr>
+            <tr><td>AndroidWorld</td><td>6</td><td>6</td><td>116</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td><td>1/1</td></tr>
+            <tr><td>AndroidLab</td><td>45</td><td>0</td><td>138</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td><td>1/4</td></tr>
+            <tr><td>SPA-Bench</td><td>40</td><td>40</td><td>340</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td><td>1/7</td></tr>
+            <tr class="table-primary fw-bold"><td>MemGUI-Bench</td><td>115</td><td>100</td><td>128</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>4/7</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center text-muted mt-3">
+        MemGUI-Bench is the first benchmark to systematically evaluate both short-term and long-term memory capabilities of Mobile GUI agents.
+      </p>
+    </div>
+  </section>
+
   <!-- Citation Section -->
-  <section id="citation" class="section-padding bg-dark-alt">
+  <section id="citation" class="section-padding">
     <div class="container">
       <h2 class="section-title text-center">Citation</h2>
       <div class="citation-box">

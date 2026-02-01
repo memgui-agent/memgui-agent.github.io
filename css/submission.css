@@ -1,14 +1,15 @@
-/* ===== Submission Page Styles ===== */
+/* ===== Submission Page Styles - Light Theme ===== */
 
 .submission-header {
   padding: 140px 0 60px;
-  background: linear-gradient(180deg, var(--bg-dark-alt) 0%, var(--bg-dark) 100%);
+  background: linear-gradient(180deg, var(--bg-light-alt) 0%, var(--bg-light) 100%);
 }
 
 .submission-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  color: var(--text-primary);
 }
 
 .submission-main {
@@ -29,7 +30,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: var(--accent);
+  color: var(--primary);
 }
 
 .content-section h2 i {
@@ -45,11 +46,13 @@
   text-align: center;
   height: 100%;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .step-card:hover {
   border-color: var(--primary);
   transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
 }
 
 .step-number {
@@ -63,11 +66,13 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 auto 1rem;
+  color: white;
 }
 
 .step-card h4 {
   font-weight: 600;
   margin-bottom: 0.75rem;
+  color: var(--text-primary);
 }
 
 .step-card p {
@@ -82,6 +87,7 @@
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .method-card h4 {
@@ -90,6 +96,7 @@
   gap: 0.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
+  color: var(--text-primary);
 }
 
 .method-card ol, 
@@ -104,8 +111,8 @@
 }
 
 .method-card code {
-  background: rgba(99, 102, 241, 0.2);
-  color: var(--accent);
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
   font-family: var(--font-mono);
@@ -117,11 +124,12 @@
   border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .info-box.important {
   border: 1px solid var(--long-term-color);
-  background: rgba(245, 158, 11, 0.1);
+  background: rgba(217, 119, 6, 0.05);
 }
 
 .info-box h5 {
@@ -144,7 +152,7 @@
 
 /* Code Block */
 .code-block {
-  background: #1e1e2e;
+  background: #1e293b;
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 1.5rem;
@@ -159,7 +167,7 @@
 .code-block code {
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--text-secondary);
+  color: #e2e8f0;
   white-space: pre;
 }
 
@@ -190,7 +198,7 @@
   flex-shrink: 0;
   font-size: 1.5rem;
   color: var(--primary);
-  background: var(--bg-dark);
+  background: var(--bg-light);
   position: relative;
   z-index: 1;
 }
@@ -198,6 +206,7 @@
 .process-content h5 {
   margin-bottom: 0.25rem;
   font-weight: 600;
+  color: var(--text-primary);
 }
 
 .process-content p {
@@ -222,18 +231,14 @@
 }
 
 .accordion-button:not(.collapsed) {
-  background: rgba(99, 102, 241, 0.1);
-  color: var(--accent);
+  background: rgba(99, 102, 241, 0.05);
+  color: var(--primary);
   box-shadow: none;
 }
 
 .accordion-button:focus {
   box-shadow: none;
   border-color: var(--border-color);
-}
-
-.accordion-button::after {
-  filter: brightness(0) invert(1);
 }
 
 .accordion-body {
@@ -279,4 +284,3 @@
     font-size: 0.75rem;
   }
 }
-

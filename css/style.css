@@ -1,19 +1,22 @@
-/* ===== CSS Variables ===== */
+/* ===== CSS Variables - Light Theme ===== */
 :root {
   --primary: #6366f1;
   --primary-dark: #4f46e5;
-  --accent: #22d3ee;
-  --accent-glow: rgba(34, 211, 238, 0.3);
-  --bg-dark: #0f0f1a;
-  --bg-dark-alt: #1a1a2e;
-  --bg-card: #16162a;
-  --text-primary: #ffffff;
-  --text-secondary: #a1a1aa;
-  --gradient-1: linear-gradient(135deg, #6366f1 0%, #22d3ee 100%);
+  --accent: #0891b2;
+  --accent-light: #22d3ee;
+  --bg-light: #ffffff;
+  --bg-light-alt: #f8fafc;
+  --bg-card: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --gradient-1: linear-gradient(135deg, #6366f1 0%, #0891b2 100%);
   --gradient-2: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
-  --short-term-color: #22c55e;
-  --long-term-color: #f59e0b;
-  --border-color: rgba(255, 255, 255, 0.1);
+  --short-term-color: #16a34a;
+  --long-term-color: #d97706;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --font-main: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
@@ -31,29 +34,30 @@ html {
 
 body {
   font-family: var(--font-main);
-  background-color: var(--bg-dark);
+  background-color: var(--bg-light);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
 a {
-  color: var(--accent);
+  color: var(--primary);
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 a:hover {
-  color: var(--primary);
+  color: var(--primary-dark);
 }
 
 /* ===== Navigation ===== */
 .navbar {
-  background: rgba(15, 15, 26, 0.95);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-color);
   padding: 1rem 0;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .navbar-brand {
@@ -77,20 +81,21 @@ a:hover {
   transition: all 0.3s ease;
 }
 
-.nav-link:hover {
-  color: var(--text-primary) !important;
+.nav-link:hover, .nav-link.active {
+  color: var(--primary) !important;
   background: rgba(99, 102, 241, 0.1);
 }
 
 /* ===== Hero Section ===== */
 .hero-section {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   padding: 120px 0 80px;
   overflow: hidden;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0fdf4 100%);
 }
 
 .hero-bg {
@@ -100,9 +105,8 @@ a:hover {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 70%);
+    radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(8, 145, 178, 0.08) 0%, transparent 50%);
   z-index: 0;
 }
 
@@ -112,7 +116,7 @@ a:hover {
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 700;
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
@@ -126,17 +130,10 @@ a:hover {
 }
 
 .hero-subtitle {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   color: var(--text-secondary);
   max-width: 700px;
   margin: 0 auto 1rem;
-}
-
-.hero-venue {
-  font-size: 1.2rem;
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 2rem;
 }
 
 .hero-buttons {
@@ -168,41 +165,56 @@ a:hover {
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+  color: white;
+}
+
+.btn-outline-primary {
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
 }
 
 .btn-outline-light {
   border: 2px solid var(--border-color);
-  background: transparent;
+  background: white;
   color: var(--text-primary);
 }
 
 .btn-outline-light:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--accent);
-  color: var(--accent);
+  background: var(--bg-light-alt);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .btn-accent {
   background: var(--accent);
   border: none;
-  color: var(--bg-dark);
+  color: white;
 }
 
 .btn-accent:hover {
-  background: #06b6d4;
+  background: #0e7490;
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px var(--accent-glow);
+  box-shadow: 0 10px 30px rgba(8, 145, 178, 0.3);
+  color: white;
 }
 
 /* ===== Sections ===== */
 .section-padding {
-  padding: 100px 0;
+  padding: 80px 0;
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
+  color: var(--text-primary);
   position: relative;
 }
 
@@ -216,8 +228,8 @@ a:hover {
   border-radius: 2px;
 }
 
-.bg-dark-alt {
-  background-color: var(--bg-dark-alt);
+.bg-light-alt {
+  background-color: var(--bg-light-alt);
 }
 
 /* ===== Stats Grid ===== */
@@ -234,12 +246,13 @@ a:hover {
   padding: 2rem;
   text-align: center;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .stat-card:hover {
   border-color: var(--primary);
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+  box-shadow: var(--shadow-lg);
 }
 
 .stat-number {
@@ -265,11 +278,13 @@ a:hover {
   padding: 2rem;
   height: 100%;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .feature-card:hover {
   border-color: var(--accent);
   transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
 }
 
 .feature-icon {
@@ -281,6 +296,7 @@ a:hover {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
+  color: var(--text-primary);
 }
 
 .feature-card p {
@@ -296,6 +312,7 @@ a:hover {
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .metric-group h4 {
@@ -304,6 +321,7 @@ a:hover {
   gap: 0.75rem;
   margin-bottom: 1.5rem;
   font-weight: 600;
+  color: var(--text-primary);
 }
 
 .metric-badge {
@@ -317,12 +335,12 @@ a:hover {
 }
 
 .metric-badge.short-term {
-  background: rgba(34, 197, 94, 0.2);
+  background: rgba(22, 163, 74, 0.15);
   color: var(--short-term-color);
 }
 
 .metric-badge.long-term {
-  background: rgba(245, 158, 11, 0.2);
+  background: rgba(217, 119, 6, 0.15);
   color: var(--long-term-color);
 }
 
@@ -343,19 +361,65 @@ a:hover {
 }
 
 .metric-list li strong {
-  color: var(--accent);
+  color: var(--primary);
   font-family: var(--font-mono);
+}
+
+/* ===== Figure Gallery ===== */
+.figure-gallery {
+  display: grid;
+  gap: 2rem;
+}
+
+.figure-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.figure-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.figure-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.figure-caption {
+  padding: 1rem 1.5rem;
+  background: var(--bg-light-alt);
+  border-top: 1px solid var(--border-color);
+}
+
+.figure-caption h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+.figure-caption p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 /* ===== Citation ===== */
 .citation-box {
-  background: var(--bg-card);
+  background: var(--bg-light-alt);
   border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 2rem;
   position: relative;
   max-width: 800px;
   margin: 0 auto;
+  box-shadow: var(--shadow-sm);
 }
 
 .citation-box pre {
@@ -365,7 +429,7 @@ a:hover {
 
 .citation-box code {
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   white-space: pre-wrap;
 }
@@ -380,10 +444,16 @@ a:hover {
 .footer {
   padding: 3rem 0;
   border-top: 1px solid var(--border-color);
+  background: var(--bg-light-alt);
 }
 
 .footer p {
   margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.footer a {
+  color: var(--primary);
 }
 
 /* ===== Responsive ===== */
@@ -407,4 +477,3 @@ a:hover {
     padding: 60px 0;
   }
 }
-
