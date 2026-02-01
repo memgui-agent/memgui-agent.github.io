@@ -101,19 +101,19 @@
           </div>
         </div>
 
-        <!-- Contributing Institutions -->
+        <!-- Contributing Institutions (ordered by author affiliations) -->
         <div class="hero-institutions">
           <a href="https://www.zju.edu.cn/" target="_blank" class="hero-logo" title="Zhejiang University">
             <img src="images/logos/zhejiang-university.svg" alt="Zhejiang University">
-          </a>
-          <a href="https://www.sjtu.edu.cn/" target="_blank" class="hero-logo" title="Shanghai Jiao Tong University">
-            <img src="images/logos/sjtu.svg" alt="Shanghai Jiao Tong University">
           </a>
           <a href="https://www.nankai.edu.cn/" target="_blank" class="hero-logo" title="Nankai University">
             <img src="images/logos/nankai-university.svg" alt="Nankai University">
           </a>
           <a href="https://www.cuhk.edu.hk/" target="_blank" class="hero-logo" title="The Chinese University of Hong Kong">
             <img src="images/logos/cuhk.svg" alt="The Chinese University of Hong Kong">
+          </a>
+          <a href="https://www.sjtu.edu.cn/" target="_blank" class="hero-logo" title="Shanghai Jiao Tong University">
+            <img src="images/logos/sjtu.svg" alt="Shanghai Jiao Tong University">
           </a>
           <a href="https://www.vivo.com/" target="_blank" class="hero-logo" title="vivo">
             <img src="images/logos/vivo.svg" alt="vivo">
@@ -323,34 +323,72 @@
         </table>
       </div>
 
-      <!-- Key Findings -->
-      <div class="row g-4 mt-3">
-        <div class="col-md-6">
-          <div class="feature-card">
-            <div class="feature-icon">📉</div>
-            <h4>4-10× Capability Gap</h4>
-            <p>Standard benchmarks systematically overestimate agent capabilities. Performance drops dramatically from AndroidWorld to MemGUI-Bench.</p>
+      <!-- Research Questions & Conclusions -->
+      <h4 class="text-center mt-5 mb-4">Research Questions & Key Findings</h4>
+      <div class="rq-grid">
+        <div class="rq-card">
+          <div class="rq-header">
+            <span class="rq-badge">RQ1</span>
+            <span class="rq-question">How do current GUI agents perform on memory-intensive tasks?</span>
+          </div>
+          <div class="rq-answer">
+            <strong>4-10× capability gaps hidden by standard benchmarks.</strong>
+            M3A achieves 32.8% SR while end-to-end models achieve only 0.0-6.2%. Performance drops dramatically from AndroidWorld to MemGUI-Bench (Agent-S2: 54.3%→27.3%, GUI-Owl-7B: 66.4%→6.2%).
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="feature-card">
-            <div class="feature-icon">🧠</div>
-            <h4>Memory is Essential</h4>
-            <p>Short-term memory is mandatory (removing it causes SR to collapse). Long-term memory enables +21.9pp improvement.</p>
+        
+        <div class="rq-card">
+          <div class="rq-header">
+            <span class="rq-badge">RQ2</span>
+            <span class="rq-question">Are memory mechanisms essential or optional?</span>
+          </div>
+          <div class="rq-answer">
+            <strong>Short-term memory is mandatory; long-term memory is beneficial but optional.</strong>
+            Removing short-term memory causes catastrophic collapse (M3A: 32.5%→2.5%). Long-term memory provides +20pp improvement but agents remain functional without it.
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="feature-card">
-            <div class="feature-icon">📱</div>
-            <h4>Cross-App Bottleneck</h4>
-            <p>16-40pp performance degradation from 1-app to 4-app tasks, revealing cross-application transfer as the primary challenge.</p>
+        
+        <div class="rq-card">
+          <div class="rq-header">
+            <span class="rq-badge">RQ3</span>
+            <span class="rq-question">How does cross-application complexity affect memory?</span>
+          </div>
+          <div class="rq-answer">
+            <strong>16-40pp performance degradation, the primary memory bottleneck.</strong>
+            M3A drops from 46.4% (1-app) to 30.0% (4-app), Agent-S2 from 50.0% to 10.0%. Cross-app information transfer is the critical challenge.
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h4>Context Length Matters</h4>
-            <p>Long-context capability yields +18.8pp improvement, demonstrating untapped potential in current architectures.</p>
+        
+        <div class="rq-card">
+          <div class="rq-header">
+            <span class="rq-badge">RQ4</span>
+            <span class="rq-question">Can long-context capability improve performance?</span>
+          </div>
+          <div class="rq-answer">
+            <strong>+18.8pp improvement, revealing untapped potential.</strong>
+            M3A multi-turn achieves 51.6% (vs 32.8% single-turn). UI-TARS-1.5-7B with 5-turn limit achieves only 3.1-6.2%, confirming context constraints severely limit performance.
+          </div>
+        </div>
+        
+        <div class="rq-card">
+          <div class="rq-header">
+            <span class="rq-badge">RQ5</span>
+            <span class="rq-question">Can long-term memory enable cross-session learning?</span>
+          </div>
+          <div class="rq-answer">
+            <strong>+21.9pp improvement but remains underutilized.</strong>
+            Agent-S2 demonstrates 27.3%→49.2% improvement with 21.5% FRR, while agents without explicit memory show minimal FRR (0.8-4.4%). Only 2 of 11 agents implement cross-session learning.
+          </div>
+        </div>
+        
+        <div class="rq-card">
+          <div class="rq-header">
+            <span class="rq-badge">RQ6</span>
+            <span class="rq-question">What are the computational trade-offs?</span>
+          </div>
+          <div class="rq-answer">
+            <strong>Severe trade-offs under deployment constraints.</strong>
+            Agent-S2 (41,760 tokens/step) drops from 49.2% to 0% under token limits. M3A shows optimal balance with graceful degradation (47.7%→21.9%) at 31% of Agent-S2's tokens.
           </div>
         </div>
       </div>
@@ -367,27 +405,39 @@
   <section id="comparison" class="section-padding bg-light-alt">
     <div class="container">
       <h2 class="section-title text-center">Benchmark Comparison</h2>
+      <p class="text-center text-secondary mb-4">Comprehensive comparison across evaluation environment, pipeline, and agent support dimensions</p>
       <div class="table-responsive">
-        <table class="table table-bordered table-hover results-table">
+        <table class="table table-bordered table-hover comparison-table">
           <thead>
             <tr>
-              <th>Benchmark</th>
-              <th>Memory Tasks</th>
-              <th>Cross-app Tasks</th>
-              <th>Total Tasks</th>
-              <th>3rd-party Apps</th>
-              <th>Auto Reset</th>
-              <th>Long-term Memory</th>
-              <th>Auto Eval</th>
-              <th>Memory Metrics</th>
+              <th rowspan="2" class="align-middle">Benchmark</th>
+              <th colspan="5" class="text-center bg-success-subtle">Evaluation Environment</th>
+              <th colspan="3" class="text-center bg-info-subtle">Evaluation Pipeline</th>
+              <th rowspan="2" class="align-middle text-center">Agents<br>Tested</th>
+            </tr>
+            <tr>
+              <th>Memory<br>Tasks</th>
+              <th>Cross-app<br>Tasks</th>
+              <th>Total<br>Tasks</th>
+              <th>3rd-party<br>Apps</th>
+              <th>Auto<br>Reset</th>
+              <th>Long-term<br>Memory</th>
+              <th>Auto<br>Eval</th>
+              <th>Memory<br>Metrics</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>AndroidArena</td><td>22</td><td>22</td><td>221</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>1/4</td></tr>
-            <tr><td>AndroidWorld</td><td>6</td><td>6</td><td>116</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td><td>1/1</td></tr>
-            <tr><td>AndroidLab</td><td>45</td><td>0</td><td>138</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td><td>1/4</td></tr>
-            <tr><td>SPA-Bench</td><td>40</td><td>40</td><td>340</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td><td>1/7</td></tr>
-            <tr class="table-primary fw-bold"><td>MemGUI-Bench</td><td>115</td><td>100</td><td>128</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>4/7</td></tr>
+            <tr class="table-secondary"><td colspan="10" class="fw-bold text-muted">Rule-based Evaluation Pipeline</td></tr>
+            <tr><td>AndroidArena</td><td>22</td><td>22</td><td>221</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/4</td><td>1</td></tr>
+            <tr><td>AndroidWorld</td><td>6</td><td>6</td><td>116</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/1</td><td>3</td></tr>
+            <tr><td>AndroidLab</td><td>45</td><td>0</td><td>138</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/4</td><td>4</td></tr>
+            <tr><td>LlamaTouch</td><td>0</td><td>0</td><td>495</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/1</td><td>4</td></tr>
+            <tr><td>B-MoCA</td><td>0</td><td>0</td><td>60</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/1</td><td>3</td></tr>
+            <tr><td>MobileAgentBench</td><td>0</td><td>0</td><td>100</td><td class="text-danger">✗</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/6</td><td>5</td></tr>
+            <tr class="table-secondary"><td colspan="10" class="fw-bold text-muted">LLM-as-a-Judge Evaluation Pipeline</td></tr>
+            <tr><td>A3</td><td>9</td><td>0</td><td>201</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-success">✓</td><td>1/2</td><td>6</td></tr>
+            <tr><td>SPA-Bench</td><td>40</td><td>40</td><td>340</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/7</td><td>11</td></tr>
+            <tr class="table-primary fw-bold"><td>MemGUI-Bench (Ours)</td><td class="text-success">115</td><td class="text-success">100</td><td>128</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">4/7</td><td>12</td></tr>
           </tbody>
         </table>
       </div>
@@ -423,14 +473,14 @@
         <a href="https://www.zju.edu.cn/" target="_blank" class="affiliation-logo" title="Zhejiang University">
           <img src="images/logos/zhejiang-university.svg" alt="Zhejiang University">
         </a>
-        <a href="https://www.sjtu.edu.cn/" target="_blank" class="affiliation-logo" title="Shanghai Jiao Tong University">
-          <img src="images/logos/sjtu.svg" alt="Shanghai Jiao Tong University">
-        </a>
         <a href="https://www.nankai.edu.cn/" target="_blank" class="affiliation-logo" title="Nankai University">
           <img src="images/logos/nankai-university.svg" alt="Nankai University">
         </a>
         <a href="https://www.cuhk.edu.hk/" target="_blank" class="affiliation-logo" title="The Chinese University of Hong Kong">
           <img src="images/logos/cuhk.svg" alt="The Chinese University of Hong Kong">
+        </a>
+        <a href="https://www.sjtu.edu.cn/" target="_blank" class="affiliation-logo" title="Shanghai Jiao Tong University">
+          <img src="images/logos/sjtu.svg" alt="Shanghai Jiao Tong University">
         </a>
         <a href="https://www.vivo.com/" target="_blank" class="affiliation-logo" title="vivo">
           <img src="images/logos/vivo.svg" alt="vivo">
