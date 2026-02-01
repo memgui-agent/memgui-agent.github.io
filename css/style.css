@@ -345,6 +345,64 @@ a:hover {
   background: var(--primary);
   margin: 0.5rem auto 0;
   border-radius: 2px;
+}
+
+/* MemGUI-Eval Section */
+.eval-intro .lead {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.eval-stages {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.eval-stage {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.eval-stage:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stage-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.stage-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stage-info strong {
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.stage-info span {
+  color: #64748b;
+  font-size: 0.9rem;
   border-radius: 2px;
 }
 

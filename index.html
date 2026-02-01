@@ -31,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
-          <li class="nav-item"><a class="nav-link" href="#benchmark">Comparison</a></li>
+          <li class="nav-item"><a class="nav-link" href="#memgui-eval">Evaluation</a></li>
           <li class="nav-item"><a class="nav-link" href="#results">Results</a></li>
           <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
           <li class="nav-item"><a class="nav-link" href="submission.html">Submit</a></li>
@@ -226,53 +226,105 @@
       <!-- Framework Overview -->
       <h3 class="subsection-title text-center mb-4">Framework Overview</h3>
       
-      <!-- Row 1: Overview + Eval Pipeline -->
-      <div class="row g-4 mb-4">
-        <div class="col-lg-6">
+      <!-- Overview + Task Suite + Architecture -->
+      <div class="row g-4">
+        <div class="col-lg-4">
           <div class="figure-card h-100">
             <div class="figure-img-wrapper">
               <img src="images/fig1-overview.png" alt="MemGUI-Bench Overview">
             </div>
             <div class="figure-caption">
               <h5>Figure 1: MemGUI-Bench Overview</h5>
-              <p>First comprehensive benchmark for GUI agent memory evaluation, featuring memory taxonomy, task suite, and specialized metrics.</p>
+              <p>First comprehensive benchmark for GUI agent memory evaluation.</p>
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="figure-card h-100">
-            <div class="figure-img-wrapper">
-              <img src="images/fig4-eval-pipeline.png" alt="MemGUI-Eval Pipeline">
-            </div>
-            <div class="figure-caption">
-              <h5>Figure 2: MemGUI-Eval Progressive Scrutiny Pipeline</h5>
-              <p>Three-stage evaluation: Cost-effective triage → Full semantic analysis → Targeted visual verification.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 2: Task Suite + Architecture -->
-      <div class="row g-4">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
           <div class="figure-card h-100">
             <div class="figure-img-wrapper">
               <img src="images/fig2-task-suite.png" alt="Task Suite Statistics">
             </div>
             <div class="figure-caption">
-              <h5>Figure 3: Task Suite Statistics</h5>
-              <p>68 real-world scenarios, 26 applications, 3 difficulty levels, and 4 app-crossing spans.</p>
+              <h5>Figure 2: Task Suite Statistics</h5>
+              <p>68 scenarios, 26 apps, 3 difficulty levels.</p>
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
           <div class="figure-card h-100">
             <div class="figure-img-wrapper">
               <img src="images/fig3-architecture.png" alt="Unified Architecture">
             </div>
             <div class="figure-caption">
-              <h5>Figure 4: Plug-and-Play Framework</h5>
-              <p>Snapshot-based architecture with parallel execution, automatic evaluation, and retry mechanisms.</p>
+              <h5>Figure 3: Plug-and-Play Framework</h5>
+              <p>Snapshot-based architecture with parallel execution.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MemGUI-Eval Section -->
+  <section id="memgui-eval" class="section-padding bg-light-alt">
+    <div class="container">
+      <h2 class="section-title text-center">MemGUI-Eval</h2>
+      <p class="text-center text-secondary mb-4">Progressive Scrutiny Evaluation for Memory-Intensive GUI Tasks</p>
+      
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="eval-intro">
+            <p class="lead">
+              Traditional evaluation methods face critical limitations: rigid rule-based matching cannot handle semantic variations, 
+              while "LLM-as-Judge" approaches overwhelm models with complete trajectories.
+            </p>
+            <p>
+              <strong>MemGUI-Eval</strong> introduces a novel <em>"Progressive Scrutiny"</em> pipeline that mimics efficient human expert verification, 
+              achieving <strong>95.9% F1-score</strong> at only <strong>$0.031 per trajectory</strong>.
+            </p>
+            
+            <div class="eval-stages mt-4">
+              <div class="eval-stage">
+                <span class="stage-num">1</span>
+                <div class="stage-info">
+                  <strong>Cost-Effective Triage</strong>
+                  <span>Rapid screening with minimal evidence (last 3 screenshots)</span>
+                </div>
+              </div>
+              <div class="eval-stage">
+                <span class="stage-num">2</span>
+                <div class="stage-info">
+                  <strong>Full Semantic Analysis</strong>
+                  <span>Enriched textual descriptions for comprehensive judgment</span>
+                </div>
+              </div>
+              <div class="eval-stage">
+                <span class="stage-num">3</span>
+                <div class="stage-info">
+                  <strong>Targeted Visual Verification</strong>
+                  <span>Precisely requested historical screenshots for final decision</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <a href="eval-pipeline.html" class="btn btn-primary">
+                <i class="bi bi-diagram-3"></i> View Detailed Pipeline
+              </a>
+              <a href="failure-analysis.html" class="btn btn-outline-secondary ms-2">
+                <i class="bi bi-bug"></i> Failure Analysis
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="figure-card">
+            <div class="figure-img-wrapper">
+              <img src="images/fig4-eval-pipeline.png" alt="MemGUI-Eval Pipeline">
+            </div>
+            <div class="figure-caption">
+              <h5>Three-Stage Progressive Scrutiny Pipeline</h5>
+              <p>Four specialized agents: Triage Judge, Step Descriptor, Semantic Judge, and Visual Judge.</p>
             </div>
           </div>
         </div>
@@ -281,7 +333,7 @@
   </section>
 
   <!-- Benchmark Comparison Section -->
-  <section id="benchmark" class="section-padding bg-light-alt">
+  <section id="benchmark" class="section-padding">
     <div class="container">
       <h2 class="section-title text-center">Benchmark Comparison</h2>
       <p class="text-center text-secondary mb-4">Comprehensive comparison across evaluation environment, pipeline, and agent support dimensions</p>
