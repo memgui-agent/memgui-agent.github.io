@@ -463,6 +463,64 @@ a:hover {
   right: 1rem;
 }
 
+/* ===== Affiliations Section ===== */
+.affiliations-section {
+  padding: 60px 0;
+  background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-light-alt) 100%);
+  border-top: 1px solid var(--border-color);
+}
+
+.affiliations-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.affiliations-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.affiliation-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  filter: grayscale(30%);
+}
+
+.affiliation-logo:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+.affiliation-logo img {
+  height: 50px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .affiliations-logos {
+    gap: 25px;
+  }
+  
+  .affiliation-logo img {
+    height: 40px;
+    max-width: 120px;
+  }
+}
+
 /* ===== Footer ===== */
 .footer {
   padding: 3rem 0;
