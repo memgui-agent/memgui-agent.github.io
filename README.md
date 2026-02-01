@@ -1,6 +1,6 @@
 # MemGUI-Bench GitHub Pages
 
-This is the official project page for **MemGUI-Bench: A Comprehensive Memory-Centric Benchmark for Mobile GUI Agents** (ICML 2026).
+This is the official project page for **MemGUI-Bench: Benchmarking Memory of Mobile GUI Agents in Dynamic Environments**.
 
 ## 🚀 Quick Start
 
