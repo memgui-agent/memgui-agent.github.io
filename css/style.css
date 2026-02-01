@@ -183,6 +183,13 @@ a:hover {
   font-size: 0.7rem;
 }
 
+.corresponding-icon {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-left: 2px;
+  cursor: help;
+}
+
 .affiliations-list {
   display: flex;
   flex-wrap: wrap;
