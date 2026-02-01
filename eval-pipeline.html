@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MemGUI-Eval Pipeline | MemGUI-Bench</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/gallery.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/logo.png" alt="MemGUI-Bench" class="brand-logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#overview">Overview</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#benchmark">Benchmark</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#results">Results</a></li>
+          <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="submission.html">Submit</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#citation">Citation</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <h1 class="page-title">MemGUI-Eval Pipeline</h1>
+      <p class="page-subtitle">Progressive Scrutiny Evaluation for Memory-Intensive GUI Tasks</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="section-padding">
+    <div class="container">
+      
+      <!-- Overview Section -->
+      <section class="gallery-section mb-5">
+        <h2 class="section-title">Pipeline Overview</h2>
+        <p class="section-desc">
+          MemGUI-Eval employs a novel "Progressive Scrutiny" pipeline that mimics efficient human expert verification: 
+          starting with minimal, high-efficiency evidence and progressively deepening analysis only when necessary.
+        </p>
+        
+        <div class="gallery-grid">
+          <div class="gallery-item full-width">
+            <a href="images/eval-pipeline/eval-pipeline-overview.png" class="gallery-link" data-lightbox="eval">
+              <img src="images/eval-pipeline/eval-pipeline-overview.png" alt="MemGUI-Eval Pipeline Overview">
+            </a>
+            <div class="gallery-caption">
+              <h5>MemGUI-Eval Three-Stage Progressive Scrutiny Pipeline</h5>
+              <p>The pipeline orchestrates four specialized agents: Triage Judge, Step Descriptor, Semantic Judge, and Visual Judge.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Evaluator Comparison -->
+      <section class="gallery-section mb-5">
+        <h2 class="section-title">Comparison with Existing Approaches</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item full-width">
+            <a href="images/eval-pipeline/evaluator-comparison.png" class="gallery-link" data-lightbox="eval">
+              <img src="images/eval-pipeline/evaluator-comparison.png" alt="Evaluator Comparison">
+            </a>
+            <div class="gallery-caption">
+              <h5>Limitations of Existing Evaluation Approaches</h5>
+              <p>Traditional methods range from rigid rule-based matching to inefficient "LLM-as-Judge" approaches that overwhelm models with complete trajectories.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stage Examples -->
+      <section class="gallery-section mb-5">
+        <h2 class="section-title">Stage-by-Stage Examples</h2>
+        
+        <div class="stage-card mb-4">
+          <h3 class="stage-title"><span class="stage-badge">Stage 1</span> Cost-Effective Triage</h3>
+          <p class="stage-desc">
+            Rapidly processes straightforward successful cases using minimal evidence: task goal, raw action logs, and final three screenshots.
+            Adopts an extremely conservative strategy, concluding "success" only when evidence irrefutably demonstrates task completion.
+          </p>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <a href="images/eval-pipeline/stage1-success.png" class="gallery-link" data-lightbox="stages">
+                <img src="images/eval-pipeline/stage1-success.png" alt="Stage 1 Success">
+              </a>
+              <div class="gallery-caption">
+                <h5>Stage 1: Success Case</h5>
+                <p>Cost-effective triage successfully identifies task completion with minimal evidence.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage-card mb-4">
+          <h3 class="stage-title"><span class="stage-badge">Stage 2</span> Full Semantic Analysis</h3>
+          <p class="stage-desc">
+            When triage proves inconclusive, the system conducts comprehensive semantic analysis with enriched evidence.
+            The Step Descriptor generates detailed textual descriptions for every step, and the Semantic Judge synthesizes all context.
+          </p>
+          <div class="gallery-grid two-col">
+            <div class="gallery-item">
+              <a href="images/eval-pipeline/stage2-success.png" class="gallery-link" data-lightbox="stages">
+                <img src="images/eval-pipeline/stage2-success.png" alt="Stage 2 Success">
+              </a>
+              <div class="gallery-caption">
+                <h5>Stage 2: Success Case</h5>
+                <p>Semantic analysis with enriched textual descriptions enables accurate judgment.</p>
+              </div>
+            </div>
+            <div class="gallery-item">
+              <a href="images/eval-pipeline/stage2-failed.png" class="gallery-link" data-lightbox="stages">
+                <img src="images/eval-pipeline/stage2-failed.png" alt="Stage 2 Failed">
+              </a>
+              <div class="gallery-caption">
+                <h5>Stage 2: Failed Case with IRR</h5>
+                <p>Semantic analysis determines task failure and computes Information Retention Rate (IRR).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage-card mb-4">
+          <h3 class="stage-title"><span class="stage-badge">Stage 3</span> Targeted Visual Verification</h3>
+          <p class="stage-desc">
+            The core innovation: rather than overwhelming the model with all historical screenshots, 
+            we provide precisely the visual evidence it actively requested via the <code>required_steps</code> list.
+          </p>
+          <div class="gallery-grid two-col">
+            <div class="gallery-item">
+              <a href="images/eval-pipeline/stage3-success.png" class="gallery-link" data-lightbox="stages">
+                <img src="images/eval-pipeline/stage3-success.png" alt="Stage 3 Success">
+              </a>
+              <div class="gallery-caption">
+                <h5>Stage 3: Success Case</h5>
+                <p>Targeted visual verification with requested historical screenshots confirms task completion.</p>
+              </div>
+            </div>
+            <div class="gallery-item">
+              <a href="images/eval-pipeline/stage3-failed.png" class="gallery-link" data-lightbox="stages">
+                <img src="images/eval-pipeline/stage3-failed.png" alt="Stage 3 Failed">
+              </a>
+              <div class="gallery-caption">
+                <h5>Stage 3: Failed Case with IRR</h5>
+                <p>Visual verification with targeted historical evidence determines task failure with precise IRR calculation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Learning Curves -->
+      <section class="gallery-section mb-5">
+        <h2 class="section-title">Learning Potential Analysis</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item full-width">
+            <a href="images/eval-pipeline/learning-curves.png" class="gallery-link" data-lightbox="eval">
+              <img src="images/eval-pipeline/learning-curves.png" alt="Learning Curves">
+            </a>
+            <div class="gallery-caption">
+              <h5>Learning Potential Across Multiple Attempts</h5>
+              <p>Analysis of how different GUI agents improve their performance across multiple attempts (pass@k evaluation).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Back Link -->
+      <div class="text-center mt-5">
+        <a href="index.html" class="btn btn-outline-primary btn-lg">
+          <i class="bi bi-arrow-left"></i> Back to Home
+        </a>
+        <a href="failure-analysis.html" class="btn btn-primary btn-lg ms-3">
+          View Failure Analysis <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2026 MemGUI-Bench Team. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
