@@ -31,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
-          <li class="nav-item"><a class="nav-link" href="#framework">Framework</a></li>
+          <li class="nav-item"><a class="nav-link" href="#benchmark">Benchmark</a></li>
           <li class="nav-item"><a class="nav-link" href="#results">Results</a></li>
           <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
           <li class="nav-item"><a class="nav-link" href="submission.html">Submit</a></li>
@@ -127,7 +127,9 @@
   <section id="overview" class="section-padding">
     <div class="container">
       <h2 class="section-title text-center">Overview</h2>
-      <div class="row align-items-center">
+      
+      <!-- Problem Statement & Stats -->
+      <div class="row align-items-center mb-5">
         <div class="col-lg-6">
           <div class="overview-text">
             <p class="lead">
@@ -162,14 +164,10 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Features Section -->
-  <section id="features" class="section-padding bg-light-alt">
-    <div class="container">
-      <h2 class="section-title text-center">Key Contributions</h2>
-      <div class="row g-4">
+      <!-- Key Contributions -->
+      <h3 class="subsection-title text-center mb-4">Key Contributions</h3>
+      <div class="row g-4 mb-5">
         <div class="col-md-6 col-lg-3">
           <div class="feature-card">
             <div class="feature-icon">📊</div>
@@ -199,13 +197,9 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Metrics Section -->
-  <section id="metrics" class="section-padding">
-    <div class="container">
-      <h2 class="section-title text-center">Evaluation Metrics</h2>
+      <!-- Evaluation Metrics -->
+      <h3 class="subsection-title text-center mb-4">Evaluation Metrics</h3>
       <div class="row">
         <div class="col-lg-6">
           <div class="metric-group">
@@ -230,10 +224,13 @@
     </div>
   </section>
 
-  <!-- Framework Section -->
-  <section id="framework" class="section-padding bg-light-alt">
+  <!-- Benchmark Section -->
+  <section id="benchmark" class="section-padding bg-light-alt">
     <div class="container">
-      <h2 class="section-title text-center">Framework Overview</h2>
+      <h2 class="section-title text-center">Benchmark</h2>
+      
+      <!-- Framework Overview -->
+      <h3 class="subsection-title text-center mb-4">Framework Overview</h3>
       
       <!-- Row 1: Overview + Eval Pipeline -->
       <div class="row g-4 mb-4">
@@ -286,6 +283,48 @@
           </div>
         </div>
       </div>
+
+      <!-- Comparison with Existing Benchmarks -->
+      <h3 class="subsection-title text-center mt-5 mb-4">Comparison with Existing Benchmarks</h3>
+      <p class="text-center text-secondary mb-4">Comprehensive comparison across evaluation environment, pipeline, and agent support dimensions</p>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover comparison-table">
+          <thead>
+            <tr>
+              <th rowspan="2" class="align-middle">Benchmark</th>
+              <th colspan="5" class="text-center bg-success-subtle">Evaluation Environment</th>
+              <th colspan="3" class="text-center bg-info-subtle">Evaluation Pipeline</th>
+              <th rowspan="2" class="align-middle text-center">Agents<br>Tested</th>
+            </tr>
+            <tr>
+              <th>Memory<br>Tasks</th>
+              <th>Cross-app<br>Tasks</th>
+              <th>Total<br>Tasks</th>
+              <th>3rd-party<br>Apps</th>
+              <th>Auto<br>Reset</th>
+              <th>Long-term<br>Memory</th>
+              <th>Auto<br>Eval</th>
+              <th>Memory<br>Metrics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-secondary"><td colspan="10" class="fw-bold text-muted">Rule-based Evaluation Pipeline</td></tr>
+            <tr><td>AndroidArena</td><td>22</td><td>22</td><td>221</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/4</td><td>1</td></tr>
+            <tr><td>AndroidWorld</td><td>6</td><td>6</td><td>116</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/1</td><td>3</td></tr>
+            <tr><td>AndroidLab</td><td>45</td><td>0</td><td>138</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/4</td><td>4</td></tr>
+            <tr><td>LlamaTouch</td><td>0</td><td>0</td><td>495</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/1</td><td>4</td></tr>
+            <tr><td>B-MoCA</td><td>0</td><td>0</td><td>60</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/1</td><td>3</td></tr>
+            <tr><td>MobileAgentBench</td><td>0</td><td>0</td><td>100</td><td class="text-danger">✗</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/6</td><td>5</td></tr>
+            <tr class="table-secondary"><td colspan="10" class="fw-bold text-muted">LLM-as-a-Judge Evaluation Pipeline</td></tr>
+            <tr><td>A3</td><td>9</td><td>0</td><td>201</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-success">✓</td><td>1/2</td><td>6</td></tr>
+            <tr><td>SPA-Bench</td><td>40</td><td>40</td><td>340</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/7</td><td>11</td></tr>
+            <tr class="table-primary fw-bold"><td>MemGUI-Bench (Ours)</td><td class="text-success">115</td><td class="text-success">100</td><td>128</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">4/7</td><td>12</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center text-muted mt-3">
+        MemGUI-Bench is the first benchmark to systematically evaluate both short-term and long-term memory capabilities of Mobile GUI agents.
+      </p>
     </div>
   </section>
 
@@ -398,52 +437,6 @@
           <i class="bi bi-bar-chart-line"></i> View Full Leaderboard
         </a>
       </div>
-    </div>
-  </section>
-
-  <!-- Benchmark Comparison Section -->
-  <section id="comparison" class="section-padding bg-light-alt">
-    <div class="container">
-      <h2 class="section-title text-center">Benchmark Comparison</h2>
-      <p class="text-center text-secondary mb-4">Comprehensive comparison across evaluation environment, pipeline, and agent support dimensions</p>
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover comparison-table">
-          <thead>
-            <tr>
-              <th rowspan="2" class="align-middle">Benchmark</th>
-              <th colspan="5" class="text-center bg-success-subtle">Evaluation Environment</th>
-              <th colspan="3" class="text-center bg-info-subtle">Evaluation Pipeline</th>
-              <th rowspan="2" class="align-middle text-center">Agents<br>Tested</th>
-            </tr>
-            <tr>
-              <th>Memory<br>Tasks</th>
-              <th>Cross-app<br>Tasks</th>
-              <th>Total<br>Tasks</th>
-              <th>3rd-party<br>Apps</th>
-              <th>Auto<br>Reset</th>
-              <th>Long-term<br>Memory</th>
-              <th>Auto<br>Eval</th>
-              <th>Memory<br>Metrics</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="table-secondary"><td colspan="10" class="fw-bold text-muted">Rule-based Evaluation Pipeline</td></tr>
-            <tr><td>AndroidArena</td><td>22</td><td>22</td><td>221</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/4</td><td>1</td></tr>
-            <tr><td>AndroidWorld</td><td>6</td><td>6</td><td>116</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/1</td><td>3</td></tr>
-            <tr><td>AndroidLab</td><td>45</td><td>0</td><td>138</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/4</td><td>4</td></tr>
-            <tr><td>LlamaTouch</td><td>0</td><td>0</td><td>495</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/1</td><td>4</td></tr>
-            <tr><td>B-MoCA</td><td>0</td><td>0</td><td>60</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/1</td><td>3</td></tr>
-            <tr><td>MobileAgentBench</td><td>0</td><td>0</td><td>100</td><td class="text-danger">✗</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/6</td><td>5</td></tr>
-            <tr class="table-secondary"><td colspan="10" class="fw-bold text-muted">LLM-as-a-Judge Evaluation Pipeline</td></tr>
-            <tr><td>A3</td><td>9</td><td>0</td><td>201</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-success">✓</td><td>1/2</td><td>6</td></tr>
-            <tr><td>SPA-Bench</td><td>40</td><td>40</td><td>340</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/7</td><td>11</td></tr>
-            <tr class="table-primary fw-bold"><td>MemGUI-Bench (Ours)</td><td class="text-success">115</td><td class="text-success">100</td><td>128</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">4/7</td><td>12</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="text-center text-muted mt-3">
-        MemGUI-Bench is the first benchmark to systematically evaluate both short-term and long-term memory capabilities of Mobile GUI agents.
-      </p>
     </div>
   </section>
 
