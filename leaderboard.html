@@ -63,26 +63,24 @@
         </select>
       </div>
       <div class="filter-group">
-        <label>Tags:</label>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="filterUITree">
-          <label class="form-check-label" for="filterUITree">
-            <span class="tag tag-uitree">🌳 UI Tree</span>
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="filterLTM">
-          <label class="form-check-label" for="filterLTM">
-            <span class="tag tag-ltm">🧠 LTM</span>
-          </label>
-        </div>
+        <label>🌳 UI Tree:</label>
+        <select class="form-select form-select-sm" id="filterUITree">
+          <option value="all">All</option>
+          <option value="with">With</option>
+          <option value="without">Without</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>🧠 LTM:</label>
+        <select class="form-select form-select-sm" id="filterLTM">
+          <option value="all">All</option>
+          <option value="with">With</option>
+          <option value="without">Without</option>
+        </select>
       </div>
       <div class="filter-group">
         <label>Sort:</label>
-        <select class="form-select form-select-sm" id="sortBy">
-          <option value="avg_p3">Avg p@3 ↓</option>
-          <option value="avg_p1">Avg p@1 ↓</option>
-        </select>
+        <select class="form-select form-select-sm" id="sortBy"></select>
       </div>
       <button class="btn btn-sm btn-outline-secondary" id="clearFilters">
         <i class="bi bi-x-circle"></i> Reset

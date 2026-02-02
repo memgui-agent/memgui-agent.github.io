@@ -238,7 +238,8 @@
 /* Model Info Column */
 .model-cell {
   text-align: left !important;
-  min-width: 280px;
+  min-width: 180px;
+  max-width: 220px;
 }
 
 .model-name {
@@ -301,22 +302,26 @@
 /* Action Links */
 .action-links {
   display: flex;
-  gap: 8px;
-  margin-top: 6px;
+  gap: 6px;
+  margin-top: 4px;
+  flex-wrap: wrap;
 }
 
 .action-link {
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #0d6efd;
   text-decoration: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
+  padding: 1px 4px;
+  background: #f0f6ff;
+  border-radius: 3px;
 }
 
 .action-link:hover {
-  text-decoration: underline;
+  background: #e0edff;
   color: #0a58ca;
 }
 
@@ -591,6 +596,23 @@
   font-style: italic;
 }
 
+/* Sorted Column Highlight */
+.sorted-column {
+  background: rgba(255, 193, 7, 0.12) !important;
+}
+
+.leaderboard-table thead th.sorted-column {
+  background: rgba(255, 193, 7, 0.25) !important;
+  color: #856404;
+  font-weight: 700;
+}
+
+.leaderboard-table tbody td.sorted-column {
+  background: rgba(255, 193, 7, 0.08);
+  border-left: 2px solid rgba(255, 193, 7, 0.4);
+  border-right: 2px solid rgba(255, 193, 7, 0.4);
+}
+
 /* Empty State */
 .empty-state {
   text-align: center;
@@ -615,19 +637,25 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  font-size: 0.8em;
-  color: #6c757d;
-  margin-top: 4px;
+  font-size: 0.85em;
+  color: #555;
+  margin-top: 3px;
 }
 
 .model-meta .model-institution {
   margin-top: 0;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .model-meta .model-date {
   margin-top: 0;
   padding-left: 8px;
   border-left: 1px solid #dee2e6;
+  white-space: nowrap;
+  color: #888;
 }
 
 /* Responsive for Memory Metrics */
