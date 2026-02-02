@@ -135,17 +135,6 @@ function setupEventListeners() {
     renderTables();
   });
   
-  // Copy bibtex
-  document.getElementById('copyBibtex').addEventListener('click', () => {
-    const bibtex = document.getElementById('bibtexContent').textContent;
-    navigator.clipboard.writeText(bibtex).then(() => {
-      const btn = document.getElementById('copyBibtex');
-      btn.innerHTML = '<i class="bi bi-check"></i> Copied!';
-      setTimeout(() => {
-        btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy';
-      }, 2000);
-    });
-  });
 }
 
 // Filter and sort data
@@ -409,9 +398,6 @@ function createTableHTML(data) {
     if (agent.codeLink) {
       actionLinks += `<a href="${agent.codeLink}" target="_blank" class="action-link"><i class="bi bi-github"></i> Code</a>`;
     }
-    if (agent.bibtex) {
-      actionLinks += `<span class="action-link" onclick="showBibtex('${escapeHtml(agent.bibtex)}')"><i class="bi bi-quote"></i> BibTeX</span>`;
-    }
     
     // Display name with backbone for workflow types
     let displayName = agent.name;
@@ -525,9 +511,6 @@ function createEfficiencyTableHTML(data) {
     }
     if (agent.codeLink) {
       actionLinks += `<a href="${agent.codeLink}" target="_blank" class="action-link"><i class="bi bi-github"></i> Code</a>`;
-    }
-    if (agent.bibtex) {
-      actionLinks += `<span class="action-link" onclick="showBibtex('${escapeHtml(agent.bibtex)}')"><i class="bi bi-quote"></i> BibTeX</span>`;
     }
     
     // Display name with backbone for workflow types
@@ -734,9 +717,6 @@ function createCrossAppRow(agent, bestValues, rank, sortedCol = '') {
   if (agent.codeLink) {
     actionLinks += `<a href="${agent.codeLink}" target="_blank" class="action-link"><i class="bi bi-github"></i> Code</a>`;
   }
-  if (agent.bibtex) {
-    actionLinks += `<span class="action-link" onclick="showBibtex('${escapeHtml(agent.bibtex)}')"><i class="bi bi-quote"></i> BibTeX</span>`;
-  }
   
   // Display name with backbone for workflow types
   let displayName = agent.name;
@@ -794,26 +774,4 @@ function formatDate(dateStr) {
   const date = new Date(dateStr);
   const options = { year: 'numeric', month: 'short', day: 'numeric' };
   return date.toLocaleDateString('en-US', options);
-}
-
-// Escape HTML for bibtex
-function escapeHtml(text) {
-  return text
-    .replace(/\\/g, '\\\\')
-    .replace(/'/g, "\\'")
-    .replace(/"/g, '\\"')
-    .replace(/\n/g, '\\n');
-}
-
-// Show bibtex modal
-function showBibtex(bibtexEscaped) {
-  const bibtex = bibtexEscaped
-    .replace(/\\n/g, '\n')
-    .replace(/\\'/g, "'")
-    .replace(/\\"/g, '"')
-    .replace(/\\\\/g, '\\');
-  
-  document.getElementById('bibtexContent').textContent = bibtex;
-  const modal = new bootstrap.Modal(document.getElementById('bibtexModal'));
-  modal.show();
 }
