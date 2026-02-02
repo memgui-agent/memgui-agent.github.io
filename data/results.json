@@ -46,9 +46,9 @@
       "type": "Agentic Workflow",
       "memoryType": "MW",
       "institution": "Google DeepMind",
-      "date": "2025-07-01",
-      "paperLink": "https://arxiv.org/abs/2507.06261",
-      "codeLink": "",
+      "date": "2024-05-01",
+      "paperLink": "https://arxiv.org/abs/2405.14573",
+      "codeLink": "https://github.com/google-research/android_world",
       "hasUITree": true,
       "hasLongTermMemory": false,
       "crossApp": {
@@ -85,9 +85,9 @@
       "type": "Agentic Workflow",
       "memoryType": "MW",
       "institution": "Google DeepMind",
-      "date": "2025-07-01",
-      "paperLink": "https://arxiv.org/abs/2507.06261",
-      "codeLink": "",
+      "date": "2024-05-01",
+      "paperLink": "https://arxiv.org/abs/2405.14573",
+      "codeLink": "https://github.com/google-research/android_world",
       "hasUITree": true,
       "hasLongTermMemory": false,
       "crossApp": {
@@ -243,7 +243,7 @@
       "institution": "Tencent",
       "date": "2023-12-21",
       "paperLink": "https://arxiv.org/abs/2312.13771",
-      "codeLink": "https://github.com/mnotgod96/AppAgent",
+      "codeLink": "https://github.com/TencentQQGYLab/AppAgent",
       "hasUITree": true,
       "hasLongTermMemory": false,
       "crossApp": {
@@ -282,7 +282,7 @@
       "institution": "Tsinghua & Zhipu",
       "date": "2023-12-14",
       "paperLink": "https://arxiv.org/abs/2312.08914",
-      "codeLink": "https://github.com/THUDM/CogVLM",
+      "codeLink": "https://github.com/zai-org/CogVLM",
       "hasUITree": false,
       "hasLongTermMemory": false,
       "crossApp": {
@@ -318,10 +318,10 @@
       "backbone": "-",
       "type": "Agent-as-a-Model",
       "memoryType": "AT",
-      "institution": "ByteDance",
-      "date": "2024-10-01",
-      "paperLink": "",
-      "codeLink": "",
+      "institution": "InclusionAI",
+      "date": "2025-08-01",
+      "paperLink": "https://arxiv.org/abs/2508.10833",
+      "codeLink": "https://github.com/inclusionAI/UI-Venus",
       "hasUITree": false,
       "hasLongTermMemory": false,
       "crossApp": {
@@ -396,10 +396,10 @@
       "backbone": "-",
       "type": "Agent-as-a-Model",
       "memoryType": "MC",
-      "institution": "ByteDance",
+      "institution": "Alibaba",
       "date": "2024-09-01",
-      "paperLink": "",
-      "codeLink": "",
+      "paperLink": "http://arxiv.org/abs/2508.15144",
+      "codeLink": "https://github.com/X-PLUG/MobileAgent",
       "hasUITree": false,
       "hasLongTermMemory": false,
       "crossApp": {
@@ -431,12 +431,6 @@
       }
     }
   ],
-  "memoryTypeLabels": {
-    "AO": "Action-Only rollout without history",
-    "AT": "Action-Thought history management",
-    "MC": "Multi-turn Context",
-    "MW": "Multi-agent Workflow"
-  },
   "metricsDescription": {
     "irr": "Information Retention Rate (%) - Memory fidelity metric",
     "mtpr": "Memory-Task Proficiency Ratio - Memory-specific capability isolation",
