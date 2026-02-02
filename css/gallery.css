@@ -348,12 +348,13 @@
   padding: 0.75rem;
   margin-bottom: 1rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  overflow: visible;
 }
 
 .eval-card-img img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
   transition: transform 0.3s ease;
