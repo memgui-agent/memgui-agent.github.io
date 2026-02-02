@@ -52,30 +52,16 @@
 
   <!-- Main Content -->
   <main class="container-fluid leaderboard-main">
-    <!-- Tab Selection -->
-    <div class="tab-controls">
-      <ul class="nav nav-tabs" id="mainTabs" role="tablist">
-        <li class="nav-item">
-          <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-panel" type="button">All Agents</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link" id="model-tab" data-bs-toggle="tab" data-bs-target="#model-panel" type="button">Model Only</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link" id="memory-tab" data-bs-toggle="tab" data-bs-target="#memory-panel" type="button">
-            <i class="bi bi-brain"></i> Memory Metrics
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link" id="crossapp-tab" data-bs-toggle="tab" data-bs-target="#crossapp-panel" type="button">
-            <i class="bi bi-layers"></i> Cross-App
-          </button>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Filters -->
+    <!-- Filters Bar -->
     <div class="filters-section">
+      <div class="filter-group">
+        <label>Type:</label>
+        <select class="form-select form-select-sm" id="agentTypeFilter">
+          <option value="all">All Agents</option>
+          <option value="workflow">Workflow Only</option>
+          <option value="model">Model Only</option>
+        </select>
+      </div>
       <div class="filter-group">
         <label>Tags:</label>
         <div class="form-check form-check-inline">
@@ -87,78 +73,82 @@
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" id="filterLTM">
           <label class="form-check-label" for="filterLTM">
-            <span class="tag tag-ltm">🧠 Long-Term Memory</span>
+            <span class="tag tag-ltm">🧠 LTM</span>
           </label>
         </div>
       </div>
       <div class="filter-group">
-        <label>Sort by:</label>
+        <label>Sort:</label>
         <select class="form-select form-select-sm" id="sortBy">
-          <option value="avg_p3">Avg p@3 (Highest first)</option>
-          <option value="avg_p1">Avg p@1 (Highest first)</option>
+          <option value="avg_p3">Avg p@3 ↓</option>
+          <option value="avg_p1">Avg p@1 ↓</option>
         </select>
       </div>
-      <button class="btn btn-sm btn-outline-secondary" id="clearFilters">Clear Filters</button>
+      <button class="btn btn-sm btn-outline-secondary" id="clearFilters">
+        <i class="bi bi-x-circle"></i> Reset
+      </button>
+      <span class="filter-result-count" id="resultCount"></span>
+    </div>
+
+    <!-- Tab Selection (View Mode) -->
+    <div class="tab-controls">
+      <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+        <li class="nav-item">
+          <button class="nav-link active" id="main-tab" data-bs-toggle="tab" data-bs-target="#main-panel" type="button">
+            <i class="bi bi-table"></i> Main Results
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" id="crossapp-tab" data-bs-toggle="tab" data-bs-target="#crossapp-panel" type="button">
+            <i class="bi bi-layers"></i> Cross-App
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" id="efficiency-tab" data-bs-toggle="tab" data-bs-target="#efficiency-panel" type="button">
+            <i class="bi bi-speedometer2"></i> Efficiency
+          </button>
+        </li>
+      </ul>
     </div>
 
     <!-- Legend -->
     <div class="legend-section">
       <span class="legend-item"><span class="tag tag-uitree">🌳</span> Uses UI Tree</span>
       <span class="legend-item"><span class="tag tag-ltm">🧠</span> Has Long-Term Memory</span>
-      <span class="legend-item"><code>AO</code> Action-Only</span>
-      <span class="legend-item"><code>AT</code> Action-Thought</span>
-      <span class="legend-item"><code>MC</code> Multi-turn Context</span>
-      <span class="legend-item"><code>MW</code> Multi-agent Workflow</span>
+      <span class="legend-item"><span class="type-badge workflow">Workflow</span> Multi-agent Framework</span>
+      <span class="legend-item"><span class="type-badge model">Model</span> End-to-End Model</span>
     </div>
 
     <!-- Tab Content -->
     <div class="tab-content" id="leaderboardContent">
-      <!-- All Tab -->
-      <div class="tab-pane fade show active" id="all-panel" role="tabpanel">
+      <!-- Main Results Tab -->
+      <div class="tab-pane fade show active" id="main-panel" role="tabpanel">
         <div class="table-container">
-          <div id="allTable" class="leaderboard-table-wrapper"></div>
-        </div>
-      </div>
-      <!-- Model Only Tab -->
-      <div class="tab-pane fade" id="model-panel" role="tabpanel">
-        <div class="table-container">
-          <div id="modelTable" class="leaderboard-table-wrapper"></div>
-        </div>
-      </div>
-      <!-- Memory Metrics Tab -->
-      <div class="tab-pane fade" id="memory-panel" role="tabpanel">
-        <div class="memory-metrics-intro mb-4">
-          <p class="text-secondary">
-            <strong>Memory-specialized metrics</strong> for comprehensive evaluation of GUI agent memory capabilities.
-            See <a href="index.html#overview">Evaluation Metrics</a> for detailed definitions.
-          </p>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 mb-4">
-            <div class="metrics-card">
-              <h5><span class="metric-badge short-term">♣</span> Short-Term Memory (pass@1)</h5>
-              <div id="shortTermTable" class="leaderboard-table-wrapper"></div>
-            </div>
-          </div>
-          <div class="col-lg-6 mb-4">
-            <div class="metrics-card">
-              <h5><span class="metric-badge long-term">♠</span> Long-Term Memory (pass@3)</h5>
-              <div id="longTermTable" class="leaderboard-table-wrapper"></div>
-            </div>
-          </div>
+          <div id="mainTable" class="leaderboard-table-wrapper"></div>
         </div>
       </div>
       <!-- Cross-App Complexity Tab -->
       <div class="tab-pane fade" id="crossapp-panel" role="tabpanel">
-        <div class="crossapp-intro mb-4">
-          <p class="text-secondary">
-            <strong>Performance breakdown by cross-application complexity.</strong>
-            Tasks are categorized by the number of apps involved (1 to 4 apps).
-            <strong>SR</strong> = Success Rate, <strong>IRR</strong> = Information Retention Rate.
-          </p>
+        <div class="view-intro crossapp-intro">
+          <i class="bi bi-info-circle"></i>
+          Performance breakdown by cross-application complexity (1 to 4 apps).
+          <strong>SR</strong> = Success Rate, <strong>IRR</strong> = Information Retention Rate.
         </div>
         <div class="table-container">
           <div id="crossAppTable" class="leaderboard-table-wrapper"></div>
+        </div>
+      </div>
+      <!-- Efficiency Tab -->
+      <div class="tab-pane fade" id="efficiency-panel" role="tabpanel">
+        <div class="view-intro efficiency-intro">
+          <i class="bi bi-info-circle"></i>
+          Computational efficiency metrics.
+          <strong>Step Ratio</strong> = actual steps / golden steps (lower is better),
+          <strong>Time/Step</strong> = seconds per action,
+          <strong>Cost/Step</strong> = API cost per action.
+        </div>
+        <div class="table-container">
+          <div id="efficiencyTable" class="leaderboard-table-wrapper"></div>
         </div>
       </div>
     </div>
@@ -167,12 +157,11 @@
     <div class="notes-section">
       <h4><i class="bi bi-info-circle"></i> Notes</h4>
       <ul>
-        <li>Results marked with <strong>*</strong> are evaluated by us with tool usage</li>
-        <li><strong>p@k</strong> denotes pass@k evaluation protocol</li>
-        <li>The best performance in each column is highlighted in <strong>bold</strong>, and the second best is <u>underlined</u></li>
-        <li><strong>AO</strong>: Action-Only rollout without history. <strong>AT</strong>: Action-Thought history management</li>
-        <li><strong>MC</strong>: Multi-turn Context. <strong>MW</strong>: Multi-agent Workflow with Gemini-2.5 Pro</li>
-        <li><strong>Memory Metrics</strong>: <strong>IRR</strong> = Information Retention Rate, <strong>MTPR</strong> = Memory-Task Proficiency Ratio, <strong>FRR</strong> = Failure Recovery Rate</li>
+        <li><strong>Filters</strong> apply to all views (Main Results, Cross-App, Efficiency)</li>
+        <li><strong>p@k</strong> denotes pass@k evaluation protocol. <strong>SR</strong> = Success Rate</li>
+        <li>Best performance in each column is <strong>bold</strong>, second best is <u>underlined</u></li>
+        <li><strong>Memory Metrics</strong>: <code>IRR</code> Information Retention Rate, <code>MTPR</code> Memory-Task Proficiency Ratio, <code>FRR</code> Failure Recovery Rate</li>
+        <li><strong>Efficiency</strong>: <code>Steps</code> = step ratio (lower is better), <code>Time/Step</code> = seconds per action, <code>Cost/Step</code> = API cost per action</li>
         <li>See <a href="submission.html">submission guidelines</a> to add your results</li>
       </ul>
     </div>
@@ -211,3 +200,4 @@
   <script src="js/leaderboard.js"></script>
 </body>
 </html>
+

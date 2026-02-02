@@ -47,25 +47,28 @@
 .filters-section {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   flex-wrap: wrap;
-  padding: 16px 20px;
-  background: #f8f9fa;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   border: 1px solid #dee2e6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .filter-group {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .filter-group label {
   font-weight: 600;
+  font-size: 0.85em;
   color: #495057;
   margin: 0;
+  white-space: nowrap;
 }
 
 .filter-group .form-check-inline {
@@ -74,7 +77,23 @@
 
 .filter-group .form-select {
   width: auto;
-  min-width: 200px;
+  min-width: 140px;
+  font-size: 0.9em;
+  padding: 6px 12px;
+}
+
+.filter-result-count {
+  font-size: 0.85em;
+  color: #6c757d;
+  background: #e9ecef;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-left: auto;
+}
+
+#clearFilters {
+  font-size: 0.85em;
+  padding: 6px 12px;
 }
 
 /* Tags */
@@ -243,9 +262,10 @@
 }
 
 .model-backbone {
-  font-size: 0.85em;
+  font-size: 0.8em;
   color: #6c757d;
-  font-style: italic;
+  font-weight: 400;
+  white-space: nowrap;
 }
 
 .model-institution {
@@ -445,21 +465,42 @@
    Memory Metrics Tab Styles
    ============================================ */
 
-/* Memory Tab Icon */
+/* Tab Icon */
 .tab-controls .nav-link i {
   margin-right: 6px;
 }
 
-/* Memory Metrics Intro */
-.memory-metrics-intro {
-  padding: 16px 20px;
-  background: linear-gradient(135deg, #e7f3ff 0%, #f0f7ff 100%);
-  border-radius: 8px;
+/* View Intro Banner */
+.view-intro {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 0.9em;
+  color: #495057;
+}
+
+.view-intro i {
+  margin-right: 8px;
+  color: #6c757d;
+}
+
+.view-intro strong {
+  color: #212529;
+}
+
+.memory-intro {
+  background: linear-gradient(135deg, #e7f3ff 0%, #f5f9ff 100%);
   border: 1px solid #b6d4fe;
 }
 
-.memory-metrics-intro p {
-  margin: 0;
+.crossapp-intro {
+  background: linear-gradient(135deg, #fff3e6 0%, #fffaf5 100%);
+  border: 1px solid #ffdab3;
+}
+
+.efficiency-intro {
+  background: linear-gradient(135deg, #e8f5e9 0%, #f5faf5 100%);
+  border: 1px solid #a5d6a7;
 }
 
 /* Metrics Card */
@@ -548,6 +589,25 @@
 .score-cell.na {
   color: #adb5bd;
   font-style: italic;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6c757d;
+}
+
+.empty-state i {
+  font-size: 3em;
+  margin-bottom: 16px;
+  display: block;
+  opacity: 0.5;
+}
+
+.empty-state p {
+  font-size: 1.1em;
+  margin: 0;
 }
 
 /* Model Meta in Main Table */
@@ -700,5 +760,45 @@
   .leaderboard-table.crossapp-table td {
     padding: 6px 4px;
     min-width: 40px;
+  }
+}
+
+/* ============================================
+   Efficiency Tab Styles
+   ============================================ */
+
+.leaderboard-table.efficiency-table {
+  font-size: 0.9em;
+}
+
+.leaderboard-table.efficiency-table th,
+.leaderboard-table.efficiency-table td {
+  padding: 10px 12px;
+}
+
+/* Best efficiency highlighting (green for lower = better) */
+.score-cell.best-efficiency {
+  font-weight: 700;
+  color: #198754;
+}
+
+/* Step ratio color coding */
+.score-cell.good-ratio {
+  color: #198754;
+}
+
+.score-cell.bad-ratio {
+  color: #dc3545;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .leaderboard-table.efficiency-table {
+    font-size: 0.8em;
+  }
+  
+  .leaderboard-table.efficiency-table th,
+  .leaderboard-table.efficiency-table td {
+    padding: 8px 8px;
   }
 }

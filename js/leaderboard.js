@@ -1,6 +1,7 @@
 // Leaderboard JavaScript
 let leaderboardData = null;
 let currentFilters = {
+  agentType: 'all',  // 'all', 'workflow', 'model'
   hasUITree: false,
   hasLTM: false,
   sortBy: 'avg_p3'
@@ -20,12 +21,18 @@ async function loadData() {
     leaderboardData = await response.json();
   } catch (error) {
     console.error('Error loading leaderboard data:', error);
-    document.getElementById('allTable').innerHTML = '<p class="text-center text-danger">Error loading data.</p>';
+    document.getElementById('mainTable').innerHTML = '<p class="text-center text-danger">Error loading data.</p>';
   }
 }
 
 // Setup event listeners
 function setupEventListeners() {
+  // Agent type filter
+  document.getElementById('agentTypeFilter').addEventListener('change', (e) => {
+    currentFilters.agentType = e.target.value;
+    renderTables();
+  });
+  
   // Filter checkboxes
   document.getElementById('filterUITree').addEventListener('change', (e) => {
     currentFilters.hasUITree = e.target.checked;
@@ -45,7 +52,8 @@ function setupEventListeners() {
   
   // Clear filters
   document.getElementById('clearFilters').addEventListener('click', () => {
-    currentFilters = { hasUITree: false, hasLTM: false, sortBy: 'avg_p3' };
+    currentFilters = { agentType: 'all', hasUITree: false, hasLTM: false, sortBy: 'avg_p3' };
+    document.getElementById('agentTypeFilter').value = 'all';
     document.getElementById('filterUITree').checked = false;
     document.getElementById('filterLTM').checked = false;
     document.getElementById('sortBy').value = 'avg_p3';
@@ -66,14 +74,16 @@ function setupEventListeners() {
 }
 
 // Filter and sort data
-function getFilteredData(modelOnly = false) {
+function getFilteredData() {
   if (!leaderboardData) return [];
   
   let data = [...leaderboardData.agents];
   
-  // Filter by type if model only
-  if (modelOnly) {
+  // Filter by agent type
+  if (currentFilters.agentType === 'model') {
     data = data.filter(agent => agent.type === 'Agent-as-a-Model');
+  } else if (currentFilters.agentType === 'workflow') {
+    data = data.filter(agent => agent.type === 'Agentic Workflow');
   }
   
   // Apply tag filters
@@ -158,24 +168,32 @@ function formatScore(value, metricKey, bestValues) {
 
 // Render tables
 function renderTables() {
-  const allData = getFilteredData(false);
-  const modelData = getFilteredData(true);
+  const filteredData = getFilteredData();
   
-  document.getElementById('allTable').innerHTML = createTableHTML(allData);
-  document.getElementById('modelTable').innerHTML = createTableHTML(modelData);
+  // Update result count
+  const totalCount = leaderboardData ? leaderboardData.agents.length : 0;
+  const countEl = document.getElementById('resultCount');
+  if (filteredData.length < totalCount) {
+    countEl.textContent = `Showing ${filteredData.length} of ${totalCount} agents`;
+    countEl.style.display = 'inline';
+  } else {
+    countEl.style.display = 'none';
+  }
   
-  // Render Memory Metrics tables
-  document.getElementById('shortTermTable').innerHTML = createShortTermTableHTML(allData);
-  document.getElementById('longTermTable').innerHTML = createLongTermTableHTML(allData);
+  // Render Main Results table
+  document.getElementById('mainTable').innerHTML = createTableHTML(filteredData);
+  
+  // Render Efficiency table
+  document.getElementById('efficiencyTable').innerHTML = createEfficiencyTableHTML(filteredData);
   
   // Render Cross-App Complexity table
-  document.getElementById('crossAppTable').innerHTML = createCrossAppTableHTML(allData);
+  document.getElementById('crossAppTable').innerHTML = createCrossAppTableHTML(filteredData);
 }
 
 // Create main table HTML
 function createTableHTML(data) {
   if (data.length === 0) {
-    return '<p class="text-center text-muted py-4">No agents match the current filters.</p>';
+    return '<div class="empty-state"><i class="bi bi-search"></i><p>No agents match the current filters.</p></div>';
   }
   
   const bestValues = findBestValues(data);
@@ -184,17 +202,14 @@ function createTableHTML(data) {
     <table class="leaderboard-table">
       <thead>
         <tr class="header-group">
-          <th rowspan="3">Rank</th>
-          <th rowspan="3">Model & Date</th>
-          <th rowspan="3">Type</th>
-          <th colspan="6">Difficulty Level</th>
-          <th colspan="2" rowspan="2">Avg</th>
-          <th colspan="3" rowspan="2">Memory Metrics</th>
-        </tr>
-        <tr class="header-group">
+          <th rowspan="2">Rank</th>
+          <th rowspan="2">Model & Date</th>
+          <th rowspan="2">Type</th>
           <th colspan="2">Easy</th>
           <th colspan="2">Med</th>
           <th colspan="2">Hard</th>
+          <th colspan="2">Avg</th>
+          <th colspan="3">Memory</th>
         </tr>
         <tr class="header-subgroup">
           <th>p@1</th><th>p@3</th>
@@ -237,7 +252,7 @@ function createTableHTML(data) {
     // Display name with backbone for workflow types
     let displayName = agent.name;
     if (agent.type === 'Agentic Workflow' && agent.backbone && agent.backbone !== '-') {
-      displayName = `${agent.name}`;
+      displayName = `${agent.name} <span class="model-backbone">w/ ${agent.backbone}</span>`;
     }
     
     // Get memory metrics
@@ -263,7 +278,7 @@ function createTableHTML(data) {
         </td>
         <td class="type-cell">
           <span class="type-badge ${agent.type === 'Agentic Workflow' ? 'workflow' : 'model'}">
-            ${agent.memoryType}
+            ${agent.type === 'Agentic Workflow' ? 'Workflow' : 'Model'}
           </span>
         </td>
         ${formatScore(agent.difficulty.easy.p1, 'easy_p1', bestValues)}
@@ -289,134 +304,109 @@ function createTableHTML(data) {
   return html;
 }
 
-// Create Short-Term Memory Table
-function createShortTermTableHTML(data) {
+// Create Efficiency Table
+function createEfficiencyTableHTML(data) {
   if (data.length === 0) {
-    return '<p class="text-center text-muted py-4">No data available.</p>';
+    return '<div class="empty-state"><i class="bi bi-search"></i><p>No agents match the current filters.</p></div>';
   }
   
-  // Sort by IRR
-  const sortedData = [...data].sort((a, b) => {
-    const aIrr = a.metrics?.shortTerm?.irr ?? -1;
-    const bIrr = b.metrics?.shortTerm?.irr ?? -1;
-    return bIrr - aIrr;
-  });
+  // Find best values (for efficiency, lower is better for some metrics)
+  const bestStepRatio = Math.min(...data.map(a => a.metrics?.shortTerm?.stepRatio ?? 999).filter(v => v !== 999));
+  const bestTime = Math.min(...data.map(a => a.metrics?.shortTerm?.timePerStep ?? 999).filter(v => v !== 999));
+  const bestCost = Math.min(...data.map(a => a.metrics?.shortTerm?.costPerStep ?? 999).filter(v => v !== 999 && v !== null));
   
   let html = `
-    <table class="leaderboard-table compact">
+    <table class="leaderboard-table efficiency-table">
       <thead>
-        <tr>
-          <th>#</th>
-          <th>Agent</th>
-          <th title="Success Rate">SR (%)</th>
-          <th title="Information Retention Rate">IRR (%)</th>
-          <th title="Memory-Task Proficiency Ratio">MTPR</th>
-          <th title="Step Ratio">Steps</th>
-          <th title="Time Per Step">Time/Step</th>
-          <th title="Cost Per Step">Cost/Step</th>
+        <tr class="header-group">
+          <th rowspan="2">Rank</th>
+          <th rowspan="2">Model & Date</th>
+          <th rowspan="2">Type</th>
+          <th colspan="3" class="stm-header">♣ Short-Term (pass@1)</th>
+          <th colspan="3" class="ltm-header">♠ Long-Term (pass@3)</th>
+        </tr>
+        <tr class="header-subgroup">
+          <th title="Step Ratio: actual steps / golden steps">Steps</th>
+          <th title="Average time per step in seconds">Time/Step</th>
+          <th title="Average API cost per step">Cost/Step</th>
+          <th title="Step Ratio: actual steps / golden steps">Steps</th>
+          <th title="Average time per step in seconds">Time/Step</th>
+          <th title="Average API cost per step">Cost/Step</th>
         </tr>
       </thead>
       <tbody>
   `;
   
-  sortedData.forEach((agent, index) => {
-    const m = agent.metrics?.shortTerm;
-    if (!m) {
+  data.forEach((agent, index) => {
+    const stm = agent.metrics?.shortTerm;
+    const ltm = agent.metrics?.longTerm;
+    const rank = index + 1;
+    const isFirst = rank === 1;
+    
+    // Build tags
+    let tags = '';
+    if (agent.hasUITree) tags += '<span class="tag tag-uitree" title="Uses UI Tree">🌳</span>';
+    if (agent.hasLongTermMemory) tags += '<span class="tag tag-ltm" title="Long-Term Memory">🧠</span>';
+    
+    // Display name with backbone for workflow types
+    let displayName = agent.name;
+    if (agent.type === 'Agentic Workflow' && agent.backbone && agent.backbone !== '-') {
+      displayName = `${agent.name} <span class="model-backbone">w/ ${agent.backbone}</span>`;
+    }
+    
+    const formatStepRatio = (val, best) => {
+      if (!val) return '<td class="score-cell na">-</td>';
+      const isBest = Math.abs(val - best) < 0.01;
+      return `<td class="score-cell ${isBest ? 'best-efficiency' : ''} ${val <= 1.0 ? 'good-ratio' : val > 1.2 ? 'bad-ratio' : ''}">${val.toFixed(2)}</td>`;
+    };
+    
+    const formatTime = (val, best) => {
+      if (!val) return '<td class="score-cell na">-</td>';
+      const isBest = Math.abs(val - best) < 0.1;
+      return `<td class="score-cell ${isBest ? 'best-efficiency' : ''}">${val.toFixed(1)}s</td>`;
+    };
+    
+    const formatCost = (val, best) => {
+      if (!val) return '<td class="score-cell na">-</td>';
+      const isBest = Math.abs(val - best) < 0.001;
+      return `<td class="score-cell ${isBest ? 'best-efficiency' : ''}">${'$' + val.toFixed(4)}</td>`;
+    };
+    
+    if (!stm && !ltm) {
       html += `
-        <tr class="no-data">
-          <td>${index + 1}</td>
-          <td>${agent.name}</td>
-          <td>${agent.avg.p1.toFixed(1)}</td>
-          <td colspan="5" class="text-muted">No metrics data</td>
+        <tr class="no-data ${isFirst ? 'first-rank' : ''}">
+          <td class="rank-cell">${rank}${isFirst ? '<span class="rank-star">★</span>' : ''}</td>
+          <td class="model-cell">
+            <div class="model-name">${displayName}<div class="tags">${tags}</div></div>
+            <div class="model-meta">
+              <span class="model-institution">${agent.institution}</span>
+              <span class="model-date">${formatDate(agent.date)}</span>
+            </div>
+          </td>
+          <td class="type-cell"><span class="type-badge ${agent.type === 'Agentic Workflow' ? 'workflow' : 'model'}">${agent.type === 'Agentic Workflow' ? 'Workflow' : 'Model'}</span></td>
+          <td colspan="6" class="text-muted">No efficiency data</td>
         </tr>
       `;
       return;
     }
     
     html += `
-      <tr>
-        <td>${index + 1}</td>
-        <td>
-          <span class="agent-name-compact">${agent.name}</span>
-          ${agent.hasLongTermMemory ? '<span class="tag-mini tag-ltm" title="Has LTM">🧠</span>' : ''}
+      <tr class="${isFirst ? 'first-rank' : ''}">
+        <td class="rank-cell">${rank}${isFirst ? '<span class="rank-star">★</span>' : ''}</td>
+        <td class="model-cell">
+          <div class="model-name">${displayName}<div class="tags">${tags}</div></div>
+          <div class="model-meta">
+            <span class="model-institution">${agent.institution}</span>
+            <span class="model-date">${formatDate(agent.date)}</span>
+          </div>
         </td>
-        <td>${agent.avg.p1.toFixed(1)}</td>
-        <td class="${m.irr >= 30 ? 'highlight-good' : ''}">${m.irr.toFixed(1)}</td>
-        <td class="${m.mtpr >= 0.3 ? 'highlight-good' : ''}">${m.mtpr.toFixed(2)}</td>
-        <td>${m.stepRatio ? m.stepRatio.toFixed(2) : '-'}</td>
-        <td>${m.timePerStep.toFixed(1)}s</td>
-        <td>${m.costPerStep ? '$' + m.costPerStep.toFixed(3) : '-'}</td>
-      </tr>
-    `;
-  });
-  
-  html += `
-      </tbody>
-    </table>
-  `;
-  
-  return html;
-}
-
-// Create Long-Term Memory Table
-function createLongTermTableHTML(data) {
-  if (data.length === 0) {
-    return '<p class="text-center text-muted py-4">No data available.</p>';
-  }
-  
-  // Sort by FRR
-  const sortedData = [...data].sort((a, b) => {
-    const aFrr = a.metrics?.longTerm?.frr ?? -1;
-    const bFrr = b.metrics?.longTerm?.frr ?? -1;
-    return bFrr - aFrr;
-  });
-  
-  let html = `
-    <table class="leaderboard-table compact">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Agent</th>
-          <th title="Success Rate @ 3">SR@3 (%)</th>
-          <th title="Failure Recovery Rate">FRR (%)</th>
-          <th title="Improvement from p@1 to p@3">Δ</th>
-          <th title="Step Ratio">Steps</th>
-          <th title="Time Per Step">Time/Step</th>
-          <th title="Cost Per Step">Cost/Step</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
-  
-  sortedData.forEach((agent, index) => {
-    const m = agent.metrics?.longTerm;
-    if (!m) {
-      html += `
-        <tr class="no-data">
-          <td>${index + 1}</td>
-          <td>${agent.name}</td>
-          <td>${agent.avg.p3.toFixed(1)}</td>
-          <td colspan="5" class="text-muted">No metrics data</td>
-        </tr>
-      `;
-      return;
-    }
-    
-    const improvement = agent.avg.p3 - agent.avg.p1;
-    
-    html += `
-      <tr>
-        <td>${index + 1}</td>
-        <td>
-          <span class="agent-name-compact">${agent.name}</span>
-          ${agent.hasLongTermMemory ? '<span class="tag-mini tag-ltm" title="Has LTM">🧠</span>' : ''}
-        </td>
-        <td>${agent.avg.p3.toFixed(1)}</td>
-        <td class="${m.frr >= 10 ? 'highlight-good' : ''}">${m.frr.toFixed(1)}</td>
-        <td class="${improvement >= 10 ? 'highlight-good' : ''}">+${improvement.toFixed(1)}</td>
-        <td>${m.stepRatio ? m.stepRatio.toFixed(2) : '-'}</td>
-        <td>${m.timePerStep.toFixed(1)}s</td>
-        <td>${m.costPerStep ? '$' + m.costPerStep.toFixed(3) : '-'}</td>
+        <td class="type-cell"><span class="type-badge ${agent.type === 'Agentic Workflow' ? 'workflow' : 'model'}">${agent.type === 'Agentic Workflow' ? 'Workflow' : 'Model'}</span></td>
+        ${formatStepRatio(stm?.stepRatio, bestStepRatio)}
+        ${formatTime(stm?.timePerStep, bestTime)}
+        ${formatCost(stm?.costPerStep, bestCost)}
+        ${formatStepRatio(ltm?.stepRatio, bestStepRatio)}
+        ${formatTime(ltm?.timePerStep, bestTime)}
+        ${formatCost(ltm?.costPerStep, bestCost)}
       </tr>
     `;
   });
@@ -432,12 +422,8 @@ function createLongTermTableHTML(data) {
 // Create Cross-App Complexity Table (Table 4 in paper)
 function createCrossAppTableHTML(data) {
   if (data.length === 0) {
-    return '<p class="text-center text-muted py-4">No data available.</p>';
+    return '<div class="empty-state"><i class="bi bi-search"></i><p>No agents match the current filters.</p></div>';
   }
-  
-  // Separate into Agentic Workflow and Agent-as-a-Model
-  const workflowAgents = data.filter(a => a.type === 'Agentic Workflow');
-  const modelAgents = data.filter(a => a.type === 'Agent-as-a-Model');
   
   // Find best values for highlighting
   const bestValues = findCrossAppBestValues(data);
@@ -446,7 +432,9 @@ function createCrossAppTableHTML(data) {
     <table class="leaderboard-table crossapp-table">
       <thead>
         <tr class="header-group">
-          <th rowspan="3">Agent</th>
+          <th rowspan="3">Rank</th>
+          <th rowspan="3">Model & Date</th>
+          <th rowspan="3">Type</th>
           <th colspan="8" class="stm-header">♣ Short-Term Memory (pass@1)</th>
           <th colspan="4" class="ltm-header">♠ Long-Term Memory (pass@3)</th>
         </tr>
@@ -474,26 +462,14 @@ function createCrossAppTableHTML(data) {
       <tbody>
   `;
   
-  // Add Agentic Workflow section
-  if (workflowAgents.length > 0) {
-    html += `<tr class="section-header"><td colspan="13">AGENTIC WORKFLOW</td></tr>`;
-    workflowAgents.forEach(agent => {
-      html += createCrossAppRow(agent, bestValues);
-    });
-  }
-  
-  // Add Agent-as-a-Model section
-  if (modelAgents.length > 0) {
-    html += `<tr class="section-header"><td colspan="13">AGENT-AS-A-MODEL</td></tr>`;
-    modelAgents.forEach(agent => {
-      html += createCrossAppRow(agent, bestValues);
-    });
-  }
+  data.forEach((agent, index) => {
+    html += createCrossAppRow(agent, bestValues, index + 1);
+  });
   
   // Task count row
   html += `
         <tr class="task-count-row">
-          <td><strong>Task Count</strong></td>
+          <td colspan="3"><strong>Task Count</strong></td>
           <td colspan="2"><strong>28</strong></td>
           <td colspan="2"><strong>56</strong></td>
           <td colspan="2"><strong>34</strong></td>
@@ -539,8 +515,9 @@ function findCrossAppBestValues(data) {
 }
 
 // Helper: Create a row for Cross-App table
-function createCrossAppRow(agent, bestValues) {
+function createCrossAppRow(agent, bestValues, rank) {
   const ca = agent.crossApp;
+  const isFirst = rank === 1;
   
   const formatCell = (value, metricKey) => {
     if (value === null || value === undefined) {
@@ -558,9 +535,30 @@ function createCrossAppRow(agent, bestValues) {
     return `<td class="${className}">${value.toFixed(1)}</td>`;
   };
   
+  // Build tags
+  let tags = '';
+  if (agent.hasUITree) tags += '<span class="tag tag-uitree" title="Uses UI Tree">🌳</span>';
+  if (agent.hasLongTermMemory) tags += '<span class="tag tag-ltm" title="Long-Term Memory">🧠</span>';
+  
+  // Display name with backbone for workflow types
+  let displayName = agent.name;
+  if (agent.type === 'Agentic Workflow' && agent.backbone && agent.backbone !== '-') {
+    displayName = `${agent.name} <span class="model-backbone">w/ ${agent.backbone}</span>`;
+  }
+  
   return `
-    <tr>
-      <td class="agent-cell">${agent.name}</td>
+    <tr class="${isFirst ? 'first-rank' : ''}">
+      <td class="rank-cell">${rank}${isFirst ? '<span class="rank-star">★</span>' : ''}</td>
+      <td class="model-cell">
+        <div class="model-name">${displayName}<div class="tags">${tags}</div></div>
+        <div class="model-meta">
+          <span class="model-institution">${agent.institution}</span>
+          <span class="model-date">${formatDate(agent.date)}</span>
+        </div>
+      </td>
+      <td class="type-cell">
+        <span class="type-badge ${agent.type === 'Agentic Workflow' ? 'workflow' : 'model'}">${agent.type === 'Agentic Workflow' ? 'Workflow' : 'Model'}</span>
+      </td>
       ${formatCell(ca.app1?.p1, 'app1_sr')}
       ${formatCell(ca.app1?.irr, 'app1_irr')}
       ${formatCell(ca.app2?.p1, 'app2_sr')}
