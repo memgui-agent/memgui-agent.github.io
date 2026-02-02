@@ -397,7 +397,7 @@
       "type": "Agent-as-a-Model",
       "memoryType": "MC",
       "institution": "Alibaba",
-      "date": "2024-09-01",
+      "date": "2025-08-01",
       "paperLink": "http://arxiv.org/abs/2508.15144",
       "codeLink": "https://github.com/X-PLUG/MobileAgent",
       "hasUITree": false,
