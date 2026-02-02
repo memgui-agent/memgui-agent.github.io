@@ -21,13 +21,19 @@ const sortOptions = {
   ],
   crossapp: [
     { value: 'avg_p3_desc', label: 'Avg p@3 ↓' },
-    { value: 'app1_sr_desc', label: '1App SR ↓' },
+    { value: 'avg_p1_desc', label: 'Avg p@1 ↓' },
+    { value: 'irr_desc', label: 'Avg IRR ↓' },
+    { value: 'app1_sr_desc', label: '1App p@1 ↓' },
+    { value: 'app1_p3_desc', label: '1App p@3 ↓' },
     { value: 'app1_irr_desc', label: '1App IRR ↓' },
-    { value: 'app2_sr_desc', label: '2App SR ↓' },
+    { value: 'app2_sr_desc', label: '2App p@1 ↓' },
+    { value: 'app2_p3_desc', label: '2App p@3 ↓' },
     { value: 'app2_irr_desc', label: '2App IRR ↓' },
-    { value: 'app3_sr_desc', label: '3App SR ↓' },
+    { value: 'app3_sr_desc', label: '3App p@1 ↓' },
+    { value: 'app3_p3_desc', label: '3App p@3 ↓' },
     { value: 'app3_irr_desc', label: '3App IRR ↓' },
-    { value: 'app4_sr_desc', label: '4App SR ↓' },
+    { value: 'app4_sr_desc', label: '4App p@1 ↓' },
+    { value: 'app4_p3_desc', label: '4App p@3 ↓' },
     { value: 'app4_irr_desc', label: '4App IRR ↓' }
   ],
   efficiency: [
@@ -189,12 +195,16 @@ function getFilteredData() {
       
       // Cross-App metrics
       if (sortKey.startsWith('app1_sr')) return agent.crossApp?.app1?.p1 ?? -999;
+      if (sortKey.startsWith('app1_p3')) return agent.crossApp?.app1?.p3 ?? -999;
       if (sortKey.startsWith('app1_irr')) return agent.crossApp?.app1?.irr ?? -999;
       if (sortKey.startsWith('app2_sr')) return agent.crossApp?.app2?.p1 ?? -999;
+      if (sortKey.startsWith('app2_p3')) return agent.crossApp?.app2?.p3 ?? -999;
       if (sortKey.startsWith('app2_irr')) return agent.crossApp?.app2?.irr ?? -999;
       if (sortKey.startsWith('app3_sr')) return agent.crossApp?.app3?.p1 ?? -999;
+      if (sortKey.startsWith('app3_p3')) return agent.crossApp?.app3?.p3 ?? -999;
       if (sortKey.startsWith('app3_irr')) return agent.crossApp?.app3?.irr ?? -999;
       if (sortKey.startsWith('app4_sr')) return agent.crossApp?.app4?.p1 ?? -999;
+      if (sortKey.startsWith('app4_p3')) return agent.crossApp?.app4?.p3 ?? -999;
       if (sortKey.startsWith('app4_irr')) return agent.crossApp?.app4?.irr ?? -999;
       
       // Efficiency metrics
@@ -578,31 +588,21 @@ function createCrossAppTableHTML(data) {
     <table class="leaderboard-table crossapp-table">
       <thead>
         <tr class="header-group">
-          <th rowspan="3">Rank</th>
-          <th rowspan="3">Model & Date</th>
-          <th rowspan="3">Type</th>
-          <th colspan="8" class="stm-header">♣ Short-Term Memory (pass@1)</th>
-          <th colspan="4" class="ltm-header">♠ Long-Term Memory (pass@3)</th>
-        </tr>
-        <tr class="header-group">
-          <th colspan="2">1 App</th>
-          <th colspan="2">2 Apps</th>
-          <th colspan="2">3 Apps</th>
-          <th colspan="2">4 Apps</th>
-          <th>1 App</th>
-          <th>2 Apps</th>
-          <th>3 Apps</th>
-          <th>4 Apps</th>
+          <th rowspan="2">Rank</th>
+          <th rowspan="2">Model & Date</th>
+          <th rowspan="2">Type</th>
+          <th colspan="3">1 App</th>
+          <th colspan="3">2 Apps</th>
+          <th colspan="3">3 Apps</th>
+          <th colspan="3">4 Apps</th>
+          <th colspan="3">Avg</th>
         </tr>
         <tr class="header-subgroup">
-          <th class="${sc('app1_p1')}">SR</th><th class="${sc('app1_irr')}">IRR</th>
-          <th class="${sc('app2_p1')}">SR</th><th class="${sc('app2_irr')}">IRR</th>
-          <th class="${sc('app3_p1')}">SR</th><th class="${sc('app3_irr')}">IRR</th>
-          <th class="${sc('app4_p1')}">SR</th><th class="${sc('app4_irr')}">IRR</th>
-          <th class="${sc('app1_p3')}">SR</th>
-          <th class="${sc('app2_p3')}">SR</th>
-          <th class="${sc('app3_p3')}">SR</th>
-          <th class="${sc('app4_p3')}">SR</th>
+          <th class="${sc('app1_p1')}">p@1</th><th class="${sc('app1_p3')}">p@3</th><th class="${sc('app1_irr')}">IRR</th>
+          <th class="${sc('app2_p1')}">p@1</th><th class="${sc('app2_p3')}">p@3</th><th class="${sc('app2_irr')}">IRR</th>
+          <th class="${sc('app3_p1')}">p@1</th><th class="${sc('app3_p3')}">p@3</th><th class="${sc('app3_irr')}">IRR</th>
+          <th class="${sc('app4_p1')}">p@1</th><th class="${sc('app4_p3')}">p@3</th><th class="${sc('app4_irr')}">IRR</th>
+          <th class="${sc('avg_p1')}">p@1</th><th class="${sc('avg_p3')}">p@3</th><th class="${sc('irr')}">IRR</th>
         </tr>
       </thead>
       <tbody>
@@ -616,14 +616,11 @@ function createCrossAppTableHTML(data) {
   html += `
         <tr class="task-count-row">
           <td colspan="3"><strong>Task Count</strong></td>
-          <td colspan="2"><strong>28</strong></td>
-          <td colspan="2"><strong>56</strong></td>
-          <td colspan="2"><strong>34</strong></td>
-          <td colspan="2"><strong>10</strong></td>
-          <td><strong>28</strong></td>
-          <td><strong>56</strong></td>
-          <td><strong>34</strong></td>
-          <td><strong>10</strong></td>
+          <td colspan="3"><strong>28</strong></td>
+          <td colspan="3"><strong>56</strong></td>
+          <td colspan="3"><strong>34</strong></td>
+          <td colspan="3"><strong>10</strong></td>
+          <td colspan="3"><strong>128</strong></td>
         </tr>
       </tbody>
     </table>
@@ -710,17 +707,20 @@ function createCrossAppRow(agent, bestValues, rank, sortedCol = '') {
         <span class="type-badge ${agent.type === 'Agentic Workflow' ? 'workflow' : 'model'}">${agent.type === 'Agentic Workflow' ? 'Workflow' : 'Model'}</span>
       </td>
       ${formatCell(ca.app1?.p1, 'app1_sr', 'app1_p1')}
+      ${formatCell(ca.app1?.p3, 'app1_p3', 'app1_p3')}
       ${formatCell(ca.app1?.irr, 'app1_irr', 'app1_irr')}
       ${formatCell(ca.app2?.p1, 'app2_sr', 'app2_p1')}
+      ${formatCell(ca.app2?.p3, 'app2_p3', 'app2_p3')}
       ${formatCell(ca.app2?.irr, 'app2_irr', 'app2_irr')}
       ${formatCell(ca.app3?.p1, 'app3_sr', 'app3_p1')}
+      ${formatCell(ca.app3?.p3, 'app3_p3', 'app3_p3')}
       ${formatCell(ca.app3?.irr, 'app3_irr', 'app3_irr')}
       ${formatCell(ca.app4?.p1, 'app4_sr', 'app4_p1')}
-      ${formatCell(ca.app4?.irr, 'app4_irr', 'app4_irr')}
-      ${formatCell(ca.app1?.p3, 'app1_p3', 'app1_p3')}
-      ${formatCell(ca.app2?.p3, 'app2_p3', 'app2_p3')}
-      ${formatCell(ca.app3?.p3, 'app3_p3', 'app3_p3')}
       ${formatCell(ca.app4?.p3, 'app4_p3', 'app4_p3')}
+      ${formatCell(ca.app4?.irr, 'app4_irr', 'app4_irr')}
+      <td class="score-cell avg-score${sortedCol === 'avg_p1' ? ' sorted-column' : ''}">${agent.avg.p1.toFixed(1)}</td>
+      <td class="score-cell avg-score${sortedCol === 'avg_p3' ? ' sorted-column' : ''}">${agent.avg.p3.toFixed(1)}</td>
+      ${formatCell(agent.metrics?.shortTerm?.irr, 'irr', 'irr')}
     </tr>
   `;
 }

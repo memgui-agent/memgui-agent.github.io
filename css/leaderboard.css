@@ -720,6 +720,12 @@
   border-bottom: 2px solid #9ec5fe !important;
 }
 
+.avg-header {
+  background: #f8f9fa !important;
+  color: #212529 !important;
+  border-bottom: 2px solid #dee2e6 !important;
+}
+
 /* Section Headers */
 .section-header td {
   background: #e9ecef !important;
