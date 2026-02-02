@@ -330,33 +330,6 @@
       }
     },
     {
-      "name": "Qwen2.5VL-7B",
-      "backbone": "-",
-      "type": "Agent-as-a-Model",
-      "memoryType": "AT",
-      "institution": "Alibaba",
-      "date": "2024-10-01",
-      "authors": "Bai et al., '24",
-      "paperLink": "https://arxiv.org/abs/2409.12191",
-      "codeLink": "https://github.com/QwenLM/Qwen2-VL",
-      "hasUITree": false,
-      "hasLongTermMemory": false,
-      "bibtex": "@article{bai2024qwen2vl,\n  title={Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution},\n  author={Bai, Junyang and others},\n  journal={arXiv preprint arXiv:2409.12191},\n  year={2024}\n}",
-      "crossApp": {
-        "app1": { "p1": 14.3, "p3": 17.9, "irr": null },
-        "app2": { "p1": 1.8, "p3": 1.8, "irr": null },
-        "app3": { "p1": 0.0, "p3": 0.0, "irr": null },
-        "app4": { "p1": 0.0, "p3": 0.0, "irr": null }
-      },
-      "difficulty": {
-        "easy": { "p1": 10.4, "p3": 12.5 },
-        "medium": { "p1": 0.0, "p3": 0.0 },
-        "hard": { "p1": 0.0, "p3": 0.0 }
-      },
-      "avg": { "p1": 3.9, "p3": 4.7 },
-      "metrics": null
-    },
-    {
       "name": "UI-Venus-7B",
       "backbone": "-",
       "type": "Agent-as-a-Model",
@@ -396,33 +369,6 @@
           "costPerStep": null
         }
       }
-    },
-    {
-      "name": "UI-S1-7B",
-      "backbone": "-",
-      "type": "Agent-as-a-Model",
-      "memoryType": "MC",
-      "institution": "ByteDance",
-      "date": "2025-01-01",
-      "authors": "ByteDance",
-      "paperLink": "",
-      "codeLink": "",
-      "hasUITree": false,
-      "hasLongTermMemory": false,
-      "bibtex": "",
-      "crossApp": {
-        "app1": { "p1": 17.9, "p3": 21.4, "irr": null },
-        "app2": { "p1": 3.6, "p3": 3.6, "irr": null },
-        "app3": { "p1": 0.0, "p3": 0.0, "irr": null },
-        "app4": { "p1": 0.0, "p3": 0.0, "irr": null }
-      },
-      "difficulty": {
-        "easy": { "p1": 12.5, "p3": 14.6 },
-        "medium": { "p1": 2.6, "p3": 2.6 },
-        "hard": { "p1": 0.0, "p3": 0.0 }
-      },
-      "avg": { "p1": 5.5, "p3": 6.2 },
-      "metrics": null
     },
     {
       "name": "UI-TARS-1.5-7B",
