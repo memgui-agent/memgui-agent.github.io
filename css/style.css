@@ -69,10 +69,20 @@ a:hover {
   gap: 0.5rem;
 }
 
-.brand-logo {
-  height: 36px;
-  width: auto;
+.brand-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 8px;
   object-fit: contain;
+}
+
+.brand-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .brand-text {
