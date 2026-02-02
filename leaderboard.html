@@ -56,10 +56,15 @@
     <div class="tab-controls">
       <ul class="nav nav-tabs" id="mainTabs" role="tablist">
         <li class="nav-item">
-          <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-panel" type="button">All</button>
+          <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-panel" type="button">All Agents</button>
         </li>
         <li class="nav-item">
           <button class="nav-link" id="model-tab" data-bs-toggle="tab" data-bs-target="#model-panel" type="button">Model Only</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" id="memory-tab" data-bs-toggle="tab" data-bs-target="#memory-panel" type="button">
+            <i class="bi bi-brain"></i> Memory Metrics
+          </button>
         </li>
       </ul>
     </div>
@@ -115,6 +120,29 @@
           <div id="modelTable" class="leaderboard-table-wrapper"></div>
         </div>
       </div>
+      <!-- Memory Metrics Tab -->
+      <div class="tab-pane fade" id="memory-panel" role="tabpanel">
+        <div class="memory-metrics-intro mb-4">
+          <p class="text-secondary">
+            <strong>Memory-specialized metrics</strong> for comprehensive evaluation of GUI agent memory capabilities.
+            See <a href="index.html#overview">Evaluation Metrics</a> for detailed definitions.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="metrics-card">
+              <h5><span class="metric-badge short-term">♣</span> Short-Term Memory (pass@1)</h5>
+              <div id="shortTermTable" class="leaderboard-table-wrapper"></div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="metrics-card">
+              <h5><span class="metric-badge long-term">♠</span> Long-Term Memory (pass@3)</h5>
+              <div id="longTermTable" class="leaderboard-table-wrapper"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Notes Section -->
@@ -126,6 +154,7 @@
         <li>The best performance in each column is highlighted in <strong>bold</strong>, and the second best is <u>underlined</u></li>
         <li><strong>AO</strong>: Action-Only rollout without history. <strong>AT</strong>: Action-Thought history management</li>
         <li><strong>MC</strong>: Multi-turn Context. <strong>MW</strong>: Multi-agent Workflow with Gemini-2.5 Pro</li>
+        <li><strong>Memory Metrics</strong>: <strong>IRR</strong> = Information Retention Rate, <strong>MTPR</strong> = Memory-Task Proficiency Ratio, <strong>FRR</strong> = Failure Recovery Rate</li>
         <li>See <a href="submission.html">submission guidelines</a> to add your results</li>
       </ul>
     </div>

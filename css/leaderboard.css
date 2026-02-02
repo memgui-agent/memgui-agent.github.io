@@ -440,3 +440,154 @@
     font-size: 0.8em;
   }
 }
+
+/* ============================================
+   Memory Metrics Tab Styles
+   ============================================ */
+
+/* Memory Tab Icon */
+.tab-controls .nav-link i {
+  margin-right: 6px;
+}
+
+/* Memory Metrics Intro */
+.memory-metrics-intro {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #e7f3ff 0%, #f0f7ff 100%);
+  border-radius: 8px;
+  border: 1px solid #b6d4fe;
+}
+
+.memory-metrics-intro p {
+  margin: 0;
+}
+
+/* Metrics Card */
+.metrics-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #dee2e6;
+  padding: 20px;
+  height: 100%;
+}
+
+.metrics-card h5 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Metric Badges */
+.metric-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.metric-badge.short-term {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.metric-badge.long-term {
+  background: #cfe2ff;
+  color: #084298;
+}
+
+/* Compact Table Styles */
+.leaderboard-table.compact {
+  font-size: 0.85em;
+}
+
+.leaderboard-table.compact th,
+.leaderboard-table.compact td {
+  padding: 10px 8px;
+}
+
+.leaderboard-table.compact th {
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+/* Agent Name in Compact Tables */
+.agent-name-compact {
+  font-weight: 600;
+  color: #212529;
+}
+
+/* Mini Tags */
+.tag-mini {
+  font-size: 0.75em;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* Highlight Good Values */
+.highlight-good {
+  color: #198754 !important;
+  font-weight: 600;
+}
+
+/* No Data Row */
+.no-data td {
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* NA Score Cell */
+.score-cell.na {
+  color: #adb5bd;
+  font-style: italic;
+}
+
+/* Model Meta in Main Table */
+.model-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.8em;
+  color: #6c757d;
+  margin-top: 4px;
+}
+
+.model-meta .model-institution {
+  margin-top: 0;
+}
+
+.model-meta .model-date {
+  margin-top: 0;
+  padding-left: 8px;
+  border-left: 1px solid #dee2e6;
+}
+
+/* Responsive for Memory Metrics */
+@media (max-width: 992px) {
+  .metrics-card {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .metrics-card h5 {
+    font-size: 1em;
+  }
+  
+  .leaderboard-table.compact {
+    font-size: 0.75em;
+  }
+  
+  .leaderboard-table.compact th,
+  .leaderboard-table.compact td {
+    padding: 8px 6px;
+  }
+}
