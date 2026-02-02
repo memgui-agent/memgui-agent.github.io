@@ -518,6 +518,18 @@ function createEfficiencyTableHTML(data) {
     if (agent.hasUITree) tags += '<span class="tag tag-uitree" title="Uses UI Tree">🌳</span>';
     if (agent.hasLongTermMemory) tags += '<span class="tag tag-ltm" title="Long-Term Memory">🧠</span>';
     
+    // Build action links
+    let actionLinks = '';
+    if (agent.paperLink) {
+      actionLinks += `<a href="${agent.paperLink}" target="_blank" class="action-link"><i class="bi bi-file-text"></i> Paper</a>`;
+    }
+    if (agent.codeLink) {
+      actionLinks += `<a href="${agent.codeLink}" target="_blank" class="action-link"><i class="bi bi-github"></i> Code</a>`;
+    }
+    if (agent.bibtex) {
+      actionLinks += `<span class="action-link" onclick="showBibtex('${escapeHtml(agent.bibtex)}')"><i class="bi bi-quote"></i> BibTeX</span>`;
+    }
+    
     // Display name with backbone for workflow types
     let displayName = agent.name;
     if (agent.type === 'Agentic Workflow' && agent.backbone && agent.backbone !== '-') {
@@ -561,6 +573,7 @@ function createEfficiencyTableHTML(data) {
               <span class="model-institution">${agent.institution}</span>
               <span class="model-date">${formatDate(agent.date)}</span>
             </div>
+            <div class="action-links">${actionLinks}</div>
           </td>
           <td class="type-cell"><span class="type-badge ${agent.type === 'Agentic Workflow' ? 'workflow' : 'model'}">${agent.type === 'Agentic Workflow' ? 'Workflow' : 'Model'}</span></td>
           <td colspan="6" class="text-muted">No efficiency data</td>
@@ -578,6 +591,7 @@ function createEfficiencyTableHTML(data) {
             <span class="model-institution">${agent.institution}</span>
             <span class="model-date">${formatDate(agent.date)}</span>
           </div>
+          <div class="action-links">${actionLinks}</div>
         </td>
         <td class="type-cell"><span class="type-badge ${agent.type === 'Agentic Workflow' ? 'workflow' : 'model'}">${agent.type === 'Agentic Workflow' ? 'Workflow' : 'Model'}</span></td>
         ${formatStepRatio(stm?.stepRatio, bestStepRatio, true)}
@@ -712,6 +726,18 @@ function createCrossAppRow(agent, bestValues, rank, sortedCol = '') {
   if (agent.hasUITree) tags += '<span class="tag tag-uitree" title="Uses UI Tree">🌳</span>';
   if (agent.hasLongTermMemory) tags += '<span class="tag tag-ltm" title="Long-Term Memory">🧠</span>';
   
+  // Build action links
+  let actionLinks = '';
+  if (agent.paperLink) {
+    actionLinks += `<a href="${agent.paperLink}" target="_blank" class="action-link"><i class="bi bi-file-text"></i> Paper</a>`;
+  }
+  if (agent.codeLink) {
+    actionLinks += `<a href="${agent.codeLink}" target="_blank" class="action-link"><i class="bi bi-github"></i> Code</a>`;
+  }
+  if (agent.bibtex) {
+    actionLinks += `<span class="action-link" onclick="showBibtex('${escapeHtml(agent.bibtex)}')"><i class="bi bi-quote"></i> BibTeX</span>`;
+  }
+  
   // Display name with backbone for workflow types
   let displayName = agent.name;
   if (agent.type === 'Agentic Workflow' && agent.backbone && agent.backbone !== '-') {
@@ -730,6 +756,7 @@ function createCrossAppRow(agent, bestValues, rank, sortedCol = '') {
           <span class="model-institution">${agent.institution}</span>
           <span class="model-date">${formatDate(agent.date)}</span>
         </div>
+        <div class="action-links">${actionLinks}</div>
       </td>
       <td class="type-cell">
         <span class="type-badge ${agent.type === 'Agentic Workflow' ? 'workflow' : 'model'}">${agent.type === 'Agentic Workflow' ? 'Workflow' : 'Model'}</span>
