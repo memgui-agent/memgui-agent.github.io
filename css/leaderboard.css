@@ -225,14 +225,62 @@
 /* Rank Column */
 .rank-cell {
   font-weight: 700;
-  font-size: 1.1em;
-  color: #212529;
-  width: 50px;
+  font-size: 1em;
+  color: #495057;
+  width: 60px;
+  vertical-align: middle;
+}
+
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9em;
+  background: #f8f9fa;
+  border: 2px solid #dee2e6;
+  color: #495057;
+}
+
+/* Gold - 1st place */
+.rank-badge.rank-1 {
+  background: linear-gradient(135deg, #ffd700 0%, #ffec8b 50%, #ffd700 100%);
+  border: 2px solid #daa520;
+  color: #8b6914;
+  box-shadow: 0 2px 8px rgba(218, 165, 32, 0.4);
+  font-size: 1em;
+  width: 36px;
+  height: 36px;
+}
+
+/* Silver - 2nd place */
+.rank-badge.rank-2 {
+  background: linear-gradient(135deg, #e8e8e8 0%, #ffffff 50%, #c0c0c0 100%);
+  border: 2px solid #a8a8a8;
+  color: #666;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Bronze - 3rd place */
+.rank-badge.rank-3 {
+  background: linear-gradient(135deg, #cd7f32 0%, #e8a762 50%, #cd7f32 100%);
+  border: 2px solid #b87333;
+  color: #5c3d1a;
+  box-shadow: 0 2px 6px rgba(205, 127, 50, 0.35);
+}
+
+/* Top 10 */
+.rank-badge.rank-top10 {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 2px solid #90caf9;
+  color: #1565c0;
 }
 
 .rank-cell .rank-star {
-  color: #ffc107;
-  margin-left: 4px;
+  display: none; /* Hide star, we use badge style now */
 }
 
 /* Model Info Column */

@@ -37,12 +37,12 @@ const sortOptions = {
     { value: 'app4_irr_desc', label: '4App IRR ↓' }
   ],
   efficiency: [
-    { value: 'step_asc', label: 'Steps ↑ (best)' },
-    { value: 'time_asc', label: 'Time/Step ↑ (best)' },
-    { value: 'cost_asc', label: 'Cost/Step ↑ (best)' },
-    { value: 'step_desc', label: 'Steps ↓' },
-    { value: 'time_desc', label: 'Time/Step ↓' },
-    { value: 'cost_desc', label: 'Cost/Step ↓' }
+    { value: 'p1_step_asc', label: 'p@1 Steps (Fewest)' },
+    { value: 'p1_time_asc', label: 'p@1 Time/Step (Fastest)' },
+    { value: 'p1_cost_asc', label: 'p@1 Cost/Step (Lowest)' },
+    { value: 'p3_step_asc', label: 'p@3 Steps (Fewest)' },
+    { value: 'p3_time_asc', label: 'p@3 Time/Step (Fastest)' },
+    { value: 'p3_cost_asc', label: 'p@3 Cost/Step (Lowest)' }
   ]
 };
 
@@ -181,41 +181,54 @@ function getFilteredData() {
     const isAsc = sortKey.endsWith('_asc');
     const multiplier = isAsc ? 1 : -1;
     
-    // Get sort value based on key
+    // Get sort value based on key (returns null if data is missing)
     const getValue = (agent) => {
       // Main tab metrics
-      if (sortKey.startsWith('avg_p3')) return agent.avg.p3;
-      if (sortKey.startsWith('avg_p1')) return agent.avg.p1;
-      if (sortKey.startsWith('easy_p3')) return agent.difficulty.easy.p3;
-      if (sortKey.startsWith('med_p3')) return agent.difficulty.medium.p3;
-      if (sortKey.startsWith('hard_p3')) return agent.difficulty.hard.p3;
-      if (sortKey.startsWith('irr_')) return agent.metrics?.shortTerm?.irr ?? -999;
-      if (sortKey.startsWith('mtpr')) return agent.metrics?.shortTerm?.mtpr ?? -999;
-      if (sortKey.startsWith('frr')) return agent.metrics?.longTerm?.frr ?? -999;
+      if (sortKey.startsWith('avg_p3')) return agent.avg?.p3 ?? null;
+      if (sortKey.startsWith('avg_p1')) return agent.avg?.p1 ?? null;
+      if (sortKey.startsWith('easy_p3')) return agent.difficulty?.easy?.p3 ?? null;
+      if (sortKey.startsWith('med_p3')) return agent.difficulty?.medium?.p3 ?? null;
+      if (sortKey.startsWith('hard_p3')) return agent.difficulty?.hard?.p3 ?? null;
+      if (sortKey.startsWith('irr_')) return agent.metrics?.shortTerm?.irr ?? null;
+      if (sortKey.startsWith('mtpr')) return agent.metrics?.shortTerm?.mtpr ?? null;
+      if (sortKey.startsWith('frr')) return agent.metrics?.longTerm?.frr ?? null;
       
       // Cross-App metrics
-      if (sortKey.startsWith('app1_sr')) return agent.crossApp?.app1?.p1 ?? -999;
-      if (sortKey.startsWith('app1_p3')) return agent.crossApp?.app1?.p3 ?? -999;
-      if (sortKey.startsWith('app1_irr')) return agent.crossApp?.app1?.irr ?? -999;
-      if (sortKey.startsWith('app2_sr')) return agent.crossApp?.app2?.p1 ?? -999;
-      if (sortKey.startsWith('app2_p3')) return agent.crossApp?.app2?.p3 ?? -999;
-      if (sortKey.startsWith('app2_irr')) return agent.crossApp?.app2?.irr ?? -999;
-      if (sortKey.startsWith('app3_sr')) return agent.crossApp?.app3?.p1 ?? -999;
-      if (sortKey.startsWith('app3_p3')) return agent.crossApp?.app3?.p3 ?? -999;
-      if (sortKey.startsWith('app3_irr')) return agent.crossApp?.app3?.irr ?? -999;
-      if (sortKey.startsWith('app4_sr')) return agent.crossApp?.app4?.p1 ?? -999;
-      if (sortKey.startsWith('app4_p3')) return agent.crossApp?.app4?.p3 ?? -999;
-      if (sortKey.startsWith('app4_irr')) return agent.crossApp?.app4?.irr ?? -999;
+      if (sortKey.startsWith('app1_sr')) return agent.crossApp?.app1?.p1 ?? null;
+      if (sortKey.startsWith('app1_p3')) return agent.crossApp?.app1?.p3 ?? null;
+      if (sortKey.startsWith('app1_irr')) return agent.crossApp?.app1?.irr ?? null;
+      if (sortKey.startsWith('app2_sr')) return agent.crossApp?.app2?.p1 ?? null;
+      if (sortKey.startsWith('app2_p3')) return agent.crossApp?.app2?.p3 ?? null;
+      if (sortKey.startsWith('app2_irr')) return agent.crossApp?.app2?.irr ?? null;
+      if (sortKey.startsWith('app3_sr')) return agent.crossApp?.app3?.p1 ?? null;
+      if (sortKey.startsWith('app3_p3')) return agent.crossApp?.app3?.p3 ?? null;
+      if (sortKey.startsWith('app3_irr')) return agent.crossApp?.app3?.irr ?? null;
+      if (sortKey.startsWith('app4_sr')) return agent.crossApp?.app4?.p1 ?? null;
+      if (sortKey.startsWith('app4_p3')) return agent.crossApp?.app4?.p3 ?? null;
+      if (sortKey.startsWith('app4_irr')) return agent.crossApp?.app4?.irr ?? null;
       
-      // Efficiency metrics
-      if (sortKey.startsWith('step')) return agent.metrics?.shortTerm?.stepRatio ?? 999;
-      if (sortKey.startsWith('time')) return agent.metrics?.shortTerm?.timePerStep ?? 999;
-      if (sortKey.startsWith('cost')) return agent.metrics?.shortTerm?.costPerStep ?? 999;
+      // Efficiency metrics - Short-Term (p@1)
+      if (sortKey.startsWith('p1_step')) return agent.metrics?.shortTerm?.stepRatio ?? null;
+      if (sortKey.startsWith('p1_time')) return agent.metrics?.shortTerm?.timePerStep ?? null;
+      if (sortKey.startsWith('p1_cost')) return agent.metrics?.shortTerm?.costPerStep ?? null;
       
-      return agent.avg.p3;
+      // Efficiency metrics - Long-Term (p@3)
+      if (sortKey.startsWith('p3_step')) return agent.metrics?.longTerm?.stepRatio ?? null;
+      if (sortKey.startsWith('p3_time')) return agent.metrics?.longTerm?.timePerStep ?? null;
+      if (sortKey.startsWith('p3_cost')) return agent.metrics?.longTerm?.costPerStep ?? null;
+      
+      return agent.avg?.p3 ?? null;
     };
     
-    return (getValue(a) - getValue(b)) * multiplier;
+    const valA = getValue(a);
+    const valB = getValue(b);
+    
+    // Handle null values - always put them at the end
+    if (valA === null && valB === null) return 0;
+    if (valA === null) return 1;  // a goes to end
+    if (valB === null) return -1; // b goes to end
+    
+    return (valA - valB) * multiplier;
   });
   
   return data;
@@ -274,9 +287,12 @@ function getSortedColumnKey() {
   if (sortKey.startsWith('app3_irr')) return 'app3_irr';
   if (sortKey.startsWith('app4_sr')) return 'app4_p1';
   if (sortKey.startsWith('app4_irr')) return 'app4_irr';
-  if (sortKey.startsWith('step')) return 'step';
-  if (sortKey.startsWith('time')) return 'time';
-  if (sortKey.startsWith('cost')) return 'cost';
+  if (sortKey.startsWith('p1_step')) return 'p1_step';
+  if (sortKey.startsWith('p1_time')) return 'p1_time';
+  if (sortKey.startsWith('p1_cost')) return 'p1_cost';
+  if (sortKey.startsWith('p3_step')) return 'p3_step';
+  if (sortKey.startsWith('p3_time')) return 'p3_time';
+  if (sortKey.startsWith('p3_cost')) return 'p3_cost';
   return 'avg_p3';
 }
 
@@ -408,10 +424,13 @@ function createTableHTML(data) {
     const mtpr = agent.metrics?.shortTerm?.mtpr ?? null;
     const frr = agent.metrics?.longTerm?.frr ?? null;
     
+    // Rank badge class
+    const rankBadgeClass = getRankBadgeClass(rank);
+    
     html += `
       <tr class="${isFirst ? 'first-rank' : ''}">
         <td class="rank-cell">
-          ${rank}${isFirst ? '<span class="rank-star">★</span>' : ''}
+          <span class="rank-badge ${rankBadgeClass}">${rank}</span>
         </td>
         <td class="model-cell">
           <div class="model-name">
@@ -477,12 +496,12 @@ function createEfficiencyTableHTML(data) {
           <th colspan="3" class="ltm-header">♠ Long-Term (pass@3)</th>
         </tr>
         <tr class="header-subgroup">
-          <th class="${sc('step')}" title="Step Ratio: actual steps / golden steps">Steps</th>
-          <th class="${sc('time')}" title="Average time per step in seconds">Time/Step</th>
-          <th class="${sc('cost')}" title="Average API cost per step">Cost/Step</th>
-          <th title="Step Ratio: actual steps / golden steps">Steps</th>
-          <th title="Average time per step in seconds">Time/Step</th>
-          <th title="Average API cost per step">Cost/Step</th>
+          <th class="${sc('p1_step')}" title="Step Ratio: actual steps / golden steps">Steps</th>
+          <th class="${sc('p1_time')}" title="Average time per step in seconds">Time/Step</th>
+          <th class="${sc('p1_cost')}" title="Average API cost per step">Cost/Step</th>
+          <th class="${sc('p3_step')}" title="Step Ratio: actual steps / golden steps">Steps</th>
+          <th class="${sc('p3_time')}" title="Average time per step in seconds">Time/Step</th>
+          <th class="${sc('p3_cost')}" title="Average API cost per step">Cost/Step</th>
         </tr>
       </thead>
       <tbody>
@@ -506,30 +525,36 @@ function createEfficiencyTableHTML(data) {
     }
     
     const formatStepRatio = (val, best, isShortTerm = true) => {
-      const sortedClass = (sortedCol === 'step' && isShortTerm) ? ' sorted-column' : '';
+      const colKey = isShortTerm ? 'p1_step' : 'p3_step';
+      const sortedClass = (sortedCol === colKey) ? ' sorted-column' : '';
       if (!val) return `<td class="score-cell na${sortedClass}">-</td>`;
       const isBest = Math.abs(val - best) < 0.01;
       return `<td class="score-cell ${isBest ? 'best-efficiency' : ''} ${val <= 1.0 ? 'good-ratio' : val > 1.2 ? 'bad-ratio' : ''}${sortedClass}">${val.toFixed(2)}</td>`;
     };
     
     const formatTime = (val, best, isShortTerm = true) => {
-      const sortedClass = (sortedCol === 'time' && isShortTerm) ? ' sorted-column' : '';
+      const colKey = isShortTerm ? 'p1_time' : 'p3_time';
+      const sortedClass = (sortedCol === colKey) ? ' sorted-column' : '';
       if (!val) return `<td class="score-cell na${sortedClass}">-</td>`;
       const isBest = Math.abs(val - best) < 0.1;
       return `<td class="score-cell ${isBest ? 'best-efficiency' : ''}${sortedClass}">${val.toFixed(1)}s</td>`;
     };
     
     const formatCost = (val, best, isShortTerm = true) => {
-      const sortedClass = (sortedCol === 'cost' && isShortTerm) ? ' sorted-column' : '';
+      const colKey = isShortTerm ? 'p1_cost' : 'p3_cost';
+      const sortedClass = (sortedCol === colKey) ? ' sorted-column' : '';
       if (!val) return `<td class="score-cell na${sortedClass}">-</td>`;
       const isBest = Math.abs(val - best) < 0.001;
       return `<td class="score-cell ${isBest ? 'best-efficiency' : ''}${sortedClass}">${'$' + val.toFixed(4)}</td>`;
     };
     
+    // Rank badge class
+    const rankBadgeClass = getRankBadgeClass(rank);
+    
     if (!stm && !ltm) {
       html += `
         <tr class="no-data ${isFirst ? 'first-rank' : ''}">
-          <td class="rank-cell">${rank}${isFirst ? '<span class="rank-star">★</span>' : ''}</td>
+          <td class="rank-cell"><span class="rank-badge ${rankBadgeClass}">${rank}</span></td>
           <td class="model-cell">
             <div class="model-name">${displayName}<div class="tags">${tags}</div></div>
             <div class="model-meta">
@@ -546,7 +571,7 @@ function createEfficiencyTableHTML(data) {
     
     html += `
       <tr class="${isFirst ? 'first-rank' : ''}">
-        <td class="rank-cell">${rank}${isFirst ? '<span class="rank-star">★</span>' : ''}</td>
+        <td class="rank-cell"><span class="rank-badge ${rankBadgeClass}">${rank}</span></td>
         <td class="model-cell">
           <div class="model-name">${displayName}<div class="tags">${tags}</div></div>
           <div class="model-meta">
@@ -693,9 +718,12 @@ function createCrossAppRow(agent, bestValues, rank, sortedCol = '') {
     displayName = `${agent.name} <span class="model-backbone">w/ ${agent.backbone}</span>`;
   }
   
+  // Rank badge class
+  const rankBadgeClass = getRankBadgeClass(rank);
+  
   return `
     <tr class="${isFirst ? 'first-rank' : ''}">
-      <td class="rank-cell">${rank}${isFirst ? '<span class="rank-star">★</span>' : ''}</td>
+      <td class="rank-cell"><span class="rank-badge ${rankBadgeClass}">${rank}</span></td>
       <td class="model-cell">
         <div class="model-name">${displayName}<div class="tags">${tags}</div></div>
         <div class="model-meta">
@@ -723,6 +751,15 @@ function createCrossAppRow(agent, bestValues, rank, sortedCol = '') {
       ${formatCell(agent.metrics?.shortTerm?.irr, 'irr', 'irr')}
     </tr>
   `;
+}
+
+// Get rank badge CSS class
+function getRankBadgeClass(rank) {
+  if (rank === 1) return 'rank-1';
+  if (rank === 2) return 'rank-2';
+  if (rank === 3) return 'rank-3';
+  if (rank <= 10) return 'rank-top10';
+  return '';
 }
 
 // Format date
