@@ -46,79 +46,75 @@
   <header class="hero-section">
     <div class="hero-bg"></div>
     <div class="container">
-      <div class="hero-content text-center">
-        <h1 class="hero-title">
-          <span class="gradient-text">MemGUI-Bench</span>
-        </h1>
-        <p class="hero-subtitle">
-          Benchmarking Memory of Mobile GUI Agents in Dynamic Environments
-        </p>
-        
-        <!-- Action Buttons -->
-        <div class="hero-buttons">
-          <a href="#" class="btn btn-primary btn-lg">
-            <i class="bi bi-file-earmark-pdf"></i> Paper
-          </a>
-          <a href="#" class="btn btn-outline-light btn-lg">
-            <i class="bi bi-github"></i> Code
-          </a>
-          <a href="#" class="btn btn-outline-light btn-lg">
-            <i class="bi bi-database"></i> Dataset
-          </a>
-          <a href="leaderboard.html" class="btn btn-accent btn-lg">
-            <i class="bi bi-bar-chart-line"></i> Leaderboard
-          </a>
+      <div class="hero-layout">
+        <!-- Left: Main Content -->
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span class="gradient-text">MemGUI-Bench</span>
+          </h1>
+          <p class="hero-subtitle">
+            Benchmarking Memory of Mobile GUI Agents in Dynamic Environments
+          </p>
+          
+          <!-- Action Buttons -->
+          <div class="hero-buttons">
+            <a href="#" class="btn btn-primary btn-lg">
+              <i class="bi bi-file-earmark-pdf"></i> Paper
+            </a>
+            <a href="#" class="btn btn-outline-light btn-lg">
+              <i class="bi bi-github"></i> Code
+            </a>
+            <a href="#" class="btn btn-outline-light btn-lg">
+              <i class="bi bi-database"></i> Dataset
+            </a>
+          </div>
+
+          <!-- Authors -->
+          <div class="hero-authors">
+            <div class="authors-list">
+              <span class="author"><span class="author-name">Guangyi Liu</span><sup>1*</sup></span>
+              <span class="author"><span class="author-name">Pengxiang Zhao</span><sup>1*</sup></span>
+              <span class="author"><span class="author-name">Yaozhen Liang</span><sup>1*</sup></span>
+              <span class="author"><span class="author-name">Qinyi Luo</span><sup>2</sup></span>
+              <span class="author"><span class="author-name">Shunye Tang</span><sup>2</sup></span>
+              <span class="author"><span class="author-name">Yuxiang Chai</span><sup>3</sup></span>
+              <span class="author"><span class="author-name">Weifeng Lin</span><sup>3</sup></span>
+              <span class="author"><span class="author-name">Han Xiao</span><sup>3</sup></span>
+              <span class="author"><span class="author-name">WenHao Wang</span><sup>1</sup></span>
+              <span class="author"><span class="author-name">Siheng Chen</span><sup>4</sup></span>
+              <span class="author"><span class="author-name">Zhengxi Lu</span><sup>1</sup></span>
+              <span class="author"><span class="author-name">Gao Wu</span><sup>1</sup></span>
+              <span class="author"><span class="author-name">Hao Wang</span><sup>5</sup></span>
+              <span class="author"><span class="author-name">Liang Liu</span><sup>5†</sup></span>
+              <span class="author"><span class="author-name">Yong Liu</span><sup>1</sup><span class="corresponding-icon" title="Corresponding Author">✉</span></span>
+            </div>
+            <div class="affiliations-list">
+              <span class="affiliation"><sup>1</sup>Zhejiang University</span>
+              <span class="affiliation"><sup>2</sup>Nankai University</span>
+              <span class="affiliation"><sup>3</sup>The Chinese University of Hong Kong</span>
+              <span class="affiliation"><sup>4</sup>Shanghai Jiao Tong University</span>
+              <span class="affiliation"><sup>5</sup>vivo AI Lab</span>
+            </div>
+            <div class="author-notes">
+              <span>* Equal contribution</span>
+              <span>† Project Lead</span>
+              <span>✉ Corresponding author</span>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Authors -->
-        <div class="hero-authors">
-          <div class="authors-list">
-            <span class="author"><span class="author-name">Guangyi Liu</span><sup>1*</sup></span>
-            <span class="author"><span class="author-name">Pengxiang Zhao</span><sup>1*</sup></span>
-            <span class="author"><span class="author-name">Yaozhen Liang</span><sup>1*</sup></span>
-            <span class="author"><span class="author-name">Qinyi Luo</span><sup>2</sup></span>
-            <span class="author"><span class="author-name">Shunye Tang</span><sup>2</sup></span>
-            <span class="author"><span class="author-name">Yuxiang Chai</span><sup>3</sup></span>
-            <span class="author"><span class="author-name">Weifeng Lin</span><sup>3</sup></span>
-            <span class="author"><span class="author-name">Han Xiao</span><sup>3</sup></span>
-            <span class="author"><span class="author-name">WenHao Wang</span><sup>1</sup></span>
-            <span class="author"><span class="author-name">Siheng Chen</span><sup>4</sup></span>
-            <span class="author"><span class="author-name">Zhengxi Lu</span><sup>1</sup></span>
-            <span class="author"><span class="author-name">Gao Wu</span><sup>1</sup></span>
-            <span class="author"><span class="author-name">Hao Wang</span><sup>5</sup></span>
-            <span class="author"><span class="author-name">Liang Liu</span><sup>5†</sup></span>
-            <span class="author"><span class="author-name">Yong Liu</span><sup>1</sup><span class="corresponding-icon" title="Corresponding Author">✉</span></span>
+        <!-- Right: Live Leaderboard (Dynamic) -->
+        <div class="hero-leaderboard-panel">
+          <div class="lb-panel-header">
+            <span class="lb-panel-title">🏆 Live Leaderboard</span>
+            <a href="leaderboard.html" class="lb-panel-link">View All →</a>
           </div>
-          <div class="affiliations-list">
-            <span class="affiliation"><sup>1</sup>Zhejiang University</span>
-            <span class="affiliation"><sup>2</sup>Nankai University</span>
-            <span class="affiliation"><sup>3</sup>The Chinese University of Hong Kong</span>
-            <span class="affiliation"><sup>4</sup>Shanghai Jiao Tong University</span>
-            <span class="affiliation"><sup>5</sup>vivo AI Lab</span>
+          <div class="lb-panel-table" id="heroLeaderboardTable">
+            <div class="lb-panel-loading">Loading...</div>
           </div>
-          <div class="author-notes">
-            <span>* Equal contribution</span>
-            <span>† Project Lead</span>
-            <span>✉ Corresponding author</span>
-          </div>
-        </div>
-
-        <!-- Contributing Institutions (ordered by author affiliations) -->
-        <div class="hero-institutions">
-          <a href="https://www.zju.edu.cn/" target="_blank" class="hero-logo" title="Zhejiang University">
-            <img src="images/logos/zhejiang-university.svg" alt="Zhejiang University">
-          </a>
-          <a href="https://www.nankai.edu.cn/" target="_blank" class="hero-logo" title="Nankai University">
-            <img src="images/logos/nankai-university.svg" alt="Nankai University">
-          </a>
-          <a href="https://www.cuhk.edu.hk/" target="_blank" class="hero-logo" title="The Chinese University of Hong Kong">
-            <img src="images/logos/cuhk.svg" alt="The Chinese University of Hong Kong">
-          </a>
-          <a href="https://www.sjtu.edu.cn/" target="_blank" class="hero-logo" title="Shanghai Jiao Tong University">
-            <img src="images/logos/sjtu.svg" alt="Shanghai Jiao Tong University">
-          </a>
-          <a href="https://www.vivo.com/" target="_blank" class="hero-logo" title="vivo">
-            <img src="images/logos/vivo.svg" alt="vivo">
+          <a href="leaderboard.html" class="lb-panel-cta">
+            <i class="bi bi-bar-chart-line"></i> Explore Full Leaderboard
           </a>
         </div>
       </div>
@@ -384,8 +380,7 @@
     <div class="container">
       <h2 class="section-title text-center">Key Results</h2>
       <p class="text-center text-secondary mb-5">
-        Comprehensive evaluation of 11 GUI agents reveals critical insights about memory capabilities. 
-        <a href="leaderboard.html" class="text-primary">View full leaderboard →</a>
+        Comprehensive evaluation of 11 GUI agents reveals critical insights about memory capabilities.
       </p>
 
       <!-- Research Questions & Conclusions -->
@@ -539,6 +534,76 @@
         btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy';
       }, 2000);
     }
+
+    // Load Hero Leaderboard dynamically
+    async function loadHeroLeaderboard() {
+      try {
+        const response = await fetch('data/results.json');
+        const data = await response.json();
+        
+        // Sort by avg p@3 descending
+        const sorted = [...data.agents].sort((a, b) => b.avg.p3 - a.avg.p3);
+        const top5 = sorted.slice(0, 5);
+        
+        // Find best values for highlighting
+        const bestP1 = Math.max(...top5.map(a => a.avg.p1));
+        const bestP3 = Math.max(...top5.map(a => a.avg.p3));
+        const bestIRR = Math.max(...top5.map(a => a.metrics?.shortTerm?.irr ?? 0));
+        const bestMTPR = Math.max(...top5.map(a => a.metrics?.shortTerm?.mtpr ?? 0));
+        const bestFRR = Math.max(...top5.map(a => a.metrics?.longTerm?.frr ?? 0));
+        
+        // Build HTML
+        let html = `
+          <div class="lb-panel-row header">
+            <span class="lb-col-rank">#</span>
+            <span class="lb-col-name">Agent</span>
+            <span class="lb-col-metric">p@1</span>
+            <span class="lb-col-metric">p@3</span>
+            <span class="lb-col-metric">IRR</span>
+            <span class="lb-col-metric">MTPR</span>
+            <span class="lb-col-metric">FRR</span>
+          </div>
+        `;
+        
+        top5.forEach((agent, index) => {
+          const rank = index + 1;
+          const rankIcon = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
+          const rankClass = rank <= 3 ? `rank-${rank}` : '';
+          
+          const p1 = agent.avg.p1;
+          const p3 = agent.avg.p3;
+          const irr = agent.metrics?.shortTerm?.irr ?? '-';
+          const mtpr = agent.metrics?.shortTerm?.mtpr ?? '-';
+          const frr = agent.metrics?.longTerm?.frr ?? '-';
+          
+          const p1Class = p1 === bestP1 ? 'highlight' : '';
+          const p3Class = p3 === bestP3 ? 'highlight' : '';
+          const irrClass = irr === bestIRR ? 'highlight' : '';
+          const mtprClass = mtpr === bestMTPR ? 'highlight' : '';
+          const frrClass = frr === bestFRR ? 'highlight' : '';
+          
+          html += `
+            <div class="lb-panel-row ${rankClass}">
+              <span class="lb-col-rank">${rankIcon}</span>
+              <span class="lb-col-name">${agent.name}</span>
+              <span class="lb-col-metric ${p1Class}">${typeof p1 === 'number' ? p1.toFixed(1) : '-'}</span>
+              <span class="lb-col-metric ${p3Class}">${typeof p3 === 'number' ? p3.toFixed(1) : '-'}</span>
+              <span class="lb-col-metric ${irrClass}">${typeof irr === 'number' ? irr.toFixed(1) : '-'}</span>
+              <span class="lb-col-metric ${mtprClass}">${typeof mtpr === 'number' ? mtpr.toFixed(2) : '-'}</span>
+              <span class="lb-col-metric ${frrClass}">${typeof frr === 'number' ? frr.toFixed(1) : '-'}</span>
+            </div>
+          `;
+        });
+        
+        document.getElementById('heroLeaderboardTable').innerHTML = html;
+      } catch (error) {
+        console.error('Error loading leaderboard:', error);
+        document.getElementById('heroLeaderboardTable').innerHTML = '<div class="lb-panel-loading">Failed to load data</div>';
+      }
+    }
+    
+    // Load on page ready
+    document.addEventListener('DOMContentLoaded', loadHeroLeaderboard);
   </script>
 </body>
 </html>
