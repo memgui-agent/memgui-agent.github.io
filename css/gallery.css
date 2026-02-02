@@ -179,8 +179,8 @@
   background: #f8fafc;
   border-radius: 12px;
   padding: 1rem;
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .stage-example img {
@@ -195,13 +195,13 @@
 }
 
 .example-label {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  padding: 0.35rem 0.75rem;
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.4rem 1rem;
   border-radius: 6px;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .example-label.success {
