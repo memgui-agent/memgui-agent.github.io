@@ -591,3 +591,114 @@
     padding: 8px 6px;
   }
 }
+
+/* ============================================
+   Cross-App Complexity Tab Styles
+   ============================================ */
+
+/* Cross-App Intro */
+.crossapp-intro {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #fff3e6 0%, #fff9f0 100%);
+  border-radius: 8px;
+  border: 1px solid #ffdab3;
+}
+
+.crossapp-intro p {
+  margin: 0;
+}
+
+/* Cross-App Table */
+.leaderboard-table.crossapp-table {
+  font-size: 0.88em;
+}
+
+.leaderboard-table.crossapp-table th,
+.leaderboard-table.crossapp-table td {
+  padding: 10px 8px;
+  min-width: 50px;
+}
+
+/* STM and LTM Header Colors */
+.stm-header {
+  background: #d1e7dd !important;
+  color: #0f5132 !important;
+  border-bottom: 2px solid #a3cfbb !important;
+}
+
+.ltm-header {
+  background: #cfe2ff !important;
+  color: #084298 !important;
+  border-bottom: 2px solid #9ec5fe !important;
+}
+
+/* Section Headers */
+.section-header td {
+  background: #e9ecef !important;
+  font-weight: 700;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #495057;
+  text-align: left !important;
+  padding: 12px 16px !important;
+  border-top: 2px solid #dee2e6;
+}
+
+/* Agent Cell in Cross-App Table */
+.agent-cell {
+  text-align: left !important;
+  font-weight: 600;
+  color: #212529;
+  min-width: 140px;
+  white-space: nowrap;
+}
+
+/* Task Count Row */
+.task-count-row {
+  background: #f8f9fa;
+  border-top: 2px solid #dee2e6;
+}
+
+.task-count-row td {
+  font-weight: 600;
+  color: #495057;
+}
+
+.task-count-row td:first-child {
+  text-align: left !important;
+}
+
+/* Alternating IRR columns with subtle background */
+.crossapp-table .header-subgroup th:nth-child(even) {
+  background: #fafafa;
+}
+
+/* Responsive for Cross-App Table */
+@media (max-width: 992px) {
+  .leaderboard-table.crossapp-table {
+    font-size: 0.8em;
+  }
+  
+  .leaderboard-table.crossapp-table th,
+  .leaderboard-table.crossapp-table td {
+    padding: 8px 6px;
+    min-width: 45px;
+  }
+  
+  .agent-cell {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  .leaderboard-table.crossapp-table {
+    font-size: 0.7em;
+  }
+  
+  .leaderboard-table.crossapp-table th,
+  .leaderboard-table.crossapp-table td {
+    padding: 6px 4px;
+    min-width: 40px;
+  }
+}

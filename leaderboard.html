@@ -66,6 +66,11 @@
             <i class="bi bi-brain"></i> Memory Metrics
           </button>
         </li>
+        <li class="nav-item">
+          <button class="nav-link" id="crossapp-tab" data-bs-toggle="tab" data-bs-target="#crossapp-panel" type="button">
+            <i class="bi bi-layers"></i> Cross-App
+          </button>
+        </li>
       </ul>
     </div>
 
@@ -141,6 +146,19 @@
               <div id="longTermTable" class="leaderboard-table-wrapper"></div>
             </div>
           </div>
+        </div>
+      </div>
+      <!-- Cross-App Complexity Tab -->
+      <div class="tab-pane fade" id="crossapp-panel" role="tabpanel">
+        <div class="crossapp-intro mb-4">
+          <p class="text-secondary">
+            <strong>Performance breakdown by cross-application complexity.</strong>
+            Tasks are categorized by the number of apps involved (1 to 4 apps).
+            <strong>SR</strong> = Success Rate, <strong>IRR</strong> = Information Retention Rate.
+          </p>
+        </div>
+        <div class="table-container">
+          <div id="crossAppTable" class="leaderboard-table-wrapper"></div>
         </div>
       </div>
     </div>

@@ -167,6 +167,9 @@ function renderTables() {
   // Render Memory Metrics tables
   document.getElementById('shortTermTable').innerHTML = createShortTermTableHTML(allData);
   document.getElementById('longTermTable').innerHTML = createLongTermTableHTML(allData);
+  
+  // Render Cross-App Complexity table
+  document.getElementById('crossAppTable').innerHTML = createCrossAppTableHTML(allData);
 }
 
 // Create main table HTML
@@ -424,6 +427,154 @@ function createLongTermTableHTML(data) {
   `;
   
   return html;
+}
+
+// Create Cross-App Complexity Table (Table 4 in paper)
+function createCrossAppTableHTML(data) {
+  if (data.length === 0) {
+    return '<p class="text-center text-muted py-4">No data available.</p>';
+  }
+  
+  // Separate into Agentic Workflow and Agent-as-a-Model
+  const workflowAgents = data.filter(a => a.type === 'Agentic Workflow');
+  const modelAgents = data.filter(a => a.type === 'Agent-as-a-Model');
+  
+  // Find best values for highlighting
+  const bestValues = findCrossAppBestValues(data);
+  
+  let html = `
+    <table class="leaderboard-table crossapp-table">
+      <thead>
+        <tr class="header-group">
+          <th rowspan="3">Agent</th>
+          <th colspan="8" class="stm-header">♣ Short-Term Memory (pass@1)</th>
+          <th colspan="4" class="ltm-header">♠ Long-Term Memory (pass@3)</th>
+        </tr>
+        <tr class="header-group">
+          <th colspan="2">1 App</th>
+          <th colspan="2">2 Apps</th>
+          <th colspan="2">3 Apps</th>
+          <th colspan="2">4 Apps</th>
+          <th>1 App</th>
+          <th>2 Apps</th>
+          <th>3 Apps</th>
+          <th>4 Apps</th>
+        </tr>
+        <tr class="header-subgroup">
+          <th>SR</th><th>IRR</th>
+          <th>SR</th><th>IRR</th>
+          <th>SR</th><th>IRR</th>
+          <th>SR</th><th>IRR</th>
+          <th>SR</th>
+          <th>SR</th>
+          <th>SR</th>
+          <th>SR</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+  
+  // Add Agentic Workflow section
+  if (workflowAgents.length > 0) {
+    html += `<tr class="section-header"><td colspan="13">AGENTIC WORKFLOW</td></tr>`;
+    workflowAgents.forEach(agent => {
+      html += createCrossAppRow(agent, bestValues);
+    });
+  }
+  
+  // Add Agent-as-a-Model section
+  if (modelAgents.length > 0) {
+    html += `<tr class="section-header"><td colspan="13">AGENT-AS-A-MODEL</td></tr>`;
+    modelAgents.forEach(agent => {
+      html += createCrossAppRow(agent, bestValues);
+    });
+  }
+  
+  // Task count row
+  html += `
+        <tr class="task-count-row">
+          <td><strong>Task Count</strong></td>
+          <td colspan="2"><strong>28</strong></td>
+          <td colspan="2"><strong>56</strong></td>
+          <td colspan="2"><strong>34</strong></td>
+          <td colspan="2"><strong>10</strong></td>
+          <td><strong>28</strong></td>
+          <td><strong>56</strong></td>
+          <td><strong>34</strong></td>
+          <td><strong>10</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  `;
+  
+  return html;
+}
+
+// Helper: Find best values for Cross-App table
+function findCrossAppBestValues(data) {
+  const metrics = ['app1_sr', 'app1_irr', 'app2_sr', 'app2_irr', 'app3_sr', 'app3_irr', 'app4_sr', 'app4_irr',
+                   'app1_p3', 'app2_p3', 'app3_p3', 'app4_p3'];
+  const best = {};
+  const second = {};
+  
+  metrics.forEach(metric => {
+    const values = data.map(agent => {
+      const [appKey, type] = metric.split('_');
+      const app = appKey.replace('app', 'app');
+      if (type === 'sr') {
+        return agent.crossApp[app]?.p1 ?? 0;
+      } else if (type === 'irr') {
+        return agent.crossApp[app]?.irr ?? null;
+      } else if (type === 'p3') {
+        return agent.crossApp[app]?.p3 ?? 0;
+      }
+      return 0;
+    }).filter(v => v !== null && v > 0).sort((a, b) => b - a);
+    
+    best[metric] = values[0] || 0;
+    second[metric] = values[1] || 0;
+  });
+  
+  return { best, second };
+}
+
+// Helper: Create a row for Cross-App table
+function createCrossAppRow(agent, bestValues) {
+  const ca = agent.crossApp;
+  
+  const formatCell = (value, metricKey) => {
+    if (value === null || value === undefined) {
+      return `<td class="score-cell na">-</td>`;
+    }
+    if (value === 0) {
+      return `<td class="score-cell zero">0.0</td>`;
+    }
+    let className = 'score-cell';
+    if (value === bestValues.best[metricKey] && value > 0) {
+      className += ' best';
+    } else if (value === bestValues.second[metricKey] && value > 0) {
+      className += ' second';
+    }
+    return `<td class="${className}">${value.toFixed(1)}</td>`;
+  };
+  
+  return `
+    <tr>
+      <td class="agent-cell">${agent.name}</td>
+      ${formatCell(ca.app1?.p1, 'app1_sr')}
+      ${formatCell(ca.app1?.irr, 'app1_irr')}
+      ${formatCell(ca.app2?.p1, 'app2_sr')}
+      ${formatCell(ca.app2?.irr, 'app2_irr')}
+      ${formatCell(ca.app3?.p1, 'app3_sr')}
+      ${formatCell(ca.app3?.irr, 'app3_irr')}
+      ${formatCell(ca.app4?.p1, 'app4_sr')}
+      ${formatCell(ca.app4?.irr, 'app4_irr')}
+      ${formatCell(ca.app1?.p3, 'app1_p3')}
+      ${formatCell(ca.app2?.p3, 'app2_p3')}
+      ${formatCell(ca.app3?.p3, 'app3_p3')}
+      ${formatCell(ca.app4?.p3, 'app4_p3')}
+    </tr>
+  `;
 }
 
 // Format date

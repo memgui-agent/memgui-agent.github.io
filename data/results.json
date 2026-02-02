@@ -15,10 +15,10 @@
       "hasLongTermMemory": true,
       "bibtex": "@article{agashe2025agent,\n  title={Agent s2: A compositional generalist-specialist framework for computer use agents},\n  author={Agashe, Saaket and Wong, Kyle and Tu, Vincent and Yang, Jiachen and Li, Ang and Wang, Xin Eric},\n  journal={arXiv preprint arXiv:2504.00906},\n  year={2025}\n}",
       "crossApp": {
-        "app1": { "p1": 50.0, "p3": 78.6 },
-        "app2": { "p1": 19.6, "p3": 35.7 },
-        "app3": { "p1": 26.5, "p3": 52.9 },
-        "app4": { "p1": 10.0, "p3": 30.0 }
+        "app1": { "p1": 50.0, "p3": 78.6, "irr": 51.7 },
+        "app2": { "p1": 19.6, "p3": 35.7, "irr": 37.6 },
+        "app3": { "p1": 26.5, "p3": 52.9, "irr": 38.9 },
+        "app4": { "p1": 10.0, "p3": 30.0, "irr": 33.3 }
       },
       "difficulty": {
         "easy": { "p1": 41.7, "p3": 64.6 },
@@ -56,10 +56,10 @@
       "hasLongTermMemory": false,
       "bibtex": "@article{comanici2025gemini,\n  title={Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities},\n  author={Comanici, Gheorghe and others},\n  journal={arXiv preprint arXiv:2507.06261},\n  year={2025}\n}",
       "crossApp": {
-        "app1": { "p1": 46.4, "p3": 64.3 },
-        "app2": { "p1": 28.6, "p3": 41.1 },
-        "app3": { "p1": 29.4, "p3": 44.1 },
-        "app4": { "p1": 30.0, "p3": 50.0 }
+        "app1": { "p1": 46.4, "p3": 64.3, "irr": 31.7 },
+        "app2": { "p1": 28.6, "p3": 41.1, "irr": 43.8 },
+        "app3": { "p1": 29.4, "p3": 44.1, "irr": 35.9 },
+        "app4": { "p1": 30.0, "p3": 50.0, "irr": 37.5 }
       },
       "difficulty": {
         "easy": { "p1": 39.6, "p3": 47.9 },
@@ -97,10 +97,10 @@
       "hasLongTermMemory": false,
       "bibtex": "@article{comanici2025gemini,\n  title={Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities},\n  author={Comanici, Gheorghe and others},\n  journal={arXiv preprint arXiv:2507.06261},\n  year={2025}\n}",
       "crossApp": {
-        "app1": { "p1": 42.9, "p3": 60.7 },
-        "app2": { "p1": 16.1, "p3": 37.5 },
-        "app3": { "p1": 23.5, "p3": 38.2 },
-        "app4": { "p1": 0.0, "p3": 30.0 }
+        "app1": { "p1": 42.9, "p3": 60.7, "irr": 26.7 },
+        "app2": { "p1": 16.1, "p3": 37.5, "irr": 33.3 },
+        "app3": { "p1": 23.5, "p3": 38.2, "irr": 30.2 },
+        "app4": { "p1": 0.0, "p3": 30.0, "irr": 11.2 }
       },
       "difficulty": {
         "easy": { "p1": 31.2, "p3": 45.8 },
@@ -138,10 +138,10 @@
       "hasLongTermMemory": true,
       "bibtex": "@article{wang2025mobile,\n  title={Mobile-agent-e: Self-evolving mobile assistant for complex tasks},\n  author={Wang, Zhenhailong and Xu, Haiyang and Wang, Junyang and Zhang, Xi and Yan, Ming and Zhang, Ji and Huang, Fei and Ji, Heng},\n  journal={arXiv preprint arXiv:2501.11733},\n  year={2025}\n}",
       "crossApp": {
-        "app1": { "p1": 25.0, "p3": 42.9 },
-        "app2": { "p1": 0.0, "p3": 1.8 },
-        "app3": { "p1": 0.0, "p3": 0.0 },
-        "app4": { "p1": 0.0, "p3": 0.0 }
+        "app1": { "p1": 25.0, "p3": 42.9, "irr": 8.7 },
+        "app2": { "p1": 0.0, "p3": 1.8, "irr": 1.6 },
+        "app3": { "p1": 0.0, "p3": 0.0, "irr": 1.6 },
+        "app4": { "p1": 0.0, "p3": 0.0, "irr": 0.0 }
       },
       "difficulty": {
         "easy": { "p1": 12.5, "p3": 22.9 },
@@ -179,10 +179,10 @@
       "hasLongTermMemory": false,
       "bibtex": "@article{wang2024mobile,\n  title={Mobile-agent-v2: Mobile device operation assistant with effective navigation via multi-agent collaboration},\n  author={Wang, Junyang and others},\n  journal={arXiv preprint arXiv:2406.01014},\n  year={2024}\n}",
       "crossApp": {
-        "app1": { "p1": 14.3, "p3": 17.9 },
-        "app2": { "p1": 0.0, "p3": 0.0 },
-        "app3": { "p1": 0.0, "p3": 0.0 },
-        "app4": { "p1": 0.0, "p3": 0.0 }
+        "app1": { "p1": 14.3, "p3": 17.9, "irr": 0.0 },
+        "app2": { "p1": 0.0, "p3": 0.0, "irr": 0.0 },
+        "app3": { "p1": 0.0, "p3": 0.0, "irr": 0.0 },
+        "app4": { "p1": 0.0, "p3": 0.0, "irr": 0.0 }
       },
       "difficulty": {
         "easy": { "p1": 8.3, "p3": 10.4 },
@@ -220,10 +220,10 @@
       "hasLongTermMemory": false,
       "bibtex": "@article{zheng2024gpt,\n  title={GPT-4V(ision) is a Generalist Web Agent, if Grounded},\n  author={Zheng, Boyuan and Gou, Boyu and Kil, Jihyung and Sun, Huan and Su, Yu},\n  journal={arXiv preprint arXiv:2401.01614},\n  year={2024}\n}",
       "crossApp": {
-        "app1": { "p1": 10.7, "p3": 25.0 },
-        "app2": { "p1": 0.0, "p3": 0.0 },
-        "app3": { "p1": 0.0, "p3": 0.6 },
-        "app4": { "p1": 0.0, "p3": 0.0 }
+        "app1": { "p1": 10.7, "p3": 25.0, "irr": 0.0 },
+        "app2": { "p1": 0.0, "p3": 0.0, "irr": 0.0 },
+        "app3": { "p1": 0.0, "p3": 0.6, "irr": 0.6 },
+        "app4": { "p1": 0.0, "p3": 0.0, "irr": 0.0 }
       },
       "difficulty": {
         "easy": { "p1": 6.2, "p3": 12.5 },
@@ -261,10 +261,10 @@
       "hasLongTermMemory": false,
       "bibtex": "@article{zhang2023appagent,\n  title={AppAgent: Multimodal Agents as Smartphone Users},\n  author={Zhang, Chi and Zhao, Zhao Yang and others},\n  journal={arXiv preprint arXiv:2312.13771},\n  year={2023}\n}",
       "crossApp": {
-        "app1": { "p1": 14.3, "p3": 42.9 },
-        "app2": { "p1": 0.0, "p3": 0.0 },
-        "app3": { "p1": 0.0, "p3": 0.0 },
-        "app4": { "p1": 0.0, "p3": 0.0 }
+        "app1": { "p1": 14.3, "p3": 42.9, "irr": 11.1 },
+        "app2": { "p1": 0.0, "p3": 0.0, "irr": 0.0 },
+        "app3": { "p1": 0.0, "p3": 0.0, "irr": 0.0 },
+        "app4": { "p1": 0.0, "p3": 0.0, "irr": 0.0 }
       },
       "difficulty": {
         "easy": { "p1": 8.3, "p3": 22.9 },
@@ -302,10 +302,10 @@
       "hasLongTermMemory": false,
       "bibtex": "@article{hong2023cogagent,\n  title={CogAgent: A Visual Language Model for GUI Agents},\n  author={Hong, Wenyi and Wang, Weihan and Lv, Qingsong and Xu, Jiazheng and Yu, Wenmeng and Ji, Junhui and Wang, Yan and Wang, Zihan and Zhang, Yuxuan and Li, Juanzi and others},\n  journal={arXiv preprint arXiv:2312.08914},\n  year={2023}\n}",
       "crossApp": {
-        "app1": { "p1": 0.0, "p3": 0.0 },
-        "app2": { "p1": 0.0, "p3": 0.0 },
-        "app3": { "p1": 0.0, "p3": 0.0 },
-        "app4": { "p1": 0.0, "p3": 0.0 }
+        "app1": { "p1": 0.0, "p3": 0.0, "irr": 0.0 },
+        "app2": { "p1": 0.0, "p3": 0.0, "irr": 0.0 },
+        "app3": { "p1": 0.0, "p3": 0.0, "irr": 0.0 },
+        "app4": { "p1": 0.0, "p3": 0.0, "irr": 0.0 }
       },
       "difficulty": {
         "easy": { "p1": 0.0, "p3": 0.0 },
@@ -343,10 +343,10 @@
       "hasLongTermMemory": false,
       "bibtex": "@article{bai2024qwen2vl,\n  title={Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution},\n  author={Bai, Junyang and others},\n  journal={arXiv preprint arXiv:2409.12191},\n  year={2024}\n}",
       "crossApp": {
-        "app1": { "p1": 14.3, "p3": 17.9 },
-        "app2": { "p1": 1.8, "p3": 1.8 },
-        "app3": { "p1": 0.0, "p3": 0.0 },
-        "app4": { "p1": 0.0, "p3": 0.0 }
+        "app1": { "p1": 14.3, "p3": 17.9, "irr": null },
+        "app2": { "p1": 1.8, "p3": 1.8, "irr": null },
+        "app3": { "p1": 0.0, "p3": 0.0, "irr": null },
+        "app4": { "p1": 0.0, "p3": 0.0, "irr": null }
       },
       "difficulty": {
         "easy": { "p1": 10.4, "p3": 12.5 },
@@ -370,10 +370,10 @@
       "hasLongTermMemory": false,
       "bibtex": "",
       "crossApp": {
-        "app1": { "p1": 21.4, "p3": 28.6 },
-        "app2": { "p1": 1.8, "p3": 1.8 },
-        "app3": { "p1": 0.0, "p3": 2.9 },
-        "app4": { "p1": 0.0, "p3": 0.0 }
+        "app1": { "p1": 21.4, "p3": 28.6, "irr": 6.7 },
+        "app2": { "p1": 1.8, "p3": 1.8, "irr": 2.7 },
+        "app3": { "p1": 0.0, "p3": 2.9, "irr": 1.5 },
+        "app4": { "p1": 0.0, "p3": 0.0, "irr": 0.0 }
       },
       "difficulty": {
         "easy": { "p1": 14.6, "p3": 20.8 },
@@ -411,10 +411,10 @@
       "hasLongTermMemory": false,
       "bibtex": "",
       "crossApp": {
-        "app1": { "p1": 17.9, "p3": 21.4 },
-        "app2": { "p1": 3.6, "p3": 3.6 },
-        "app3": { "p1": 0.0, "p3": 0.0 },
-        "app4": { "p1": 0.0, "p3": 0.0 }
+        "app1": { "p1": 17.9, "p3": 21.4, "irr": null },
+        "app2": { "p1": 3.6, "p3": 3.6, "irr": null },
+        "app3": { "p1": 0.0, "p3": 0.0, "irr": null },
+        "app4": { "p1": 0.0, "p3": 0.0, "irr": null }
       },
       "difficulty": {
         "easy": { "p1": 12.5, "p3": 14.6 },
@@ -438,10 +438,10 @@
       "hasLongTermMemory": false,
       "bibtex": "@article{qin2025uitars,\n  title={UI-TARS: Pioneering Automated GUI Interaction with Native Agents},\n  author={Qin, Yujia and others},\n  journal={arXiv preprint arXiv:2501.12326},\n  year={2025}\n}",
       "crossApp": {
-        "app1": { "p1": 14.3, "p3": 21.4 },
-        "app2": { "p1": 0.0, "p3": 1.8 },
-        "app3": { "p1": 0.0, "p3": 2.9 },
-        "app4": { "p1": 0.0, "p3": 0.0 }
+        "app1": { "p1": 14.3, "p3": 21.4, "irr": 11.1 },
+        "app2": { "p1": 0.0, "p3": 1.8, "irr": 1.8 },
+        "app3": { "p1": 0.0, "p3": 2.9, "irr": 4.0 },
+        "app4": { "p1": 0.0, "p3": 0.0, "irr": 2.9 }
       },
       "difficulty": {
         "easy": { "p1": 8.3, "p3": 16.7 },
@@ -479,10 +479,10 @@
       "hasLongTermMemory": false,
       "bibtex": "",
       "crossApp": {
-        "app1": { "p1": 21.4, "p3": 35.7 },
-        "app2": { "p1": 1.8, "p3": 1.8 },
-        "app3": { "p1": 2.9, "p3": 7.1 },
-        "app4": { "p1": 0.0, "p3": 4.0 }
+        "app1": { "p1": 21.4, "p3": 35.7, "irr": 11.7 },
+        "app2": { "p1": 1.8, "p3": 1.8, "irr": 3.6 },
+        "app3": { "p1": 2.9, "p3": 7.1, "irr": 7.1 },
+        "app4": { "p1": 0.0, "p3": 4.0, "irr": 4.0 }
       },
       "difficulty": {
         "easy": { "p1": 14.6, "p3": 22.9 },
