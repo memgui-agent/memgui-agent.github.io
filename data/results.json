@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-01",
+  "lastUpdated": "2026-02-02",
   "agents": [
     {
       "name": "Agent-S2",
@@ -25,7 +25,22 @@
         "medium": { "p1": 19.0, "p3": 42.9 },
         "hard": { "p1": 18.4, "p3": 36.8 }
       },
-      "avg": { "p1": 27.3, "p3": 49.2 }
+      "avg": { "p1": 27.3, "p3": 49.2 },
+      "metrics": {
+        "shortTerm": {
+          "irr": 39.5,
+          "mtpr": 0.45,
+          "stepRatio": 0.86,
+          "timePerStep": 28.1,
+          "costPerStep": 0.051
+        },
+        "longTerm": {
+          "frr": 21.5,
+          "stepRatio": 0.86,
+          "timePerStep": 27.5,
+          "costPerStep": 0.0522
+        }
+      }
     },
     {
       "name": "M3A",
@@ -51,7 +66,22 @@
         "medium": { "p1": 35.7, "p3": 50.0 },
         "hard": { "p1": 21.1, "p3": 44.7 }
       },
-      "avg": { "p1": 32.8, "p3": 47.7 }
+      "avg": { "p1": 32.8, "p3": 47.7 },
+      "metrics": {
+        "shortTerm": {
+          "irr": 39.3,
+          "mtpr": 0.41,
+          "stepRatio": 0.81,
+          "timePerStep": 14.7,
+          "costPerStep": 0.0165
+        },
+        "longTerm": {
+          "frr": 16.3,
+          "stepRatio": 0.80,
+          "timePerStep": 14.5,
+          "costPerStep": 0.0162
+        }
+      }
     },
     {
       "name": "T3A",
@@ -77,7 +107,22 @@
         "medium": { "p1": 16.7, "p3": 45.2 },
         "hard": { "p1": 18.4, "p3": 34.2 }
       },
-      "avg": { "p1": 22.7, "p3": 42.2 }
+      "avg": { "p1": 22.7, "p3": 42.2 },
+      "metrics": {
+        "shortTerm": {
+          "irr": 29.6,
+          "mtpr": 0.30,
+          "stepRatio": 0.83,
+          "timePerStep": 13.9,
+          "costPerStep": 0.0176
+        },
+        "longTerm": {
+          "frr": 20.7,
+          "stepRatio": 0.83,
+          "timePerStep": 14.7,
+          "costPerStep": 0.0175
+        }
+      }
     },
     {
       "name": "Mobile-Agent-E",
@@ -103,7 +148,22 @@
         "medium": { "p1": 2.4, "p3": 2.4 },
         "hard": { "p1": 0.0, "p3": 2.6 }
       },
-      "avg": { "p1": 5.5, "p3": 10.2 }
+      "avg": { "p1": 5.5, "p3": 10.2 },
+      "metrics": {
+        "shortTerm": {
+          "irr": 2.4,
+          "mtpr": 0.02,
+          "stepRatio": 0.85,
+          "timePerStep": 39.3,
+          "costPerStep": 0.0696
+        },
+        "longTerm": {
+          "frr": 4.1,
+          "stepRatio": 0.98,
+          "timePerStep": 38.7,
+          "costPerStep": 0.0705
+        }
+      }
     },
     {
       "name": "Mobile-Agent-V2",
@@ -129,7 +189,22 @@
         "medium": { "p1": 0.0, "p3": 0.0 },
         "hard": { "p1": 0.0, "p3": 0.0 }
       },
-      "avg": { "p1": 3.1, "p3": 3.9 }
+      "avg": { "p1": 3.1, "p3": 3.9 },
+      "metrics": {
+        "shortTerm": {
+          "irr": 0.0,
+          "mtpr": 0.00,
+          "stepRatio": 0.92,
+          "timePerStep": 29.4,
+          "costPerStep": 0.066
+        },
+        "longTerm": {
+          "frr": 0.8,
+          "stepRatio": 0.94,
+          "timePerStep": 28.8,
+          "costPerStep": 0.0684
+        }
+      }
     },
     {
       "name": "SeeAct",
@@ -155,7 +230,22 @@
         "medium": { "p1": 0.0, "p3": 2.4 },
         "hard": { "p1": 0.0, "p3": 0.0 }
       },
-      "avg": { "p1": 2.3, "p3": 5.5 }
+      "avg": { "p1": 2.3, "p3": 5.5 },
+      "metrics": {
+        "shortTerm": {
+          "irr": 0.2,
+          "mtpr": 0.00,
+          "stepRatio": 1.01,
+          "timePerStep": 15.9,
+          "costPerStep": 0.0133
+        },
+        "longTerm": {
+          "frr": 2.4,
+          "stepRatio": 0.99,
+          "timePerStep": 16.3,
+          "costPerStep": 0.0134
+        }
+      }
     },
     {
       "name": "AppAgent",
@@ -181,7 +271,22 @@
         "medium": { "p1": 0.0, "p3": 2.4 },
         "hard": { "p1": 0.0, "p3": 0.0 }
       },
-      "avg": { "p1": 3.1, "p3": 9.4 }
+      "avg": { "p1": 3.1, "p3": 9.4 },
+      "metrics": {
+        "shortTerm": {
+          "irr": 1.5,
+          "mtpr": 0.04,
+          "stepRatio": 1.46,
+          "timePerStep": 27.3,
+          "costPerStep": 0.0078
+        },
+        "longTerm": {
+          "frr": 4.4,
+          "stepRatio": 1.22,
+          "timePerStep": 33.9,
+          "costPerStep": 0.0083
+        }
+      }
     },
     {
       "name": "CogAgent",
@@ -207,7 +312,22 @@
         "medium": { "p1": 0.0, "p3": 0.0 },
         "hard": { "p1": 0.0, "p3": 0.0 }
       },
-      "avg": { "p1": 0.0, "p3": 0.0 }
+      "avg": { "p1": 0.0, "p3": 0.0 },
+      "metrics": {
+        "shortTerm": {
+          "irr": 0.0,
+          "mtpr": 0.00,
+          "stepRatio": null,
+          "timePerStep": 33.2,
+          "costPerStep": null
+        },
+        "longTerm": {
+          "frr": 0.0,
+          "stepRatio": null,
+          "timePerStep": 32.8,
+          "costPerStep": null
+        }
+      }
     },
     {
       "name": "Qwen2.5VL-7B",
@@ -233,7 +353,8 @@
         "medium": { "p1": 0.0, "p3": 0.0 },
         "hard": { "p1": 0.0, "p3": 0.0 }
       },
-      "avg": { "p1": 3.9, "p3": 4.7 }
+      "avg": { "p1": 3.9, "p3": 4.7 },
+      "metrics": null
     },
     {
       "name": "UI-Venus-7B",
@@ -259,7 +380,22 @@
         "medium": { "p1": 0.0, "p3": 0.0 },
         "hard": { "p1": 0.0, "p3": 0.0 }
       },
-      "avg": { "p1": 5.5, "p3": 7.8 }
+      "avg": { "p1": 5.5, "p3": 7.8 },
+      "metrics": {
+        "shortTerm": {
+          "irr": 2.6,
+          "mtpr": 0.05,
+          "stepRatio": 1.03,
+          "timePerStep": 12.2,
+          "costPerStep": null
+        },
+        "longTerm": {
+          "frr": 1.7,
+          "stepRatio": 1.03,
+          "timePerStep": 11.6,
+          "costPerStep": null
+        }
+      }
     },
     {
       "name": "UI-S1-7B",
@@ -285,7 +421,8 @@
         "medium": { "p1": 2.6, "p3": 2.6 },
         "hard": { "p1": 0.0, "p3": 0.0 }
       },
-      "avg": { "p1": 5.5, "p3": 6.2 }
+      "avg": { "p1": 5.5, "p3": 6.2 },
+      "metrics": null
     },
     {
       "name": "UI-TARS-1.5-7B",
@@ -311,7 +448,22 @@
         "medium": { "p1": 0.0, "p3": 0.0 },
         "hard": { "p1": 0.0, "p3": 0.0 }
       },
-      "avg": { "p1": 3.1, "p3": 6.2 }
+      "avg": { "p1": 3.1, "p3": 6.2 },
+      "metrics": {
+        "shortTerm": {
+          "irr": 3.8,
+          "mtpr": 0.04,
+          "stepRatio": 0.99,
+          "timePerStep": 9.9,
+          "costPerStep": null
+        },
+        "longTerm": {
+          "frr": 2.4,
+          "stepRatio": 1.04,
+          "timePerStep": 10.3,
+          "costPerStep": null
+        }
+      }
     },
     {
       "name": "GUI-Owl-7B",
@@ -337,7 +489,22 @@
         "medium": { "p1": 0.0, "p3": 2.4 },
         "hard": { "p1": 2.6, "p3": 2.6 }
       },
-      "avg": { "p1": 6.2, "p3": 10.2 }
+      "avg": { "p1": 6.2, "p3": 10.2 },
+      "metrics": {
+        "shortTerm": {
+          "irr": 5.7,
+          "mtpr": 0.07,
+          "stepRatio": 0.92,
+          "timePerStep": 9.6,
+          "costPerStep": null
+        },
+        "longTerm": {
+          "frr": 3.3,
+          "stepRatio": 0.93,
+          "timePerStep": 9.6,
+          "costPerStep": null
+        }
+      }
     }
   ],
   "memoryTypeLabels": {
@@ -345,5 +512,13 @@
     "AT": "Action-Thought history management",
     "MC": "Multi-turn Context",
     "MW": "Multi-agent Workflow"
+  },
+  "metricsDescription": {
+    "irr": "Information Retention Rate (%) - Memory fidelity metric",
+    "mtpr": "Memory-Task Proficiency Ratio - Memory-specific capability isolation",
+    "frr": "Failure Recovery Rate (%) - Learning from failure efficiency",
+    "stepRatio": "Average Step Ratio - Path efficiency compared to golden standards",
+    "timePerStep": "Average Time Per Step (seconds)",
+    "costPerStep": "Average API Cost Per Step ($)"
   }
 }

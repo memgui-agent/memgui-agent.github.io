@@ -247,7 +247,7 @@
             </div>
             <div class="figure-caption">
               <h5>Figure 2: Task Suite Statistics</h5>
-              <p>68 scenarios, 26 apps, 3 difficulty levels.</p>
+              <p>128 tasks (64 mirror pairs), 26 apps, 3 difficulty levels.</p>
             </div>
           </div>
         </div>
@@ -369,7 +369,7 @@
             <tr class="table-secondary"><td colspan="10" class="fw-bold text-muted">LLM-as-a-Judge Evaluation Pipeline</td></tr>
             <tr><td>A3</td><td>9</td><td>0</td><td>201</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-success">✓</td><td>1/2</td><td>6</td></tr>
             <tr><td>SPA-Bench</td><td>40</td><td>40</td><td>340</td><td class="text-success">✓</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td class="text-danger">✗</td><td>1/7</td><td>11</td></tr>
-            <tr class="table-primary fw-bold"><td>MemGUI-Bench (Ours)</td><td class="text-success">115</td><td class="text-success">100</td><td>128</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">4/7</td><td>12</td></tr>
+            <tr class="table-primary fw-bold"><td>MemGUI-Bench (Ours)</td><td class="text-success">115</td><td class="text-success">100</td><td>128</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">✓</td><td class="text-success">4/7</td><td>11</td></tr>
           </tbody>
         </table>
       </div>
@@ -398,7 +398,7 @@
           </div>
           <div class="rq-answer">
             <strong>4-10× capability gaps hidden by standard benchmarks.</strong>
-            M3A achieves 32.8% SR while end-to-end models achieve only 0.0-6.2%. Performance drops dramatically from AndroidWorld to MemGUI-Bench (Agent-S2: 54.3%→27.3%, GUI-Owl-7B: 66.4%→6.2%).
+            M3A achieves highest pass@1 SR (32.8%), while Agent-S2 demonstrates exceptional learning potential with highest pass@3 (49.2%). End-to-end models achieve only 0.0-6.2%. Performance drops dramatically from AndroidWorld to MemGUI-Bench (Agent-S2: 54.3%→27.3%, GUI-Owl-7B: 66.4%→6.2%).
           </div>
         </div>
         
@@ -409,7 +409,7 @@
           </div>
           <div class="rq-answer">
             <strong>Short-term memory is mandatory; long-term memory is beneficial but optional.</strong>
-            Removing short-term memory causes catastrophic collapse (M3A: 32.5%→2.5%). Long-term memory provides +20pp improvement but agents remain functional without it.
+            Removing short-term memory causes catastrophic collapse (M3A: 32.5%→2.5%, IRR: 35.1%→0.0%). Long-term memory provides +21.9 pp improvement but agents remain functional without it.
           </div>
         </div>
         

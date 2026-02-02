@@ -52,6 +52,8 @@
         <p class="section-desc">
           Execution timeout accounts for <strong>72.3%</strong> of failures across 1,265 task executions, 
           with individual agent timeout rates ranging from 22.6% (Agent-S2) to 93.9% (AppAgent). 
+          Among non-timeout failures (343 cases), <strong>memory hallucination dominates at 58.9%</strong> on average,
+          confirming that memory limitations represent the primary bottleneck for current GUI agents.
           The systematic prevalence of execution timeouts indicates that agents struggle to maintain 
           task coherence and efficient exploration strategies over extended interaction sequences.
         </p>
@@ -243,28 +245,34 @@
       <section class="gallery-section mb-5">
         <h2 class="section-title">Design Implications</h2>
         <div class="row g-4">
-          <div class="col-md-6">
+          <div class="col-md-6 col-lg-4">
             <div class="implication-card">
-              <h4><i class="bi bi-cpu"></i> Memory Architecture</h4>
+              <h4><i class="bi bi-cpu"></i> Multi-Granularity Memory Buffers</h4>
               <p>Implement hierarchical memory with separate stores for procedural knowledge and factual information to reduce cross-contamination.</p>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 col-lg-4">
             <div class="implication-card">
-              <h4><i class="bi bi-clock-history"></i> Timeout Mitigation</h4>
-              <p>Develop meta-cognitive monitoring to detect exploration inefficiency and trigger strategy adaptation before timeout.</p>
+              <h4><i class="bi bi-diagram-3"></i> Hierarchical Task Decomposition</h4>
+              <p>Develop persistent goal tracking with hierarchical planning to mitigate process memory hallucination across application boundaries.</p>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 col-lg-4">
             <div class="implication-card">
-              <h4><i class="bi bi-check2-circle"></i> Verification Loops</h4>
-              <p>Add explicit memory verification steps that compare recalled information against available visual evidence.</p>
+              <h4><i class="bi bi-clock-history"></i> Strategic Long-Context Utilization</h4>
+              <p>Leverage long-context capabilities beyond naive conversation history concatenation for memory management.</p>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 col-lg-4">
             <div class="implication-card">
-              <h4><i class="bi bi-book"></i> Knowledge Augmentation</h4>
-              <p>Integrate external knowledge bases or in-context learning for application-specific expertise.</p>
+              <h4><i class="bi bi-brain"></i> Explicit Long-Term Memory</h4>
+              <p>Implement dedicated cross-session memory mechanisms for experience accumulation (Agent-S2 achieves 21.5% FRR vs 0.8-4.4% without).</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="implication-card">
+              <h4><i class="bi bi-intersect"></i> Hybrid Architectures</h4>
+              <p>Combine framework-level memory management with efficient end-to-end models to balance capability and computational cost.</p>
             </div>
           </div>
         </div>
