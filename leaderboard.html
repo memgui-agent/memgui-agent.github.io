@@ -102,6 +102,11 @@
           </button>
         </li>
         <li class="nav-item">
+          <button class="nav-link" id="difficulty-tab" data-bs-toggle="tab" data-bs-target="#difficulty-panel" type="button">
+            <i class="bi bi-bar-chart-steps"></i> Difficulty
+          </button>
+        </li>
+        <li class="nav-item">
           <button class="nav-link" id="efficiency-tab" data-bs-toggle="tab" data-bs-target="#efficiency-panel" type="button">
             <i class="bi bi-speedometer2"></i> Efficiency
           </button>
@@ -134,6 +139,17 @@
         </div>
         <div class="table-container">
           <div id="crossAppTable" class="leaderboard-table-wrapper"></div>
+        </div>
+      </div>
+      <!-- Difficulty Tab -->
+      <div class="tab-pane fade" id="difficulty-panel" role="tabpanel">
+        <div class="view-intro difficulty-intro">
+          <i class="bi bi-info-circle"></i>
+          Performance breakdown by task difficulty level.
+          <strong>IRR</strong> = Information Retention Rate (memory fidelity metric).
+        </div>
+        <div class="table-container">
+          <div id="difficultyTable" class="leaderboard-table-wrapper"></div>
         </div>
       </div>
       <!-- Efficiency Tab -->

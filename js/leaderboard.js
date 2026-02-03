@@ -27,9 +27,6 @@ const sortOptions = {
   main: [
     { value: 'avg_p3_desc', label: 'Avg p@3 ↓' },
     { value: 'avg_p1_desc', label: 'Avg p@1 ↓' },
-    { value: 'easy_p3_desc', label: 'Easy p@3 ↓' },
-    { value: 'med_p3_desc', label: 'Med p@3 ↓' },
-    { value: 'hard_p3_desc', label: 'Hard p@3 ↓' },
     { value: 'irr_desc', label: 'IRR ↓' },
     { value: 'mtpr_desc', label: 'MTPR ↓' },
     { value: 'frr_desc', label: 'FRR ↓' }
@@ -50,6 +47,20 @@ const sortOptions = {
     { value: 'app4_sr_desc', label: '4App p@1 ↓' },
     { value: 'app4_p3_desc', label: '4App p@3 ↓' },
     { value: 'app4_irr_desc', label: '4App IRR ↓' }
+  ],
+  difficulty: [
+    { value: 'avg_p3_desc', label: 'Avg p@3 ↓' },
+    { value: 'avg_p1_desc', label: 'Avg p@1 ↓' },
+    { value: 'irr_desc', label: 'Avg IRR ↓' },
+    { value: 'easy_p1_desc', label: 'Easy p@1 ↓' },
+    { value: 'easy_p3_desc', label: 'Easy p@3 ↓' },
+    { value: 'easy_irr_desc', label: 'Easy IRR ↓' },
+    { value: 'med_p1_desc', label: 'Med p@1 ↓' },
+    { value: 'med_p3_desc', label: 'Med p@3 ↓' },
+    { value: 'med_irr_desc', label: 'Med IRR ↓' },
+    { value: 'hard_p1_desc', label: 'Hard p@1 ↓' },
+    { value: 'hard_p3_desc', label: 'Hard p@3 ↓' },
+    { value: 'hard_irr_desc', label: 'Hard IRR ↓' }
   ],
   efficiency: [
     { value: 'p1_step_asc', label: 'p@1 Steps (Fewest)' },
@@ -122,6 +133,9 @@ function setupEventListeners() {
       } else if (tabId === 'crossapp-tab') {
         currentTab = 'crossapp';
         updateSortOptions('crossapp');
+      } else if (tabId === 'difficulty-tab') {
+        currentTab = 'difficulty';
+        updateSortOptions('difficulty');
       } else if (tabId === 'efficiency-tab') {
         currentTab = 'efficiency';
         updateSortOptions('efficiency');
@@ -204,9 +218,15 @@ function getFilteredData() {
       // Main tab metrics
       if (sortKey.startsWith('avg_p3')) return agent.avg?.p3 ?? null;
       if (sortKey.startsWith('avg_p1')) return agent.avg?.p1 ?? null;
+      if (sortKey.startsWith('easy_p1')) return agent.difficulty?.easy?.p1 ?? null;
       if (sortKey.startsWith('easy_p3')) return agent.difficulty?.easy?.p3 ?? null;
+      if (sortKey.startsWith('easy_irr')) return agent.difficulty?.easy?.irr ?? null;
+      if (sortKey.startsWith('med_p1')) return agent.difficulty?.medium?.p1 ?? null;
       if (sortKey.startsWith('med_p3')) return agent.difficulty?.medium?.p3 ?? null;
+      if (sortKey.startsWith('med_irr')) return agent.difficulty?.medium?.irr ?? null;
+      if (sortKey.startsWith('hard_p1')) return agent.difficulty?.hard?.p1 ?? null;
       if (sortKey.startsWith('hard_p3')) return agent.difficulty?.hard?.p3 ?? null;
+      if (sortKey.startsWith('hard_irr')) return agent.difficulty?.hard?.irr ?? null;
       if (sortKey.startsWith('irr_')) return agent.metrics?.shortTerm?.irr ?? null;
       if (sortKey.startsWith('mtpr')) return agent.metrics?.shortTerm?.mtpr ?? null;
       if (sortKey.startsWith('frr')) return agent.metrics?.longTerm?.frr ?? null;
@@ -255,8 +275,8 @@ function getFilteredData() {
 // Find best and second best values
 function findBestValues(data) {
   const metrics = ['app1_p1', 'app1_p3', 'app2_p1', 'app2_p3', 'app3_p1', 'app3_p3', 'app4_p1', 'app4_p3',
-                   'easy_p1', 'easy_p3', 'med_p1', 'med_p3', 'hard_p1', 'hard_p3', 'avg_p1', 'avg_p3',
-                   'irr', 'mtpr', 'frr'];
+                   'easy_p1', 'easy_p3', 'easy_irr', 'med_p1', 'med_p3', 'med_irr', 'hard_p1', 'hard_p3', 'hard_irr',
+                   'avg_p1', 'avg_p3', 'irr', 'mtpr', 'frr'];
   const best = {};
   const second = {};
   
@@ -274,7 +294,9 @@ function findBestValues(data) {
       } else if (category === 'avg') {
         return agent.avg[level];
       } else {
-        return agent.difficulty[category] ? agent.difficulty[category][level] : 0;
+        // Handle difficulty metrics including irr
+        const diffKey = category === 'med' ? 'medium' : category;
+        return agent.difficulty[diffKey] ? agent.difficulty[diffKey][level] : 0;
       }
     }).filter(v => v !== null).sort((a, b) => b - a);
     
@@ -291,9 +313,15 @@ function getSortedColumnKey() {
   // Map sort key to column identifier
   if (sortKey.startsWith('avg_p3')) return 'avg_p3';
   if (sortKey.startsWith('avg_p1')) return 'avg_p1';
+  if (sortKey.startsWith('easy_p1')) return 'easy_p1';
   if (sortKey.startsWith('easy_p3')) return 'easy_p3';
+  if (sortKey.startsWith('easy_irr')) return 'easy_irr';
+  if (sortKey.startsWith('med_p1')) return 'med_p1';
   if (sortKey.startsWith('med_p3')) return 'med_p3';
+  if (sortKey.startsWith('med_irr')) return 'med_irr';
+  if (sortKey.startsWith('hard_p1')) return 'hard_p1';
   if (sortKey.startsWith('hard_p3')) return 'hard_p3';
+  if (sortKey.startsWith('hard_irr')) return 'hard_irr';
   if (sortKey.startsWith('irr')) return 'irr';
   if (sortKey.startsWith('mtpr')) return 'mtpr';
   if (sortKey.startsWith('frr')) return 'frr';
@@ -366,6 +394,9 @@ function renderTables() {
   
   // Render Cross-App Complexity table
   document.getElementById('crossAppTable').innerHTML = createCrossAppTableHTML(filteredData);
+  
+  // Render Difficulty table
+  document.getElementById('difficultyTable').innerHTML = createDifficultyTableHTML(filteredData);
 }
 
 // Create main table HTML
@@ -383,21 +414,12 @@ function createTableHTML(data) {
   let html = `
     <table class="leaderboard-table">
       <thead>
-        <tr class="header-group">
-          <th rowspan="2">Rank</th>
-          <th rowspan="2">Model & Date</th>
-          <th rowspan="2">Type</th>
-          <th colspan="2">Easy</th>
-          <th colspan="2">Med</th>
-          <th colspan="2">Hard</th>
-          <th colspan="2">Avg</th>
-          <th colspan="3">Memory</th>
-        </tr>
-        <tr class="header-subgroup">
-          <th class="${sc('easy_p1')}">p@1</th><th class="${sc('easy_p3')}">p@3</th>
-          <th class="${sc('med_p1')}">p@1</th><th class="${sc('med_p3')}">p@3</th>
-          <th class="${sc('hard_p1')}">p@1</th><th class="${sc('hard_p3')}">p@3</th>
-          <th class="${sc('avg_p1')}">p@1</th><th class="${sc('avg_p3')}">p@3</th>
+        <tr>
+          <th>Rank</th>
+          <th>Model & Date</th>
+          <th>Type</th>
+          <th class="${sc('avg_p1')}" title="Success Rate (pass@1)">p@1</th>
+          <th class="${sc('avg_p3')}" title="Success Rate (pass@3)">p@3</th>
           <th class="${sc('irr')}" title="Information Retention Rate">IRR</th>
           <th class="${sc('mtpr')}" title="Memory-Task Proficiency Ratio">MTPR</th>
           <th class="${sc('frr')}" title="Failure Recovery Rate">FRR</th>
@@ -448,27 +470,21 @@ function createTableHTML(data) {
           <span class="rank-badge ${rankBadgeClass}">${rank}</span>
         </td>
         <td class="model-cell">
-          <div class="model-name">
-            ${displayName}
-            <div class="tags">${tags}</div>
+          <div class="model-info-row">
+            <span class="model-name-main">${agent.name}</span>${tags ? `<span class="tags-inline">${tags}</span>` : ''}
+            ${agent.type === 'Agentic Workflow' && agent.backbone && agent.backbone !== '-' ? `<span class="model-backbone-inline">w/ ${agent.backbone}</span>` : ''}
           </div>
-          <div class="model-meta">
-            <span class="model-institution">${agent.institution}</span>
-            <span class="model-date">${formatDate(agent.date)}</span>
+          <div class="model-sub-row">
+            <span class="model-institution-text">${agent.institution}</span>
+            <span class="model-date-text">${formatDate(agent.date)}</span>
           </div>
-          <div class="action-links">${actionLinks}</div>
+          ${actionLinks ? `<div class="model-links-row">${actionLinks}</div>` : ''}
         </td>
         <td class="type-cell">
           <span class="type-badge ${agent.type === 'Agentic Workflow' ? 'workflow' : 'model'}">
             ${agent.type === 'Agentic Workflow' ? 'Workflow' : 'Model'}
           </span>
         </td>
-        ${formatScore(agent.difficulty.easy.p1, 'easy_p1', bestValues, sortedCol === 'easy_p1')}
-        ${formatScore(agent.difficulty.easy.p3, 'easy_p3', bestValues, sortedCol === 'easy_p3')}
-        ${formatScore(agent.difficulty.medium.p1, 'med_p1', bestValues, sortedCol === 'med_p1')}
-        ${formatScore(agent.difficulty.medium.p3, 'med_p3', bestValues, sortedCol === 'med_p3')}
-        ${formatScore(agent.difficulty.hard.p1, 'hard_p1', bestValues, sortedCol === 'hard_p1')}
-        ${formatScore(agent.difficulty.hard.p3, 'hard_p3', bestValues, sortedCol === 'hard_p3')}
         <td class="score-cell avg-score ${agent.avg.p1 === bestValues.best.avg_p1 ? 'best' : ''}${sc('avg_p1')}">${agent.avg.p1.toFixed(1)}</td>
         <td class="score-cell avg-score ${agent.avg.p3 === bestValues.best.avg_p3 ? 'best' : ''}${sc('avg_p3')}">${agent.avg.p3.toFixed(1)}</td>
         ${formatScore(irr, 'irr', bestValues, sortedCol === 'irr')}
@@ -548,28 +564,41 @@ function createEfficiencyTableHTML(data) {
       displayName = `${agent.name} <span class="model-backbone">w/ ${agent.backbone}</span>`;
     }
     
-    const formatStepRatio = (val, best, isShortTerm = true) => {
+    // Format with delta indicator for p@3 columns
+    const formatDelta = (p3Val, p1Val) => {
+      if (!p3Val || !p1Val || p1Val === 0) return '';
+      const delta = ((p3Val - p1Val) / p1Val) * 100;
+      if (Math.abs(delta) < 0.5) return '';
+      const sign = delta > 0 ? '+' : '';
+      const colorClass = delta < 0 ? 'delta-good' : 'delta-bad';
+      return `<span class="delta-indicator ${colorClass}">${sign}${delta.toFixed(0)}%</span>`;
+    };
+    
+    const formatStepRatio = (val, best, isShortTerm = true, p1Val = null) => {
       const colKey = isShortTerm ? 'p1_step' : 'p3_step';
       const sortedClass = (sortedCol === colKey) ? ' sorted-column' : '';
       if (!val) return `<td class="score-cell na${sortedClass}">-</td>`;
       const isBest = Math.abs(val - best) < 0.01;
-      return `<td class="score-cell ${isBest ? 'best-efficiency' : ''} ${val <= 1.0 ? 'good-ratio' : val > 1.2 ? 'bad-ratio' : ''}${sortedClass}">${val.toFixed(2)}</td>`;
+      const delta = !isShortTerm ? formatDelta(val, p1Val) : '';
+      return `<td class="score-cell ${isBest ? 'best-efficiency' : ''} ${val <= 1.0 ? 'good-ratio' : val > 1.2 ? 'bad-ratio' : ''}${sortedClass}">${val.toFixed(2)}${delta}</td>`;
     };
     
-    const formatTime = (val, best, isShortTerm = true) => {
+    const formatTime = (val, best, isShortTerm = true, p1Val = null) => {
       const colKey = isShortTerm ? 'p1_time' : 'p3_time';
       const sortedClass = (sortedCol === colKey) ? ' sorted-column' : '';
       if (!val) return `<td class="score-cell na${sortedClass}">-</td>`;
       const isBest = Math.abs(val - best) < 0.1;
-      return `<td class="score-cell ${isBest ? 'best-efficiency' : ''}${sortedClass}">${val.toFixed(1)}s</td>`;
+      const delta = !isShortTerm ? formatDelta(val, p1Val) : '';
+      return `<td class="score-cell ${isBest ? 'best-efficiency' : ''}${sortedClass}">${val.toFixed(1)}s${delta}</td>`;
     };
     
-    const formatCost = (val, best, isShortTerm = true) => {
+    const formatCost = (val, best, isShortTerm = true, p1Val = null) => {
       const colKey = isShortTerm ? 'p1_cost' : 'p3_cost';
       const sortedClass = (sortedCol === colKey) ? ' sorted-column' : '';
       if (!val) return `<td class="score-cell na${sortedClass}">-</td>`;
       const isBest = Math.abs(val - best) < 0.001;
-      return `<td class="score-cell ${isBest ? 'best-efficiency' : ''}${sortedClass}">${'$' + val.toFixed(4)}</td>`;
+      const delta = !isShortTerm ? formatDelta(val, p1Val) : '';
+      return `<td class="score-cell ${isBest ? 'best-efficiency' : ''}${sortedClass}">$${val.toFixed(4)}${delta}</td>`;
     };
     
     // Rank badge class
@@ -609,9 +638,9 @@ function createEfficiencyTableHTML(data) {
         ${formatStepRatio(stm?.stepRatio, bestStepRatio, true)}
         ${formatTime(stm?.timePerStep, bestTime, true)}
         ${formatCost(stm?.costPerStep, bestCost, true)}
-        ${formatStepRatio(ltm?.stepRatio, bestStepRatio, false)}
-        ${formatTime(ltm?.timePerStep, bestTime, false)}
-        ${formatCost(ltm?.costPerStep, bestCost, false)}
+        ${formatStepRatio(ltm?.stepRatio, bestStepRatio, false, stm?.stepRatio)}
+        ${formatTime(ltm?.timePerStep, bestTime, false, stm?.timePerStep)}
+        ${formatCost(ltm?.costPerStep, bestCost, false, stm?.costPerStep)}
       </tr>
     `;
   });
@@ -622,6 +651,159 @@ function createEfficiencyTableHTML(data) {
   `;
   
   return html;
+}
+
+// Create Difficulty Table
+function createDifficultyTableHTML(data) {
+  if (data.length === 0) {
+    return '<div class="empty-state"><i class="bi bi-search"></i><p>No agents match the current filters.</p></div>';
+  }
+  
+  // Find best values for highlighting
+  const bestValues = findDifficultyBestValues(data);
+  const sortedCol = getSortedColumnKey();
+  const sc = (col) => sortedCol === col ? ' sorted-column' : '';
+  
+  let html = `
+    <table class="leaderboard-table difficulty-table">
+      <thead>
+        <tr class="header-group">
+          <th rowspan="2">Rank</th>
+          <th rowspan="2">Model & Date</th>
+          <th rowspan="2">Type</th>
+          <th colspan="3">Easy (48 tasks)</th>
+          <th colspan="3">Medium (42 tasks)</th>
+          <th colspan="3">Hard (38 tasks)</th>
+          <th colspan="3">Avg (128 tasks)</th>
+        </tr>
+        <tr class="header-subgroup">
+          <th class="${sc('easy_p1')}">p@1</th><th class="${sc('easy_p3')}">p@3</th><th class="${sc('easy_irr')}">IRR</th>
+          <th class="${sc('med_p1')}">p@1</th><th class="${sc('med_p3')}">p@3</th><th class="${sc('med_irr')}">IRR</th>
+          <th class="${sc('hard_p1')}">p@1</th><th class="${sc('hard_p3')}">p@3</th><th class="${sc('hard_irr')}">IRR</th>
+          <th class="${sc('avg_p1')}">p@1</th><th class="${sc('avg_p3')}">p@3</th><th class="${sc('irr')}">IRR</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+  
+  data.forEach((agent, index) => {
+    html += createDifficultyRow(agent, bestValues, index + 1, sortedCol);
+  });
+  
+  html += `
+      </tbody>
+    </table>
+  `;
+  
+  return html;
+}
+
+// Helper: Find best values for Difficulty table
+function findDifficultyBestValues(data) {
+  const metrics = ['easy_p1', 'easy_p3', 'easy_irr', 'med_p1', 'med_p3', 'med_irr', 'hard_p1', 'hard_p3', 'hard_irr'];
+  const best = {};
+  const second = {};
+  
+  metrics.forEach(metric => {
+    const values = data.map(agent => {
+      const [level, type] = metric.split('_');
+      const levelKey = level === 'med' ? 'medium' : level;
+      if (type === 'p1') {
+        return agent.difficulty?.[levelKey]?.p1 ?? null;
+      } else if (type === 'p3') {
+        return agent.difficulty?.[levelKey]?.p3 ?? null;
+      } else if (type === 'irr') {
+        return agent.difficulty?.[levelKey]?.irr ?? null;
+      }
+      return null;
+    }).filter(v => v !== null && v > 0).sort((a, b) => b - a);
+    
+    best[metric] = values[0] || 0;
+    second[metric] = values[1] || 0;
+  });
+  
+  return { best, second };
+}
+
+// Helper: Create a row for Difficulty table
+function createDifficultyRow(agent, bestValues, rank, sortedCol = '') {
+  const diff = agent.difficulty;
+  const isFirst = rank === 1;
+  
+  const formatCell = (value, metricKey, colKey) => {
+    const isSorted = sortedCol === colKey;
+    const sortedClass = isSorted ? ' sorted-column' : '';
+    
+    if (value === null || value === undefined) {
+      return `<td class="score-cell na${sortedClass}">-</td>`;
+    }
+    if (value === 0) {
+      return `<td class="score-cell zero${sortedClass}">0.0</td>`;
+    }
+    let className = 'score-cell';
+    if (value === bestValues.best[metricKey] && value > 0) {
+      className += ' best';
+    } else if (value === bestValues.second[metricKey] && value > 0) {
+      className += ' second';
+    }
+    className += sortedClass;
+    return `<td class="${className}">${value.toFixed(1)}</td>`;
+  };
+  
+  // Build tags
+  let tags = '';
+  if (agent.hasUITree) tags += '<span class="tag tag-uitree" title="Uses UI Tree">🌳</span>';
+  if (agent.hasLongTermMemory) tags += '<span class="tag tag-ltm" title="Long-Term Memory">🧠</span>';
+  
+  // Build action links
+  let actionLinks = '';
+  if (agent.paperLink) {
+    actionLinks += `<a href="${agent.paperLink}" target="_blank" class="action-link"><i class="bi bi-file-text"></i> Paper</a>`;
+  }
+  if (agent.codeLink) {
+    actionLinks += `<a href="${agent.codeLink}" target="_blank" class="action-link"><i class="bi bi-github"></i> Code</a>`;
+  }
+  
+  // Display name with backbone for workflow types
+  let displayName = agent.name;
+  if (agent.type === 'Agentic Workflow' && agent.backbone && agent.backbone !== '-') {
+    displayName = `${agent.name} <span class="model-backbone">w/ ${agent.backbone}</span>`;
+  }
+  
+  // Rank badge class
+  const rankBadgeClass = getRankBadgeClass(rank);
+  
+  // Get avg IRR
+  const avgIrr = agent.metrics?.shortTerm?.irr ?? null;
+  
+  return `
+    <tr class="${isFirst ? 'first-rank' : ''}">
+      <td class="rank-cell"><span class="rank-badge ${rankBadgeClass}">${rank}</span></td>
+      <td class="model-cell">
+        <div class="model-name">${displayName}<div class="tags">${tags}</div></div>
+        <div class="model-meta">
+          <span class="model-institution">${agent.institution}</span>
+          <span class="model-date">${formatDate(agent.date)}</span>
+        </div>
+        <div class="action-links">${actionLinks}</div>
+      </td>
+      <td class="type-cell">
+        <span class="type-badge ${agent.type === 'Agentic Workflow' ? 'workflow' : 'model'}">${agent.type === 'Agentic Workflow' ? 'Workflow' : 'Model'}</span>
+      </td>
+      ${formatCell(diff?.easy?.p1, 'easy_p1', 'easy_p1')}
+      ${formatCell(diff?.easy?.p3, 'easy_p3', 'easy_p3')}
+      ${formatCell(diff?.easy?.irr, 'easy_irr', 'easy_irr')}
+      ${formatCell(diff?.medium?.p1, 'med_p1', 'med_p1')}
+      ${formatCell(diff?.medium?.p3, 'med_p3', 'med_p3')}
+      ${formatCell(diff?.medium?.irr, 'med_irr', 'med_irr')}
+      ${formatCell(diff?.hard?.p1, 'hard_p1', 'hard_p1')}
+      ${formatCell(diff?.hard?.p3, 'hard_p3', 'hard_p3')}
+      ${formatCell(diff?.hard?.irr, 'hard_irr', 'hard_irr')}
+      <td class="score-cell avg-score${sortedCol === 'avg_p1' ? ' sorted-column' : ''}">${agent.avg.p1.toFixed(1)}</td>
+      <td class="score-cell avg-score${sortedCol === 'avg_p3' ? ' sorted-column' : ''}">${agent.avg.p3.toFixed(1)}</td>
+      ${formatCell(avgIrr, 'irr', 'irr')}
+    </tr>
+  `;
 }
 
 // Create Cross-App Complexity Table (Table 4 in paper)
@@ -642,11 +824,11 @@ function createCrossAppTableHTML(data) {
           <th rowspan="2">Rank</th>
           <th rowspan="2">Model & Date</th>
           <th rowspan="2">Type</th>
-          <th colspan="3">1 App</th>
-          <th colspan="3">2 Apps</th>
-          <th colspan="3">3 Apps</th>
-          <th colspan="3">4 Apps</th>
-          <th colspan="3">Avg</th>
+          <th colspan="3">1 App (28 tasks)</th>
+          <th colspan="3">2 Apps (56 tasks)</th>
+          <th colspan="3">3 Apps (34 tasks)</th>
+          <th colspan="3">4 Apps (10 tasks)</th>
+          <th colspan="3">Avg (128 tasks)</th>
         </tr>
         <tr class="header-subgroup">
           <th class="${sc('app1_p1')}">p@1</th><th class="${sc('app1_p3')}">p@3</th><th class="${sc('app1_irr')}">IRR</th>
@@ -663,16 +845,7 @@ function createCrossAppTableHTML(data) {
     html += createCrossAppRow(agent, bestValues, index + 1, sortedCol);
   });
   
-  // Task count row
   html += `
-        <tr class="task-count-row">
-          <td colspan="3"><strong>Task Count</strong></td>
-          <td colspan="3"><strong>28</strong></td>
-          <td colspan="3"><strong>56</strong></td>
-          <td colspan="3"><strong>34</strong></td>
-          <td colspan="3"><strong>10</strong></td>
-          <td colspan="3"><strong>128</strong></td>
-        </tr>
       </tbody>
     </table>
   `;
