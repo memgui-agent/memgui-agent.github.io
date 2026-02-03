@@ -2,7 +2,6 @@
   "name": "UI-TARS-1.5-7B",
   "backbone": "-",
   "type": "Agent-as-a-Model",
-  "memoryType": "MC",
   "institution": "ByteDance Seed",
   "date": "2025-01-23",
   "paperLink": "https://arxiv.org/abs/2501.12326",

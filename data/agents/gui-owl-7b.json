@@ -2,7 +2,6 @@
   "name": "GUI-Owl-7B",
   "backbone": "-",
   "type": "Agent-as-a-Model",
-  "memoryType": "MC",
   "institution": "Alibaba",
   "date": "2025-08-01",
   "paperLink": "http://arxiv.org/abs/2508.15144",

@@ -2,7 +2,6 @@
   "name": "UI-Venus-7B",
   "backbone": "-",
   "type": "Agent-as-a-Model",
-  "memoryType": "AT",
   "institution": "InclusionAI",
   "date": "2025-08-01",
   "paperLink": "https://arxiv.org/abs/2508.10833",

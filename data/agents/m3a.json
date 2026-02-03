@@ -2,7 +2,6 @@
   "name": "M3A",
   "backbone": "Gemini-2.5-Pro",
   "type": "Agentic Workflow",
-  "memoryType": "MW",
   "institution": "Google DeepMind",
   "date": "2024-05-01",
   "paperLink": "https://arxiv.org/abs/2405.14573",

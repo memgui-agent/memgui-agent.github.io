@@ -2,7 +2,6 @@
   "name": "Mobile-Agent-V2",
   "backbone": "Gemini-2.5-Pro",
   "type": "Agentic Workflow",
-  "memoryType": "MW",
   "institution": "Alibaba",
   "date": "2024-06-03",
   "paperLink": "https://arxiv.org/abs/2406.01014",

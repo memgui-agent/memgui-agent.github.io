@@ -2,7 +2,6 @@
   "name": "SeeAct",
   "backbone": "Gemini-2.5-Pro",
   "type": "Agentic Workflow",
-  "memoryType": "MW",
   "institution": "OSU NLP",
   "date": "2024-01-24",
   "paperLink": "https://arxiv.org/abs/2401.01614",

@@ -2,7 +2,6 @@
   "name": "CogAgent",
   "backbone": "-",
   "type": "Agent-as-a-Model",
-  "memoryType": "AO",
   "institution": "Tsinghua & Zhipu",
   "date": "2023-12-14",
   "paperLink": "https://arxiv.org/abs/2312.08914",
