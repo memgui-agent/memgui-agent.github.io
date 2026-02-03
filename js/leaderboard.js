@@ -1,4 +1,6 @@
 // Leaderboard JavaScript
+// Note: AGENT_FILES is defined in config.js (loaded before this script)
+
 let leaderboardData = null;
 let currentFilters = {
   agentType: 'all',  // 'all', 'workflow', 'model'
@@ -6,21 +8,6 @@ let currentFilters = {
   ltm: 'all',        // 'all', 'with', 'without'
   sortBy: 'avg_p3_desc'
 };
-
-// Agent file list - add new agents here
-const AGENT_FILES = [
-  'agent-s2',
-  'm3a',
-  't3a',
-  'mobile-agent-e',
-  'mobile-agent-v2',
-  'seeact',
-  'appagent',
-  'cogagent',
-  'ui-venus-7b',
-  'ui-tars-1.5-7b',
-  'gui-owl-7b'
-];
 
 // Sort options for each tab
 const sortOptions = {
@@ -76,6 +63,7 @@ let currentTab = 'main';
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
+  await loadAgentList();  // Load agent list from index.json first
   await loadData();
   setupEventListeners();
   updateSortOptions('main');
@@ -671,10 +659,10 @@ function createDifficultyTableHTML(data) {
           <th rowspan="2">Rank</th>
           <th rowspan="2">Model & Date</th>
           <th rowspan="2">Type</th>
-          <th colspan="3">Easy (48 tasks)</th>
-          <th colspan="3">Medium (42 tasks)</th>
-          <th colspan="3">Hard (38 tasks)</th>
-          <th colspan="3">Avg (128 tasks)</th>
+          <th colspan="3">Easy (${TASK_COUNTS.difficulty.easy} tasks)</th>
+          <th colspan="3">Medium (${TASK_COUNTS.difficulty.medium} tasks)</th>
+          <th colspan="3">Hard (${TASK_COUNTS.difficulty.hard} tasks)</th>
+          <th colspan="3">Avg (${TASK_COUNTS.total} tasks)</th>
         </tr>
         <tr class="header-subgroup">
           <th class="${sc('easy_p1')}">p@1</th><th class="${sc('easy_p3')}">p@3</th><th class="${sc('easy_irr')}">IRR</th>
@@ -824,11 +812,11 @@ function createCrossAppTableHTML(data) {
           <th rowspan="2">Rank</th>
           <th rowspan="2">Model & Date</th>
           <th rowspan="2">Type</th>
-          <th colspan="3">1 App (28 tasks)</th>
-          <th colspan="3">2 Apps (56 tasks)</th>
-          <th colspan="3">3 Apps (34 tasks)</th>
-          <th colspan="3">4 Apps (10 tasks)</th>
-          <th colspan="3">Avg (128 tasks)</th>
+          <th colspan="3">1 App (${TASK_COUNTS.crossApp.app1} tasks)</th>
+          <th colspan="3">2 Apps (${TASK_COUNTS.crossApp.app2} tasks)</th>
+          <th colspan="3">3 Apps (${TASK_COUNTS.crossApp.app3} tasks)</th>
+          <th colspan="3">4 Apps (${TASK_COUNTS.crossApp.app4} tasks)</th>
+          <th colspan="3">Avg (${TASK_COUNTS.total} tasks)</th>
         </tr>
         <tr class="header-subgroup">
           <th class="${sc('app1_p1')}">p@1</th><th class="${sc('app1_p3')}">p@3</th><th class="${sc('app1_irr')}">IRR</th>
