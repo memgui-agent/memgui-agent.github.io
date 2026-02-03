@@ -7,6 +7,21 @@ let currentFilters = {
   sortBy: 'avg_p3_desc'
 };
 
+// Agent file list - add new agents here
+const AGENT_FILES = [
+  'agent-s2',
+  'm3a',
+  't3a',
+  'mobile-agent-e',
+  'mobile-agent-v2',
+  'seeact',
+  'appagent',
+  'cogagent',
+  'ui-venus-7b',
+  'ui-tars-1.5-7b',
+  'gui-owl-7b'
+];
+
 // Sort options for each tab
 const sortOptions = {
   main: [
@@ -56,11 +71,25 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderTables();
 });
 
-// Load data from JSON
+// Load data from individual agent JSON files
 async function loadData() {
   try {
-    const response = await fetch('data/results.json');
-    leaderboardData = await response.json();
+    // Load each agent file in parallel
+    const agentPromises = AGENT_FILES.map(async (agentId) => {
+      const response = await fetch(`data/agents/${agentId}.json`);
+      if (!response.ok) {
+        console.warn(`Failed to load agent: ${agentId}`);
+        return null;
+      }
+      return response.json();
+    });
+    
+    const agents = (await Promise.all(agentPromises)).filter(a => a !== null);
+    
+    leaderboardData = {
+      lastUpdated: new Date().toISOString().split('T')[0],
+      agents: agents
+    };
   } catch (error) {
     console.error('Error loading leaderboard data:', error);
     document.getElementById('mainTable').innerHTML = '<p class="text-center text-danger">Error loading data.</p>';
