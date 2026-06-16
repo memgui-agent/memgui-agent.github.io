@@ -764,7 +764,18 @@ h2 {
 }
 
 .figure-grid {
-  align-items: start;
+  align-items: stretch;
+}
+
+.figure-grid .paper-figure {
+  display: flex;
+  flex-direction: column;
+}
+
+.figure-grid .paper-figure img {
+  height: 360px;
+  object-fit: contain;
+  padding: 16px;
 }
 
 .table-wrap {
@@ -964,6 +975,11 @@ footer {
 
   .hero-copy {
     font-size: 1rem;
+  }
+
+  .figure-grid .paper-figure img {
+    height: 260px;
+    padding: 12px;
   }
 
   .hero-authors {
