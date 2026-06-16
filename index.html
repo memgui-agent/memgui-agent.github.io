@@ -34,6 +34,9 @@
     <symbol id="icon-mail" viewBox="0 0 24 24">
       <path d="M4 6h16v12H4zM4 7l8 6 8-6" />
     </symbol>
+    <symbol id="icon-hf" viewBox="0 0 24 24">
+      <path d="M7.3 8.5a2.1 2.1 0 1 0 0-4.2 2.1 2.1 0 0 0 0 4.2ZM16.7 8.5a2.1 2.1 0 1 0 0-4.2 2.1 2.1 0 0 0 0 4.2ZM4.7 11.2c.8-1.2 2.4-1.6 3.6-.8l1.2.8c.7.5 1.6.7 2.5.7s1.8-.2 2.5-.7l1.2-.8c1.2-.8 2.8-.4 3.6.8.8 1.2.4 2.8-.8 3.6l-.9.6c-.4 3-2.8 5.1-5.6 5.1s-5.2-2.1-5.6-5.1l-.9-.6c-1.2-.8-1.6-2.4-.8-3.6ZM9.3 15.5c.5 1 1.5 1.6 2.7 1.6s2.2-.6 2.7-1.6H9.3Z" />
+    </symbol>
   </svg>
   <nav class="site-nav">
     <div class="nav-inner">
@@ -79,12 +82,30 @@
         </p>
       </div>
       <div class="hero-actions">
-        <a class="button primary" href="https://github.com/lgy0404/MemGUI-Agent"><svg class="button-icon"><use href="#icon-github"></use></svg>Code Repo</a>
-        <a class="button" href="#citation"><svg class="button-icon"><use href="#icon-paper"></use></svg>Paper</a>
-        <a class="button accent" href="https://huggingface.co/datasets/lgy0404/MemGUI-3K">MemGUI-3K</a>
-        <a class="button accent soft" href="https://huggingface.co/lgy0404/MemGUI-8B-SFT">MemGUI-8B-SFT</a>
-        <a class="button" href="https://lgy0404.github.io/MemGUI-Bench/"><svg class="button-icon"><use href="#icon-chart"></use></svg>MemGUI-Bench Traj.</a>
-        <a class="button" href="https://tongyi-mai.github.io/MobileWorld/"><svg class="button-icon"><use href="#icon-chart"></use></svg>MobileWorld Traj.</a>
+        <a class="button primary" href="https://github.com/lgy0404/MemGUI-Agent" target="_blank" rel="noopener">
+          <svg class="button-icon fill-icon"><use href="#icon-github"></use></svg>
+          Code Repo
+        </a>
+        <a class="button secondary" href="#citation" aria-label="Paper citation">
+          <img class="button-icon arxiv-icon" src="images/icons/arxiv-logomark-small.svg" alt="" aria-hidden="true">
+          Paper
+        </a>
+        <a class="button accent" href="https://huggingface.co/datasets/lgy0404/MemGUI-3K" target="_blank" rel="noopener">
+          <svg class="button-icon fill-icon hf-icon"><use href="#icon-hf"></use></svg>
+          MemGUI-3K
+        </a>
+        <a class="button accent soft" href="https://huggingface.co/lgy0404/MemGUI-8B-SFT" target="_blank" rel="noopener">
+          <svg class="button-icon fill-icon hf-icon"><use href="#icon-hf"></use></svg>
+          MemGUI-8B-SFT
+        </a>
+        <a class="button secondary" href="https://lgy0404.github.io/MemGUI-Bench/" target="_blank" rel="noopener">
+          <svg class="button-icon"><use href="#icon-chart"></use></svg>
+          MemGUI-Bench Traj.
+        </a>
+        <a class="button secondary" href="https://tongyi-mai.github.io/MobileWorld/" target="_blank" rel="noopener">
+          <svg class="button-icon"><use href="#icon-chart"></use></svg>
+          MobileWorld Traj.
+        </a>
       </div>
     </div>
   </header>
