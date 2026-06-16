@@ -37,22 +37,21 @@
   </svg>
   <nav class="site-nav">
     <div class="nav-inner">
+      <div class="nav-brand-row" aria-label="MemGUI-Agent affiliations">
+        <a class="brand" href="#">
+          <img src="images/brand/memgui-agent-logo.png" alt="MemGUI-Agent">
+        </a>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <img class="nav-unit kuaishou" src="images/brand/kuaishou-logo.png" alt="Kuaishou">
+        <span class="nav-divider" aria-hidden="true"></span>
+        <img class="nav-unit zju" src="images/brand/zju-logo.png" alt="Zhejiang University">
+      </div>
       <div class="nav-links nav-sections">
         <a href="#videos">Videos</a>
         <a href="#results">Results</a>
         <a href="#method">Method</a>
         <a href="#dataset">Dataset</a>
         <a href="#citation">Citation</a>
-      </div>
-      <div class="nav-affiliations" aria-label="Affiliations">
-        <img src="images/brand/kuaishou-logo.png" alt="Kuaishou">
-        <img src="images/brand/zju-logo.png" alt="Zhejiang University">
-      </div>
-      <div class="nav-links nav-external">
-        <a href="https://github.com/lgy0404/MemGUI-Agent">Code</a>
-        <a href="https://huggingface.co/datasets/lgy0404/MemGUI-3K">Dataset</a>
-        <a href="https://huggingface.co/lgy0404/MemGUI-8B-SFT">Model</a>
-        <a href="#citation">Paper</a>
       </div>
     </div>
   </nav>
@@ -78,11 +77,14 @@
           action history, updates UI memory, and emits the next GUI action in one
           structured response.
         </p>
-        <div class="trajectory-proof" aria-label="Full benchmark trajectories">
-          <span>Full benchmark test trajectories</span>
-          <a href="https://lgy0404.github.io/MemGUI-Bench/">MemGUI-Bench official page</a>
-          <a href="https://tongyi-mai.github.io/MobileWorld/">MobileWorld official page</a>
-        </div>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="https://github.com/lgy0404/MemGUI-Agent"><svg class="button-icon"><use href="#icon-github"></use></svg>Code Repo</a>
+        <a class="button" href="#citation"><svg class="button-icon"><use href="#icon-paper"></use></svg>Paper</a>
+        <a class="button accent" href="https://huggingface.co/datasets/lgy0404/MemGUI-3K">MemGUI-3K</a>
+        <a class="button accent soft" href="https://huggingface.co/lgy0404/MemGUI-8B-SFT">MemGUI-8B-SFT</a>
+        <a class="button" href="https://lgy0404.github.io/MemGUI-Bench/"><svg class="button-icon"><use href="#icon-chart"></use></svg>MemGUI-Bench Traj.</a>
+        <a class="button" href="https://tongyi-mai.github.io/MobileWorld/"><svg class="button-icon"><use href="#icon-chart"></use></svg>MobileWorld Traj.</a>
       </div>
       <div class="hero-showcase">
         <div class="hero-video">
@@ -110,14 +112,6 @@
             <span>MemGUI-3K trajectories</span>
           </div>
         </div>
-      </div>
-      <div class="hero-actions">
-        <a class="button accent" href="#method"><svg class="button-icon"><use href="#icon-lightbulb"></use></svg>Core Idea</a>
-        <a class="button" href="#method"><svg class="button-icon"><use href="#icon-method"></use></svg>Method</a>
-        <a class="button" href="#results"><svg class="button-icon"><use href="#icon-chart"></use></svg>View Results</a>
-        <a class="button primary" href="https://github.com/lgy0404/MemGUI-Agent"><svg class="button-icon"><use href="#icon-github"></use></svg>Code Repo</a>
-        <a class="button" href="#citation"><svg class="button-icon"><use href="#icon-paper"></use></svg>Paper</a>
-        <a class="button" href="#videos"><svg class="button-icon"><use href="#icon-video"></use></svg>Video</a>
       </div>
     </div>
   </header>
