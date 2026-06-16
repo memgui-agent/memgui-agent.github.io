@@ -74,9 +74,9 @@
           <sup>1</sup>Zhejiang University &nbsp;&nbsp; <sup>2</sup>Kuaishou Technology
         </p>
         <p class="hero-copy">
-          MemGUI-Agent is an end-to-end mobile GUI agent that instantiates ConAct,
-          a Context-as-Action paradigm for folding action history, updating UI
-          memory, and executing the next GUI action in one structured policy output.
+          MemGUI-Agent uses ConAct, a Context-as-Action interface that folds
+          action history, updates UI memory, and emits the next GUI action in one
+          structured response.
         </p>
         <div class="trajectory-proof" aria-label="Full benchmark trajectories">
           <span>Full benchmark test trajectories</span>
@@ -131,8 +131,7 @@
             <h2>Case studies from the paper</h2>
           </div>
           <p class="lead">
-            The comparison video summarizes four base-vs-MemGUI trajectories; the
-            remaining eight videos show the detailed single-trajectory demos.
+            Side-by-side and single-trajectory demos for the paper case studies.
           </p>
         </div>
 
@@ -331,8 +330,7 @@
             <h2>Benchmark standings</h2>
           </div>
           <p class="lead">
-            Click each table to inspect the complete public benchmark trajectories
-            on the official MemGUI-Bench and MobileWorld pages.
+            Click a table to open the corresponding public trajectory viewer.
           </p>
         </div>
         <div class="leaderboard-stack">
@@ -396,12 +394,11 @@
         <div class="section-head">
           <div>
             <p class="section-kicker">03 / Dataset and Case Study</p>
-            <h2>MemGUI-3K supervision and trajectory evidence</h2>
+            <h2>MemGUI-3K and case study</h2>
           </div>
           <p class="lead">
-            MemGUI-3K supplies full ConAct annotations for supervised training
-            and offline skill analysis; the case study visualizes the resulting
-            long-horizon behavior.
+            MemGUI-3K supports SFT and offline analysis. The case study follows
+            one long mobile workflow end to end.
           </p>
         </div>
 
@@ -409,15 +406,13 @@
           <div class="paper-figure">
             <img src="images/paper/dataset-statistics.png" alt="MemGUI-3K dataset statistics" loading="lazy">
             <div class="figure-caption">
-              MemGUI-3K contains 2,956 trajectories and 64,430 reasonable-step
-              SFT samples across mobile GUI tasks.
+              MemGUI-3K contains 2,956 trajectories and 64,430 reasonable-step SFT samples.
             </div>
           </div>
           <div class="paper-figure">
             <img src="images/paper/case-study-good.png" alt="MemGUI-Agent case study" loading="lazy">
             <div class="figure-caption">
-              Paper case study showing how MemGUI-Agent preserves task-relevant
-              state across a long mobile interaction.
+              Paper case study showing compact context over a long mobile interaction.
             </div>
           </div>
         </div>
