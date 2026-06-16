@@ -7,7 +7,7 @@
   <meta name="description"
     content="MemGUI-Agent is an end-to-end long-horizon mobile GUI agent with proactive context management through ConAct.">
   <title>MemGUI-Agent</title>
-  <link rel="icon" href="assets/favicon.png">
+  <link rel="icon" href="images/logo/memgui-agent-wo-text.drawio-1.png">
   <link rel="stylesheet" href="css/agent.css">
 </head>
 
@@ -37,19 +37,22 @@
   </svg>
   <nav class="site-nav">
     <div class="nav-inner">
-      <a class="brand" href="#">
-        <img src="images/brand/memgui-agent-logo.png" alt="MemGUI-Agent">
-      </a>
-      <div class="nav-affiliations" aria-label="Affiliations">
-        <img src="images/brand/kuaishou-logo.png" alt="Kuaishou">
-        <img src="images/brand/zju-logo.png" alt="Zhejiang University">
-      </div>
-      <div class="nav-links">
+      <div class="nav-links nav-sections">
         <a href="#videos">Videos</a>
         <a href="#results">Results</a>
         <a href="#method">Method</a>
         <a href="#dataset">Dataset</a>
         <a href="#citation">Citation</a>
+      </div>
+      <div class="nav-affiliations" aria-label="Affiliations">
+        <img src="images/brand/kuaishou-logo.png" alt="Kuaishou">
+        <img src="images/brand/zju-logo.png" alt="Zhejiang University">
+      </div>
+      <div class="nav-links nav-external">
+        <a href="https://github.com/lgy0404/MemGUI-Agent">Code</a>
+        <a href="https://huggingface.co/datasets/lgy0404/MemGUI-3K">Dataset</a>
+        <a href="https://huggingface.co/lgy0404/MemGUI-8B-SFT">Model</a>
+        <a href="#citation">Paper</a>
       </div>
     </div>
   </nav>
@@ -57,8 +60,8 @@
   <header class="hero">
     <div class="hero-inner">
       <div class="hero-content">
-        <p class="eyebrow">Long-horizon mobile GUI agents</p>
-        <h1>MemGUI-Agent</h1>
+        <p class="eyebrow">MemGUI-Agent</p>
+        <h1>MemGUI-Agent: An End-to-End Long-Horizon Mobile GUI Agent with Proactive Context Management</h1>
         <p class="hero-authors">
           Guangyi Liu<sup>1,2</sup>, Gao Wu<sup>1,2</sup>, Congxiao Liu<sup>1,2</sup>,
           Pengxiang Zhao<sup>1,2</sup>, Liang Liu<sup>1</sup>, Mading Li<sup>2</sup>,
@@ -80,36 +83,41 @@
           <a href="https://lgy0404.github.io/MemGUI-Bench/">MemGUI-Bench official page</a>
           <a href="https://tongyi-mai.github.io/MobileWorld/">MobileWorld official page</a>
         </div>
-        <div class="hero-actions">
-          <a class="button accent" href="#method"><svg class="button-icon"><use href="#icon-lightbulb"></use></svg>Core Idea</a>
-          <a class="button" href="#method"><svg class="button-icon"><use href="#icon-method"></use></svg>Method</a>
-          <a class="button" href="#results"><svg class="button-icon"><use href="#icon-chart"></use></svg>View Results</a>
-          <a class="button primary" href="https://github.com/lgy0404/MemGUI-Agent"><svg class="button-icon"><use href="#icon-github"></use></svg>Code Repo</a>
-          <a class="button" href="#citation"><svg class="button-icon"><use href="#icon-paper"></use></svg>Paper</a>
-          <a class="button" href="#videos"><svg class="button-icon"><use href="#icon-video"></use></svg>Video</a>
+      </div>
+      <div class="hero-showcase">
+        <div class="hero-video">
+          <div class="video-frame">
+            <iframe src="https://www.youtube.com/embed/qvEYNI-myFw"
+              title="MemGUI-Agent overview video" allowfullscreen loading="eager"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+          </div>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric">
+            <strong>62.5</strong>
+            <span>Pass@3 on MemGUI-Bench</span>
+          </div>
+          <div class="metric">
+            <strong>29.1</strong>
+            <span>MobileWorld SR</span>
+          </div>
+          <div class="metric">
+            <strong>23.4</strong>
+            <span>8B Pass@1</span>
+          </div>
+          <div class="metric">
+            <strong>2,956</strong>
+            <span>MemGUI-3K trajectories</span>
+          </div>
         </div>
       </div>
-      <div class="hero-metrics">
-        <div class="metric">
-          <strong>62.5</strong>
-          <span>Pass@3 on MemGUI-Bench with MemGUI-Agent-235B</span>
-        </div>
-        <div class="metric">
-          <strong>29.1</strong>
-          <span>Success rate on MobileWorld with MemGUI-Agent-235B</span>
-        </div>
-        <div class="metric">
-          <strong>23.4</strong>
-          <span>Pass@1 for MemGUI-8B-SFT</span>
-        </div>
-        <div class="metric">
-          <strong>2,956</strong>
-          <span>MemGUI-3K trajectories</span>
-        </div>
-        <div class="metric">
-          <strong>9</strong>
-          <span>Public demo videos</span>
-        </div>
+      <div class="hero-actions">
+        <a class="button accent" href="#method"><svg class="button-icon"><use href="#icon-lightbulb"></use></svg>Core Idea</a>
+        <a class="button" href="#method"><svg class="button-icon"><use href="#icon-method"></use></svg>Method</a>
+        <a class="button" href="#results"><svg class="button-icon"><use href="#icon-chart"></use></svg>View Results</a>
+        <a class="button primary" href="https://github.com/lgy0404/MemGUI-Agent"><svg class="button-icon"><use href="#icon-github"></use></svg>Code Repo</a>
+        <a class="button" href="#citation"><svg class="button-icon"><use href="#icon-paper"></use></svg>Paper</a>
+        <a class="button" href="#videos"><svg class="button-icon"><use href="#icon-video"></use></svg>Video</a>
       </div>
     </div>
   </header>
@@ -328,25 +336,10 @@
         </div>
         <div class="leaderboard-stack">
           <a class="result-panel leaderboard-panel memgui" href="https://lgy0404.github.io/MemGUI-Bench/">
-            <img class="result-image" src="images/results/memgui-bench-leaderboard.png" alt="MemGUI-Bench leaderboard" loading="lazy">
-            <div class="result-caption">
-              Performance breakdown on MemGUI-Bench by difficulty: Easy (1--20
-              steps), Medium (21--40), Hard (41+). Both of our agents use a
-              Qwen3-VL backbone with ConAct: MemGUI-Agent-235B applies ConAct
-              zero-shot to Qwen3-VL-235B-Thinking (weights unchanged);
-              MemGUI-8B-SFT is fine-tuned on MemGUI-3K from
-              Qwen3-VL-8B-Instruct. Bold/underline = best/second-best; "--" =
-              unavailable. Delta rows show gains over the corresponding
-              ReAct-style baseline.
-            </div>
+            <img class="result-image" src="images/results/memgui-bench-w-caption.png" alt="MemGUI-Bench leaderboard with caption" loading="lazy">
           </a>
           <a class="result-panel leaderboard-panel mobileworld" href="https://tongyi-mai.github.io/MobileWorld/">
-            <img class="result-image" src="images/results/mobileworld-leaderboard.png" alt="MobileWorld leaderboard" loading="lazy">
-            <div class="result-caption">
-              Pass@1 success rate (%) on MobileWorld GUI-Only (117 tasks).
-              Bold/underline = best/second-best among open-data models. Delta
-              rows show gains over the corresponding Qwen3-VL backbone.
-            </div>
+            <img class="result-image" src="images/results/mobileworld-w-caption.png" alt="MobileWorld leaderboard with caption" loading="lazy">
           </a>
         </div>
       </div>

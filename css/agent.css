@@ -137,7 +137,7 @@ img {
 .nav-links {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 18px;
   color: #556176;
   font-family: var(--mono);
@@ -145,19 +145,24 @@ img {
   font-weight: 700;
 }
 
+.nav-external {
+  justify-content: flex-end;
+}
+
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 96px 0 52px;
+  padding: 92px 0 50px;
 }
 
 .hero-inner {
   width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(330px, 0.72fr);
-  gap: 56px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(430px, 0.82fr);
+  column-gap: 46px;
+  row-gap: 22px;
   align-items: center;
 }
 
@@ -177,29 +182,29 @@ img {
 }
 
 h1 {
-  max-width: 850px;
+  max-width: 760px;
   margin: 0;
   color: var(--ink);
   font-family: var(--display);
-  font-size: 5.25rem;
-  font-weight: 780;
-  line-height: 0.96;
+  font-size: 3.92rem;
+  font-weight: 760;
+  line-height: 1.02;
   letter-spacing: 0;
 }
 
 .hero-copy {
   max-width: 780px;
-  margin: 18px 0 0;
+  margin: 16px 0 0;
   color: #354258;
-  font-size: 1.16rem;
+  font-size: 1.08rem;
   line-height: 1.48;
 }
 
 .hero-authors {
   max-width: 880px;
-  margin: 16px 0 0;
+  margin: 14px 0 0;
   color: #40506a;
-  font-size: 1.02rem;
+  font-size: 0.98rem;
   font-weight: 650;
   line-height: 1.58;
 }
@@ -237,10 +242,12 @@ h1 {
 }
 
 .hero-actions {
+  grid-column: 1;
+  grid-row: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 22px;
+  margin-top: 0;
   max-width: 760px;
 }
 
@@ -251,7 +258,7 @@ h1 {
   gap: 10px 14px;
   width: fit-content;
   max-width: 780px;
-  margin-top: 18px;
+  margin-top: 16px;
   padding: 10px 15px;
   border: 1px solid rgba(127, 91, 232, 0.2);
   border-radius: 999px;
@@ -323,8 +330,8 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 9px;
-  min-height: 52px;
-  padding: 0 23px;
+  min-height: 48px;
+  padding: 0 21px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.78);
@@ -368,14 +375,26 @@ h1 {
   transform: translateY(-1px);
 }
 
-.hero-metrics {
+.hero-showcase {
   grid-column: 2;
-  grid-row: 1;
+  grid-row: 1 / span 2;
+}
+
+.hero-video {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #101827;
+  box-shadow: var(--shadow);
+}
+
+.hero-metrics {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0;
+  margin-top: 16px;
   border: 1px solid #d8d1ff;
-  border-radius: 22px;
+  border-radius: 20px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.78)),
     repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(36, 107, 254, 0.045) 36px),
@@ -385,8 +404,8 @@ h1 {
 }
 
 .metric {
-  min-height: 106px;
-  padding: 20px;
+  min-height: 96px;
+  padding: 18px 20px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -400,29 +419,30 @@ h1 {
 }
 
 .metric:first-child {
-  grid-column: 1 / -1;
-  min-height: 158px;
-  border-right: 0;
+  grid-column: auto;
+  min-height: 96px;
+  border-right: 1px solid var(--line);
 }
 
 .metric strong {
   display: block;
   color: #101827;
   font-family: var(--display);
-  font-size: 2rem;
+  font-size: 2.2rem;
   line-height: 1;
 }
 
 .metric:first-child strong {
-  font-size: 4.7rem;
+  font-size: 2.2rem;
 }
 
 .metric span {
   display: block;
-  margin-top: 10px;
+  margin-top: 8px;
   color: var(--muted);
   font-weight: 600;
-  line-height: 1.45;
+  line-height: 1.38;
+  font-size: 0.94rem;
 }
 
 .section {
@@ -661,12 +681,9 @@ h2 {
   text-decoration: none;
 }
 
-.leaderboard-panel.memgui {
-  max-width: 980px;
-}
-
+.leaderboard-panel.memgui,
 .leaderboard-panel.mobileworld {
-  max-width: 844px;
+  max-width: 980px;
 }
 
 .result-caption,
@@ -808,6 +825,10 @@ footer {
     margin-top: 34px;
   }
 
+  .hero-showcase {
+    margin-top: 28px;
+  }
+
   .feature-copy {
     margin-top: 18px;
   }
@@ -845,7 +866,8 @@ footer {
   }
 
   h1 {
-    font-size: 3.12rem;
+    font-size: 2.35rem;
+    line-height: 1.06;
   }
 
   h2 {
@@ -853,7 +875,7 @@ footer {
   }
 
   .hero-copy {
-    font-size: 1.06rem;
+    font-size: 1rem;
   }
 
   .hero-authors {
@@ -867,6 +889,10 @@ footer {
   .button {
     width: 100%;
     min-height: 50px;
+  }
+
+  .hero-actions {
+    margin-top: 22px;
   }
 
   .trajectory-proof {
@@ -911,11 +937,11 @@ footer {
   }
 
   .metric:first-child {
-    min-height: 156px;
+    min-height: 96px;
   }
 
   .metric:first-child strong {
-    font-size: 4.1rem;
+    font-size: 2.2rem;
   }
 
   .section {
