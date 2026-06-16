@@ -4,738 +4,371 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MemGUI-Bench: Benchmarking Memory of Mobile GUI Agents</title>
+  <meta name="description"
+    content="MemGUI-Agent is an end-to-end long-horizon mobile GUI agent with proactive context management through ConAct.">
+  <title>MemGUI-Agent</title>
   <link rel="icon" href="assets/favicon.png">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
-
-  <!-- Bootstrap & Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/agent.css">
 </head>
 
 <body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="assets/favicon.png" alt="MemGUI-Bench" class="brand-icon">
-        <span class="brand-text">MemGUI-Bench</span>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a class="brand" href="#">
+        <img src="assets/favicon.png" alt="MemGUI-Agent">
+        <span>MemGUI-Agent</span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
-          <li class="nav-item"><a class="nav-link" href="#memgui-eval">Evaluation</a></li>
-          <li class="nav-item"><a class="nav-link" href="#results">Results</a></li>
-          <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="submission.html">Submit</a></li>
-          <li class="nav-item"><a class="nav-link" href="#citation">Citation</a></li>
-        </ul>
+      <div class="nav-links">
+        <a href="#videos">Videos</a>
+        <a href="#results">Results</a>
+        <a href="#method">Method</a>
+        <a href="#resources">Resources</a>
+        <a href="#citation">Citation</a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="hero-section">
-    <div class="hero-bg"></div>
-    <div class="container">
-      <div class="hero-layout">
-        <!-- Left: Main Content -->
-        <div class="hero-content">
-          <h1 class="hero-title">
-            <span class="gradient-text">MemGUI-Bench</span>
-          </h1>
-          <p class="hero-subtitle">
-            Benchmarking Memory of Mobile GUI Agents in Dynamic Environments
-          </p>
-
-          <!-- Action Buttons -->
-          <div class="hero-buttons">
-            <a href="#" class="btn btn-primary btn-lg">
-              <i class="bi bi-file-earmark-pdf"></i> Paper
-            </a>
-            <a href="#" class="btn btn-outline-light btn-lg">
-              <i class="bi bi-github"></i> Code
-            </a>
-            <a href="#" class="btn btn-outline-light btn-lg">
-              <i class="bi bi-database"></i> Dataset
-            </a>
-          </div>
-
-          <!-- Authors -->
-          <div class="hero-authors">
-            <div class="authors-list">
-              <span class="author"><span class="author-name">Guangyi Liu</span><sup>1*</sup></span>
-              <span class="author"><span class="author-name">Pengxiang Zhao</span><sup>1*</sup></span>
-              <span class="author"><span class="author-name">Yaozhen Liang</span><sup>1*</sup></span>
-              <span class="author"><span class="author-name">Qinyi Luo</span><sup>2</sup></span>
-              <span class="author"><span class="author-name">Shunye Tang</span><sup>2</sup></span>
-              <span class="author"><span class="author-name">Yuxiang Chai</span><sup>3</sup></span>
-              <span class="author"><span class="author-name">Weifeng Lin</span><sup>3</sup></span>
-              <span class="author"><span class="author-name">Han Xiao</span><sup>3</sup></span>
-              <span class="author"><span class="author-name">WenHao Wang</span><sup>1</sup></span>
-              <span class="author"><span class="author-name">Siheng Chen</span><sup>4</sup></span>
-              <span class="author"><span class="author-name">Zhengxi Lu</span><sup>1</sup></span>
-              <span class="author"><span class="author-name">Gao Wu</span><sup>1</sup></span>
-              <span class="author"><span class="author-name">Hao Wang</span><sup>5</sup></span>
-              <span class="author"><span class="author-name">Liang Liu</span><sup>5†</sup></span>
-              <span class="author"><span class="author-name">Yong Liu</span><sup>1</sup><span class="corresponding-icon"
-                  title="Corresponding Author">✉</span></span>
-            </div>
-            <div class="affiliations-list">
-              <span class="affiliation"><sup>1</sup>Zhejiang University</span>
-              <span class="affiliation"><sup>2</sup>Nankai University</span>
-              <span class="affiliation"><sup>3</sup>The Chinese University of Hong Kong</span>
-              <span class="affiliation"><sup>4</sup>Shanghai Jiao Tong University</span>
-              <span class="affiliation"><sup>5</sup>vivo AI Lab</span>
-            </div>
-            <div class="author-notes">
-              <span>* Equal contribution</span>
-              <span>† Project Lead</span>
-              <span>✉ Corresponding author</span>
-            </div>
-          </div>
-
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Long-horizon mobile GUI agents</p>
+      <h1>MemGUI-Agent</h1>
+      <p class="hero-copy">
+        An end-to-end mobile GUI agent with proactive context management. MemGUI-Agent
+        instantiates ConAct, a Context-as-Action paradigm that lets the policy fold
+        history, update UI memory, and act in one structured response.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://github.com/lgy0404/MemGUI-Agent">Code</a>
+        <a class="button" href="https://huggingface.co/datasets/lgy0404/MemGUI-3K">Dataset</a>
+        <a class="button" href="https://huggingface.co/lgy0404/MemGUI-8B-SFT">Model</a>
+        <a class="button" href="#videos">Watch Demos</a>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric">
+          <strong>62.5</strong>
+          <span>Pass@3 on MemGUI-Bench with MemGUI-Agent-235B</span>
         </div>
-
-        <!-- Right: Live Leaderboard (Dynamic) -->
-        <div class="hero-leaderboard-panel">
-          <div class="lb-panel-header">
-            <span class="lb-panel-title">🏆 Live Leaderboard</span>
-            <a href="leaderboard.html" class="lb-panel-link">View All →</a>
-          </div>
-          <div class="lb-panel-table" id="heroLeaderboardTable">
-            <div class="lb-panel-loading">Loading...</div>
-          </div>
-          <a href="leaderboard.html" class="lb-panel-cta">
-            <i class="bi bi-bar-chart-line"></i> Explore Full Leaderboard
-          </a>
+        <div class="metric">
+          <strong>23.4</strong>
+          <span>Pass@1 for MemGUI-8B-SFT</span>
+        </div>
+        <div class="metric">
+          <strong>2,956</strong>
+          <span>MemGUI-3K trajectories</span>
+        </div>
+        <div class="metric">
+          <strong>9</strong>
+          <span>Public demo videos</span>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Overview Section -->
-  <section id="overview" class="section-padding">
-    <div class="container">
-      <h2 class="section-title text-center">Overview</h2>
+  <main>
+    <section id="videos" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Demo Videos</p>
+            <h2>Case studies from the paper</h2>
+          </div>
+          <p class="lead">
+            The comparison video summarizes four base-vs-MemGUI trajectories; the
+            remaining eight videos show the detailed single-trajectory demos.
+          </p>
+        </div>
 
-      <!-- Problem Statement & Stats -->
-      <div class="row align-items-center mb-5">
-        <div class="col-lg-6">
-          <div class="overview-text">
-            <p class="lead">
-              Current mobile GUI agent benchmarks systematically fail to assess memory capabilities,
-              with only <strong>5.2-11.8%</strong> memory-related tasks and no cross-session learning evaluation.
-            </p>
-            <p>
-              <strong>MemGUI-Bench</strong> introduces a comprehensive memory-centric benchmark with
-              pass@k evaluation and staged LLM-as-judge evaluation, designed to rigorously test
-              agents' ability to retain and utilize information across complex, multi-application workflows.
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-number">128</div>
-              <div class="stat-label">Tasks</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">26</div>
-              <div class="stat-label">Applications</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">89.8%</div>
-              <div class="stat-label">Memory-Intensive</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">7</div>
-              <div class="stat-label">Metrics</div>
+        <div class="video-feature">
+          <div class="card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/qvEYNI-myFw"
+                title="MemGUI-Agent comparison video" allowfullscreen loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Key Contributions -->
-      <h3 class="subsection-title text-center mb-4">Key Contributions</h3>
-      <div class="row g-4 mb-5">
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-card">
-            <div class="feature-icon">📊</div>
-            <h4>Memory Taxonomy</h4>
-            <p>Systematic analysis of 11 agents across 5 architectures, identifying key memory mechanisms.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-card">
-            <div class="feature-icon">🎯</div>
-            <h4>128 Curated Tasks</h4>
-            <p>Cross-temporal and cross-spatial retention challenges across 26 real-world applications.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-card">
-            <div class="feature-icon">⚖️</div>
-            <h4>MemGUI-Eval</h4>
-            <p>Automated Progressive Scrutiny pipeline with 7 hierarchical metrics for accurate evaluation.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-card">
-            <div class="feature-icon">🔬</div>
-            <h4>RQ-Driven Analysis</h4>
-            <p>Comprehensive assessment revealing 5 distinct failure modes and design implications.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Evaluation Metrics -->
-      <h3 class="subsection-title text-center mb-4">Evaluation Metrics</h3>
-      <div class="row mb-5">
-        <div class="col-lg-6">
-          <div class="metric-group">
-            <h4><span class="metric-badge short-term">♣</span> Short-Term Memory (pass@1)</h4>
-            <ul class="metric-list">
-              <li><strong>SR</strong> - Success Rate: Baseline performance measurement</li>
-              <li><strong>IRR</strong> - Information Retention Rate: Memory fidelity metric</li>
-              <li><strong>MTPR</strong> - Memory-Task Proficiency Ratio: Memory-specific capability isolation</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="metric-group">
-            <h4><span class="metric-badge long-term">♠</span> Long-Term Memory (pass@k)</h4>
-            <ul class="metric-list">
-              <li><strong>SR@k</strong> - Multi-Attempt Success Rate: Cross-session learning capability</li>
-              <li><strong>FRR</strong> - Failure Recovery Rate: Learning from failure efficiency</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Framework Overview -->
-      <h3 class="subsection-title text-center mb-4">Framework Overview</h3>
-
-      <!-- Overview + Task Suite + Architecture -->
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <div class="figure-card h-100">
-            <div class="figure-img-wrapper">
-              <img src="images/fig1-overview.png" alt="MemGUI-Bench Overview">
-            </div>
-            <div class="figure-caption">
-              <h5>Figure 1: MemGUI-Bench Overview</h5>
-              <p>First comprehensive benchmark for GUI agent memory evaluation.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="figure-card h-100">
-            <div class="figure-img-wrapper">
-              <img src="images/fig2-task-suite.png" alt="Task Suite Statistics">
-            </div>
-            <div class="figure-caption">
-              <h5>Figure 2: Task Suite Statistics</h5>
-              <p>128 tasks (64 mirror pairs), 26 apps, 3 difficulty levels.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="figure-card h-100">
-            <div class="figure-img-wrapper">
-              <img src="images/fig3-architecture.png" alt="Unified Architecture">
-            </div>
-            <div class="figure-caption">
-              <h5>Figure 3: Plug-and-Play Framework</h5>
-              <p>Snapshot-based architecture with parallel execution.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MemGUI-Eval Section -->
-  <section id="memgui-eval" class="section-padding bg-light-alt">
-    <div class="container">
-      <h2 class="section-title text-center">MemGUI-Eval</h2>
-      <p class="text-center text-secondary mb-4">Progressive Scrutiny Evaluation for Memory-Intensive GUI Tasks</p>
-
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <div class="eval-intro">
-            <p class="lead">
-              Traditional evaluation methods face critical limitations: rigid rule-based matching cannot handle semantic
-              variations,
-              while "LLM-as-Judge" approaches overwhelm models with complete trajectories.
-            </p>
-            <p>
-              <strong>MemGUI-Eval</strong> introduces a novel <em>"Progressive Scrutiny"</em> pipeline that mimics
-              efficient human expert verification,
-              achieving <strong>95.9% F1-score</strong> at only <strong>$0.031 per trajectory</strong>.
-            </p>
-
-            <div class="eval-stages mt-4">
-              <div class="eval-stage">
-                <span class="stage-num">1</span>
-                <div class="stage-info">
-                  <strong>Cost-Effective Triage</strong>
-                  <span>Rapid screening with minimal evidence (last 3 screenshots)</span>
-                </div>
-              </div>
-              <div class="eval-stage">
-                <span class="stage-num">2</span>
-                <div class="stage-info">
-                  <strong>Full Semantic Analysis</strong>
-                  <span>Enriched textual descriptions for comprehensive judgment</span>
-                </div>
-              </div>
-              <div class="eval-stage">
-                <span class="stage-num">3</span>
-                <div class="stage-info">
-                  <strong>Targeted Visual Verification</strong>
-                  <span>Precisely requested historical screenshots for final decision</span>
-                </div>
+          <div class="card">
+            <div class="card-body">
+              <span class="tag">Featured</span>
+              <h3>MemGUI-Agent: An End-to-End Long-Horizon Mobile GUI Agent with Proactive Context Management</h3>
+              <p>Four side-by-side comparisons covering MemGUI-Bench and MobileWorld with 8B and 235B backbones.</p>
+              <div class="video-meta">
+                <span>1:42</span>
+                <a href="https://www.youtube.com/watch?v=qvEYNI-myFw">Open on YouTube</a>
               </div>
             </div>
+          </div>
+        </div>
 
-            <div class="mt-4">
-              <a href="eval-pipeline.html" class="btn btn-primary">
-                <i class="bi bi-diagram-3"></i> View Detailed Pipeline
-              </a>
-              <a href="failure-analysis.html" class="btn btn-outline-secondary ms-2">
-                <i class="bi bi-bug"></i> Failure Analysis
-              </a>
+        <div class="grid three">
+          <article class="card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/7TyYGsyRgiY" title="mobileworld 8b base"
+                allowfullscreen loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            </div>
+            <div class="card-body">
+              <h3>MobileWorld 8B Base</h3>
+              <div class="video-meta"><span>0:19</span><a href="https://www.youtube.com/watch?v=7TyYGsyRgiY">YouTube</a></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/UiDCefR7MLw" title="memgui bench 8b ours"
+                allowfullscreen loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            </div>
+            <div class="card-body">
+              <h3>MemGUI-Bench 8B Ours</h3>
+              <div class="video-meta"><span>0:53</span><a href="https://www.youtube.com/watch?v=UiDCefR7MLw">YouTube</a></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/fmGleUUex4Q" title="mobileworld 235b ours"
+                allowfullscreen loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            </div>
+            <div class="card-body">
+              <h3>MobileWorld 235B Ours</h3>
+              <div class="video-meta"><span>0:25</span><a href="https://www.youtube.com/watch?v=fmGleUUex4Q">YouTube</a></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/vULAmIJZilc" title="mobileworld 235b base"
+                allowfullscreen loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            </div>
+            <div class="card-body">
+              <h3>MobileWorld 235B Base</h3>
+              <div class="video-meta"><span>0:19</span><a href="https://www.youtube.com/watch?v=vULAmIJZilc">YouTube</a></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/T7IutWSAOYw" title="memgui bench 235b ours"
+                allowfullscreen loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            </div>
+            <div class="card-body">
+              <h3>MemGUI-Bench 235B Ours</h3>
+              <div class="video-meta"><span>0:26</span><a href="https://www.youtube.com/watch?v=T7IutWSAOYw">YouTube</a></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/IrzRkwLL-1Q" title="mobileworld 8b ours"
+                allowfullscreen loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            </div>
+            <div class="card-body">
+              <h3>MobileWorld 8B Ours</h3>
+              <div class="video-meta"><span>0:20</span><a href="https://www.youtube.com/watch?v=IrzRkwLL-1Q">YouTube</a></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/vCmgjXkH6Zo" title="memgui bench 235b base"
+                allowfullscreen loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            </div>
+            <div class="card-body">
+              <h3>MemGUI-Bench 235B Base</h3>
+              <div class="video-meta"><span>0:26</span><a href="https://www.youtube.com/watch?v=vCmgjXkH6Zo">YouTube</a></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/ZIdyhycEzKs" title="memgui bench 8b base"
+                allowfullscreen loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            </div>
+            <div class="card-body">
+              <h3>MemGUI-Bench 8B Base</h3>
+              <div class="video-meta"><span>0:40</span><a href="https://www.youtube.com/watch?v=ZIdyhycEzKs">YouTube</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Results</p>
+            <h2>Context efficiency and task success</h2>
+          </div>
+          <p class="lead">
+            MemGUI-Agent improves both zero-shot 235B and trained 8B settings on
+            long-horizon mobile GUI benchmarks.
+          </p>
+        </div>
+
+        <div class="result-panel">
+          <img class="result-image" src="images/results/main-performance.png"
+            alt="Context efficiency and benchmark performance of MemGUI-Agent">
+          <div class="result-caption">
+            Figure 1. Context efficiency and benchmark performance of MemGUI-Agent.
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top: 44px;">
+          <div>
+            <p class="section-kicker">Leaderboards</p>
+            <h2>Benchmark standings</h2>
+          </div>
+        </div>
+        <div class="grid two">
+          <div class="result-panel">
+            <img class="result-image" src="images/results/memgui-bench-leaderboard.png" alt="MemGUI-Bench leaderboard">
+            <div class="result-caption">MemGUI-Bench leaderboard.</div>
+          </div>
+          <div class="result-panel">
+            <img class="result-image" src="images/results/mobileworld-leaderboard.png" alt="MobileWorld leaderboard">
+            <div class="result-caption">MobileWorld GUI-Only leaderboard.</div>
+          </div>
+        </div>
+
+        <div class="table-wrap" style="margin-top: 32px;">
+          <table>
+            <thead>
+              <tr>
+                <th>Agent</th>
+                <th>Setting</th>
+                <th>MemGUI-Bench Pass@1</th>
+                <th>MemGUI-Bench Pass@3</th>
+                <th>IRR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Qwen3-VL-8B-Instruct</td>
+                <td>ReAct-style baseline</td>
+                <td>9.4</td>
+                <td>20.3</td>
+                <td>15.1</td>
+              </tr>
+              <tr>
+                <td><strong>MemGUI-8B-SFT</strong></td>
+                <td>Trained on MemGUI-3K</td>
+                <td><strong>23.4</strong></td>
+                <td><strong>35.9</strong></td>
+                <td><strong>30.2</strong></td>
+              </tr>
+              <tr>
+                <td>Qwen3-VL-235B-Thinking</td>
+                <td>ReAct-style baseline</td>
+                <td>24.2</td>
+                <td>46.9</td>
+                <td>30.0</td>
+              </tr>
+              <tr>
+                <td><strong>MemGUI-Agent-235B</strong></td>
+                <td>Zero-shot ConAct, weights unchanged</td>
+                <td><strong>37.5</strong></td>
+                <td><strong>62.5</strong></td>
+                <td><strong>46.8</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Method</p>
+            <h2>ConAct: Context-as-Action</h2>
+          </div>
+          <p class="lead">
+            Instead of carrying an ever-growing raw transcript, MemGUI-Agent makes
+            context updates explicit and executable inside each model response.
+          </p>
+        </div>
+        <div class="grid three">
+          <div class="card">
+            <div class="card-body">
+              <h3>Folded Action History</h3>
+              <p>Compresses completed interaction spans while preserving task-relevant progress.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h3>Folded UI State</h3>
+              <p>Stores persistent UI facts such as names, prices, values, and form state.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h3>Recent Step Record</h3>
+              <p>Keeps local interaction continuity for the next GUI action.</p>
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="figure-card">
-            <div class="figure-img-wrapper">
-              <img src="images/fig4-eval-pipeline.png" alt="MemGUI-Eval Pipeline">
-            </div>
-            <div class="figure-caption">
-              <h5>Three-Stage Progressive Scrutiny Pipeline</h5>
-              <p>Four specialized agents: Triage Judge, Step Descriptor, Semantic Judge, and Visual Judge.</p>
-            </div>
+      </div>
+    </section>
+
+    <section id="resources" class="section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Release</p>
+            <h2>Code, data, model, and benchmarks</h2>
           </div>
+        </div>
+        <div class="resource-list">
+          <a class="resource" href="https://github.com/lgy0404/MemGUI-Agent">
+            <b>Code</b>
+            <span>Public MemGUI-Agent release repository.</span>
+          </a>
+          <a class="resource" href="https://huggingface.co/datasets/lgy0404/MemGUI-3K">
+            <b>MemGUI-3K</b>
+            <span>2,956 trajectories and multimodal training data.</span>
+          </a>
+          <a class="resource" href="https://huggingface.co/lgy0404/MemGUI-8B-SFT">
+            <b>MemGUI-8B-SFT</b>
+            <span>8B model trained with LoRA SFT on MemGUI-3K.</span>
+          </a>
+          <a class="resource" href="https://github.com/Tongyi-MAI/MobileWorld">
+            <b>MobileWorld</b>
+            <span>OOD mobile GUI benchmark integration.</span>
+          </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Benchmark Comparison Section -->
-  <section id="benchmark" class="section-padding">
-    <div class="container">
-      <h2 class="section-title text-center">Benchmark Comparison</h2>
-      <p class="text-center text-secondary mb-4">Comprehensive comparison across evaluation environment, pipeline, and
-        agent support dimensions</p>
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover comparison-table">
-          <thead>
-            <tr>
-              <th rowspan="2" class="align-middle">Benchmark</th>
-              <th colspan="5" class="text-center bg-success-subtle">Evaluation Environment</th>
-              <th colspan="3" class="text-center bg-info-subtle">Evaluation Pipeline</th>
-              <th rowspan="2" class="align-middle text-center">Agents<br>Tested</th>
-            </tr>
-            <tr>
-              <th>Memory<br>Tasks</th>
-              <th>Cross-app<br>Tasks</th>
-              <th>Total<br>Tasks</th>
-              <th>3rd-party<br>Apps</th>
-              <th>Auto<br>Reset</th>
-              <th>Long-term<br>Memory</th>
-              <th>Auto<br>Eval</th>
-              <th>Memory<br>Metrics</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="table-secondary">
-              <td colspan="10" class="fw-bold text-muted">Rule-based Evaluation Pipeline</td>
-            </tr>
-            <tr>
-              <td>AndroidArena</td>
-              <td>22</td>
-              <td>22</td>
-              <td>221</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td>1/4</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>AndroidWorld</td>
-              <td>6</td>
-              <td>6</td>
-              <td>116</td>
-              <td class="text-success">✓</td>
-              <td class="text-success">✓</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td>1/1</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>AndroidLab</td>
-              <td>45</td>
-              <td>0</td>
-              <td>138</td>
-              <td class="text-success">✓</td>
-              <td class="text-success">✓</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td>1/4</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>LlamaTouch</td>
-              <td>0</td>
-              <td>0</td>
-              <td>495</td>
-              <td class="text-success">✓</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td>1/1</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>B-MoCA</td>
-              <td>0</td>
-              <td>0</td>
-              <td>60</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td>1/1</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>MobileAgentBench</td>
-              <td>0</td>
-              <td>0</td>
-              <td>100</td>
-              <td class="text-danger">✗</td>
-              <td class="text-success">✓</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td>1/6</td>
-              <td>5</td>
-            </tr>
-            <tr class="table-secondary">
-              <td colspan="10" class="fw-bold text-muted">LLM-as-a-Judge Evaluation Pipeline</td>
-            </tr>
-            <tr>
-              <td>A3</td>
-              <td>9</td>
-              <td>0</td>
-              <td>201</td>
-              <td class="text-success">✓</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td class="text-success">✓</td>
-              <td>1/2</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <td>SPA-Bench</td>
-              <td>40</td>
-              <td>40</td>
-              <td>340</td>
-              <td class="text-success">✓</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td class="text-danger">✗</td>
-              <td>1/7</td>
-              <td>11</td>
-            </tr>
-            <tr class="table-primary fw-bold">
-              <td>MemGUI-Bench (Ours)</td>
-              <td class="text-success">115</td>
-              <td class="text-success">100</td>
-              <td>128</td>
-              <td class="text-success">✓</td>
-              <td class="text-success">✓</td>
-              <td class="text-success">✓</td>
-              <td class="text-success">✓</td>
-              <td class="text-success">4/7</td>
-              <td>11</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="text-center text-muted mt-3">
-        MemGUI-Bench is the first benchmark to systematically evaluate both short-term and long-term memory capabilities
-        of Mobile GUI agents.
-      </p>
-    </div>
-  </section>
-
-  <!-- Results Section -->
-  <section id="results" class="section-padding">
-    <div class="container">
-      <h2 class="section-title text-center">Key Results</h2>
-      <p class="text-center text-secondary mb-5">
-        Comprehensive evaluation of 11 GUI agents reveals critical insights about memory capabilities.
-      </p>
-
-      <!-- Research Questions & Conclusions -->
-      <h3 class="subsection-title text-center mb-4">Research Questions & Key Findings</h3>
-      <div class="rq-grid">
-        <div class="rq-card">
-          <div class="rq-header">
-            <span class="rq-badge">RQ1</span>
-            <span class="rq-question">How do current GUI agents perform on memory-intensive tasks?</span>
+    <section id="citation" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Citation</p>
+            <h2>Reference</h2>
           </div>
-          <div class="rq-answer">
-            <strong>4-10× capability gaps hidden by standard benchmarks.</strong>
-            M3A achieves highest pass@1 SR (32.8%), while Agent-S2 demonstrates exceptional learning potential with
-            highest pass@3 (49.2%). End-to-end models achieve only 0.0-6.2%. Performance drops dramatically from
-            AndroidWorld to MemGUI-Bench (Agent-S2: 54.3%→27.3%, GUI-Owl-7B: 66.4%→6.2%).
-          </div>
+          <p class="lead">The arXiv link will be added after upload.</p>
         </div>
-
-        <div class="rq-card">
-          <div class="rq-header">
-            <span class="rq-badge">RQ2</span>
-            <span class="rq-question">Are memory mechanisms essential or optional?</span>
-          </div>
-          <div class="rq-answer">
-            <strong>Short-term memory is mandatory; long-term memory is beneficial but optional.</strong>
-            Removing short-term memory causes catastrophic collapse (M3A: 32.5%→2.5%, IRR: 35.1%→0.0%). Long-term memory
-            provides +21.9 pp improvement but agents remain functional without it.
-          </div>
-        </div>
-
-        <div class="rq-card">
-          <div class="rq-header">
-            <span class="rq-badge">RQ3</span>
-            <span class="rq-question">How does cross-application complexity affect memory?</span>
-          </div>
-          <div class="rq-answer">
-            <strong>16-40pp performance degradation, the primary memory bottleneck.</strong>
-            M3A drops from 46.4% (1-app) to 30.0% (4-app), Agent-S2 from 50.0% to 10.0%. Cross-app information transfer
-            is the critical challenge.
-          </div>
-        </div>
-
-        <div class="rq-card">
-          <div class="rq-header">
-            <span class="rq-badge">RQ4</span>
-            <span class="rq-question">Can long-context capability improve performance?</span>
-          </div>
-          <div class="rq-answer">
-            <strong>+18.8pp improvement, revealing untapped potential.</strong>
-            M3A multi-turn achieves 51.6% (vs 32.8% single-turn). UI-TARS-1.5-7B with 5-turn limit achieves only
-            3.1-6.2%, confirming context constraints severely limit performance.
-          </div>
-        </div>
-
-        <div class="rq-card">
-          <div class="rq-header">
-            <span class="rq-badge">RQ5</span>
-            <span class="rq-question">Can long-term memory enable cross-session learning?</span>
-          </div>
-          <div class="rq-answer">
-            <strong>+21.9pp improvement but remains underutilized.</strong>
-            Agent-S2 demonstrates 27.3%→49.2% improvement with 21.5% FRR, while agents without explicit memory show
-            minimal FRR (0.8-4.4%). Only 2 of 11 agents implement cross-session learning.
-          </div>
-        </div>
-
-        <div class="rq-card">
-          <div class="rq-header">
-            <span class="rq-badge">RQ6</span>
-            <span class="rq-question">What are the computational trade-offs?</span>
-          </div>
-          <div class="rq-answer">
-            <strong>Severe trade-offs under deployment constraints.</strong>
-            Agent-S2 (41,760 tokens/step) drops from 49.2% to 0% under token limits. M3A shows optimal balance with
-            graceful degradation (47.7%→21.9%) at 31% of Agent-S2's tokens.
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center mt-4">
-        <a href="leaderboard.html" class="btn btn-primary btn-lg">
-          <i class="bi bi-bar-chart-line"></i> View Full Leaderboard
-        </a>
-      </div>
-
-      <!-- Additional Resources -->
-      <div class="text-center mt-4">
-        <p class="text-muted mb-3">Explore detailed analysis:</p>
-        <a href="eval-pipeline.html" class="btn btn-outline-primary me-2">
-          <i class="bi bi-diagram-3"></i> MemGUI-Eval Pipeline
-        </a>
-        <a href="failure-analysis.html" class="btn btn-outline-secondary">
-          <i class="bi bi-bug"></i> Failure Analysis
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Citation Section -->
-  <section id="citation" class="section-padding">
-    <div class="container">
-      <h2 class="section-title text-center">Citation</h2>
-      <div class="citation-box">
-        <pre><code>@misc{liu2026memguibench,
-  title={MemGUI-Bench: Benchmarking Memory of Mobile GUI Agents in Dynamic Environments},
-  author={Guangyi Liu and Pengxiang Zhao and Yaozhen Liang and Qinyi Luo and Shunye Tang and Yuxiang Chai and Weifeng Lin and Han Xiao and WenHao Wang and Siheng Chen and Zhengxi Lu and Gao Wu and Hao Wang and Liang Liu and Yong Liu},
-  year={2026},
-  url={https://openreview.net/forum?id=7JT8yIPELM}
+        <pre class="citation"><code>@article{memguiagent2026,
+  title = {MemGUI-Agent: An End-to-End Long-Horizon Mobile GUI Agent with Proactive Context Management},
+  year = {2026}
 }</code></pre>
-        <button class="btn btn-sm btn-outline-light copy-btn" onclick="copyBibtex()">
-          <i class="bi bi-clipboard"></i> Copy
-        </button>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Affiliations Section -->
-  <section id="affiliations" class="affiliations-section">
-    <div class="container">
-      <h3 class="affiliations-title text-center">Contributing Institutions</h3>
-      <div class="affiliations-logos">
-        <a href="https://www.zju.edu.cn/" target="_blank" class="affiliation-logo" title="Zhejiang University">
-          <img src="images/logos/zhejiang-university.svg" alt="Zhejiang University">
-        </a>
-        <a href="https://www.nankai.edu.cn/" target="_blank" class="affiliation-logo" title="Nankai University">
-          <img src="images/logos/nankai-university.svg" alt="Nankai University">
-        </a>
-        <a href="https://www.cuhk.edu.hk/" target="_blank" class="affiliation-logo"
-          title="The Chinese University of Hong Kong">
-          <img src="images/logos/cuhk.svg" alt="The Chinese University of Hong Kong">
-        </a>
-        <a href="https://www.sjtu.edu.cn/" target="_blank" class="affiliation-logo"
-          title="Shanghai Jiao Tong University">
-          <img src="images/logos/sjtu.svg" alt="Shanghai Jiao Tong University">
-        </a>
-        <a href="https://www.vivo.com/" target="_blank" class="affiliation-logo" title="vivo">
-          <img src="images/logos/vivo.svg" alt="vivo">
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container text-center">
-      <p>MemGUI-Bench © 2026 | Built with ❤️ for the research community</p>
-      <p class="text-muted">Last updated: February 2026</p>
+  <footer>
+    <div class="wrap">
+      MemGUI-Agent. Code, data, and trained models are available for research use.
     </div>
   </footer>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/config.js"></script>
-  <script>
-    function copyBibtex() {
-      const bibtex = document.querySelector('.citation-box code').textContent;
-      navigator.clipboard.writeText(bibtex);
-      const btn = document.querySelector('.copy-btn');
-      btn.innerHTML = '<i class="bi bi-check"></i> Copied!';
-      setTimeout(() => {
-        btn.innerHTML = '<i class="bi bi-clipboard"></i> Copy';
-      }, 2000);
-    }
-
-    // Load Hero Leaderboard dynamically
-    async function loadHeroLeaderboard() {
-      try {
-        // First load agent list from index.json
-        await loadAgentList();
-
-        // Load each agent file in parallel
-        const agentPromises = AGENT_FILES.map(async (agentId) => {
-          const response = await fetch(`data/agents/${agentId}.json`);
-          if (!response.ok) return null;
-          return response.json();
-        });
-        const agents = (await Promise.all(agentPromises)).filter(a => a !== null);
-        const data = { agents: agents };
-
-        // Sort by avg p@3 descending
-        const sorted = [...data.agents].sort((a, b) => b.avg.p3 - a.avg.p3);
-        const top5 = sorted.slice(0, 5);
-
-        // Find best values for highlighting
-        const bestP1 = Math.max(...top5.map(a => a.avg.p1));
-        const bestP3 = Math.max(...top5.map(a => a.avg.p3));
-        const bestIRR = Math.max(...top5.map(a => a.metrics?.shortTerm?.irr ?? 0));
-        const bestMTPR = Math.max(...top5.map(a => a.metrics?.shortTerm?.mtpr ?? 0));
-        const bestFRR = Math.max(...top5.map(a => a.metrics?.longTerm?.frr ?? 0));
-
-        // Build HTML
-        let html = `
-          <div class="lb-panel-row header">
-            <span class="lb-col-rank">#</span>
-            <span class="lb-col-name">Agent</span>
-            <span class="lb-col-metric">p@1</span>
-            <span class="lb-col-metric">p@3</span>
-            <span class="lb-col-metric">IRR</span>
-            <span class="lb-col-metric">MTPR</span>
-            <span class="lb-col-metric">FRR</span>
-          </div>
-        `;
-
-        top5.forEach((agent, index) => {
-          const rank = index + 1;
-          const rankIcon = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
-          const rankClass = rank <= 3 ? `rank-${rank}` : '';
-
-          const p1 = agent.avg.p1;
-          const p3 = agent.avg.p3;
-          const irr = agent.metrics?.shortTerm?.irr ?? '-';
-          const mtpr = agent.metrics?.shortTerm?.mtpr ?? '-';
-          const frr = agent.metrics?.longTerm?.frr ?? '-';
-
-          const p1Class = p1 === bestP1 ? 'highlight' : '';
-          const p3Class = p3 === bestP3 ? 'highlight' : '';
-          const irrClass = irr === bestIRR ? 'highlight' : '';
-          const mtprClass = mtpr === bestMTPR ? 'highlight' : '';
-          const frrClass = frr === bestFRR ? 'highlight' : '';
-
-          html += `
-            <div class="lb-panel-row ${rankClass}">
-              <span class="lb-col-rank">${rankIcon}</span>
-              <span class="lb-col-name">${agent.name}</span>
-              <span class="lb-col-metric ${p1Class}">${typeof p1 === 'number' ? p1.toFixed(1) : '-'}</span>
-              <span class="lb-col-metric ${p3Class}">${typeof p3 === 'number' ? p3.toFixed(1) : '-'}</span>
-              <span class="lb-col-metric ${irrClass}">${typeof irr === 'number' ? irr.toFixed(1) : '-'}</span>
-              <span class="lb-col-metric ${mtprClass}">${typeof mtpr === 'number' ? mtpr.toFixed(2) : '-'}</span>
-              <span class="lb-col-metric ${frrClass}">${typeof frr === 'number' ? frr.toFixed(1) : '-'}</span>
-            </div>
-          `;
-        });
-
-        document.getElementById('heroLeaderboardTable').innerHTML = html;
-      } catch (error) {
-        console.error('Error loading leaderboard:', error);
-        document.getElementById('heroLeaderboardTable').innerHTML = '<div class="lb-panel-loading">Failed to load data</div>';
-      }
-    }
-
-    // Load on page ready
-    document.addEventListener('DOMContentLoaded', loadHeroLeaderboard);
-  </script>
 </body>
 
 </html>

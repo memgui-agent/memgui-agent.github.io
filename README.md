@@ -1,116 +1,26 @@
-# MemGUI-Bench GitHub Pages
+# MemGUI-Agent Project Page
 
-This is the official project page for **MemGUI-Bench: Benchmarking Memory of Mobile GUI Agents in Dynamic Environments**.
+This repository hosts the GitHub Pages site for **MemGUI-Agent: An End-to-End
+Long-Horizon Mobile GUI Agent with Proactive Context Management**.
 
-## 🚀 Quick Start
-
-### Local Development
+## Local Preview
 
 ```bash
-# Simply open index.html in a browser
-# Or use a local server:
-python -m http.server 8000
-# Then visit http://localhost:8000
+python3 -m http.server 8000
 ```
 
-### Deployment
+Then open `http://localhost:8000`.
 
-This site is designed for GitHub Pages. Simply:
-1. Push to the `gh-pages` branch, or
-2. Configure GitHub Pages in repository settings to serve from the `main` branch
+## Content
 
-## 📁 Project Structure
+- `index.html` is the public project page.
+- `css/agent.css` contains the MemGUI-Agent page styles.
+- `images/results/` contains Figure 1 and leaderboard images.
+- `images/brand/` contains project branding assets.
+- The page embeds the nine public YouTube demo videos listed in
+  `docs/memgui-youtube-videos.md` from the paper repository.
 
-```
-memgui-bench-gh-page/
-├── index.html              # Main landing page
-├── leaderboard.html        # Results leaderboard
-├── submission.html         # Submission guidelines
-├── css/
-│   ├── style.css           # Global styles
-│   ├── leaderboard.css     # Leaderboard-specific styles
-│   └── submission.css      # Submission page styles
-├── js/
-│   └── leaderboard.js      # Leaderboard functionality
-├── data/
-│   └── results.json        # Leaderboard data
-├── assets/
-│   └── favicon.png         # Site favicon
-└── README.md
-```
+## Deployment
 
-## 📊 Leaderboard Management
-
-### Adding New Results
-
-1. Edit `data/results.json`
-2. Add a new agent entry following the existing format:
-
-```json
-{
-  "name": "YourAgent",
-  "type": "Agentic Workflow",
-  "link": "https://github.com/...",
-  "hasLongTermMemory": true,
-  "shortTerm": {
-    "easy": 41.7,
-    "medium": 19.0,
-    "hard": 18.4,
-    "overall": 27.3,
-    "irr": 39.5,
-    "mtpr": 0.45,
-    "timePerStep": 28.1,
-    "costPerStep": 0.051
-  },
-  "longTerm": {
-    "easy": 64.6,
-    "medium": 42.9,
-    "hard": 36.8,
-    "overall": 49.2,
-    "frr": 21.5,
-    "improvement": 21.9
-  }
-}
-```
-
-### Metrics Explained
-
-#### Short-Term Memory (pass@1)
-- **SR (Success Rate)**: Percentage of tasks completed successfully
-- **IRR (Information Retention Rate)**: Memory fidelity metric
-- **MTPR (Memory-Task Proficiency Ratio)**: Memory-specific capability
-
-#### Long-Term Memory (pass@k)
-- **SR@k**: Multi-attempt success rate
-- **FRR (Failure Recovery Rate)**: Learning from failure efficiency
-- **Improvement**: Performance gain from pass@1 to pass@k
-
-## 🔧 Customization
-
-### Updating Links
-
-1. **Paper Link**: Update in `index.html` hero buttons
-2. **GitHub Link**: Update in `index.html` and navigation
-3. **Dataset Link**: Update in `index.html` hero buttons
-
-### Changing Colors
-
-Edit CSS variables in `css/style.css`:
-
-```css
-:root {
-  --primary: #6366f1;        /* Primary accent color */
-  --accent: #22d3ee;         /* Secondary accent */
-  --bg-dark: #0f0f1a;        /* Background color */
-  /* ... */
-}
-```
-
-## 📧 Contact
-
-For questions about the benchmark or leaderboard submissions, please contact: memgui-bench@example.com
-
-## 📜 License
-
-MIT License - See LICENSE file for details.
-
+Configure GitHub Pages to serve this repository from the default branch. The
+site is static and requires no build step.
