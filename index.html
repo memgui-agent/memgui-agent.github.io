@@ -22,6 +22,7 @@
         <a href="#videos">Videos</a>
         <a href="#results">Results</a>
         <a href="#method">Method</a>
+        <a href="#dataset">Dataset</a>
         <a href="#resources">Resources</a>
         <a href="#citation">Citation</a>
       </div>
@@ -33,9 +34,9 @@
       <p class="eyebrow">Long-horizon mobile GUI agents</p>
       <h1>MemGUI-Agent</h1>
       <p class="hero-copy">
-        An end-to-end mobile GUI agent with proactive context management. MemGUI-Agent
-        instantiates ConAct, a Context-as-Action paradigm that lets the policy fold
-        history, update UI memory, and act in one structured response.
+        MemGUI-Agent is an end-to-end mobile GUI agent that instantiates ConAct,
+        a Context-as-Action paradigm for folding action history, updating UI
+        memory, and executing the next GUI action in one structured policy output.
       </p>
       <div class="hero-actions">
         <a class="button primary" href="https://github.com/lgy0404/MemGUI-Agent">Code</a>
@@ -79,120 +80,166 @@
         </div>
 
         <div class="video-feature">
-          <div class="card">
+          <div class="feature-player">
             <div class="video-frame">
               <iframe src="https://www.youtube.com/embed/qvEYNI-myFw"
                 title="MemGUI-Agent comparison video" allowfullscreen loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
             </div>
           </div>
-          <div class="card">
-            <div class="card-body">
-              <span class="tag">Featured</span>
-              <h3>MemGUI-Agent: An End-to-End Long-Horizon Mobile GUI Agent with Proactive Context Management</h3>
-              <p>Four side-by-side comparisons covering MemGUI-Bench and MobileWorld with 8B and 235B backbones.</p>
-              <div class="video-meta">
-                <span>1:42</span>
-                <a href="https://www.youtube.com/watch?v=qvEYNI-myFw">Open on YouTube</a>
-              </div>
+          <div class="feature-copy">
+            <span class="tag">Featured Comparison</span>
+            <h3>MemGUI-Agent: An End-to-End Long-Horizon Mobile GUI Agent with Proactive Context Management</h3>
+            <p>Four side-by-side comparisons covering MemGUI-Bench and MobileWorld with 8B and 235B backbones.</p>
+            <div class="video-meta">
+              <span>1:42</span>
+              <a href="https://www.youtube.com/watch?v=qvEYNI-myFw">Open on YouTube</a>
             </div>
           </div>
         </div>
 
-        <div class="grid three">
-          <article class="card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/7TyYGsyRgiY" title="mobileworld 8b base"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </div>
-            <div class="card-body">
-              <h3>MobileWorld 8B Base</h3>
-              <div class="video-meta"><span>0:19</span><a href="https://www.youtube.com/watch?v=7TyYGsyRgiY">YouTube</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/UiDCefR7MLw" title="memgui bench 8b ours"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </div>
-            <div class="card-body">
-              <h3>MemGUI-Bench 8B Ours</h3>
-              <div class="video-meta"><span>0:53</span><a href="https://www.youtube.com/watch?v=UiDCefR7MLw">YouTube</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/fmGleUUex4Q" title="mobileworld 235b ours"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </div>
-            <div class="card-body">
-              <h3>MobileWorld 235B Ours</h3>
-              <div class="video-meta"><span>0:25</span><a href="https://www.youtube.com/watch?v=fmGleUUex4Q">YouTube</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/vULAmIJZilc" title="mobileworld 235b base"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </div>
-            <div class="card-body">
-              <h3>MobileWorld 235B Base</h3>
-              <div class="video-meta"><span>0:19</span><a href="https://www.youtube.com/watch?v=vULAmIJZilc">YouTube</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/T7IutWSAOYw" title="memgui bench 235b ours"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </div>
-            <div class="card-body">
-              <h3>MemGUI-Bench 235B Ours</h3>
-              <div class="video-meta"><span>0:26</span><a href="https://www.youtube.com/watch?v=T7IutWSAOYw">YouTube</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/IrzRkwLL-1Q" title="mobileworld 8b ours"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </div>
-            <div class="card-body">
-              <h3>MobileWorld 8B Ours</h3>
-              <div class="video-meta"><span>0:20</span><a href="https://www.youtube.com/watch?v=IrzRkwLL-1Q">YouTube</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/vCmgjXkH6Zo" title="memgui bench 235b base"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </div>
-            <div class="card-body">
-              <h3>MemGUI-Bench 235B Base</h3>
-              <div class="video-meta"><span>0:26</span><a href="https://www.youtube.com/watch?v=vCmgjXkH6Zo">YouTube</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/ZIdyhycEzKs" title="memgui bench 8b base"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </div>
-            <div class="card-body">
-              <h3>MemGUI-Bench 8B Base</h3>
+        <div class="video-library">
+          <article class="video-card">
+            <img src="https://img.youtube.com/vi/ZIdyhycEzKs/hqdefault.jpg" alt="MemGUI-Bench 8B Base video thumbnail" loading="lazy">
+            <div>
+              <span class="tag">MemGUI-Bench</span>
+              <h3>8B Base</h3>
+              <p>ReAct-style Qwen3-VL-8B-Instruct trajectory.</p>
               <div class="video-meta"><span>0:40</span><a href="https://www.youtube.com/watch?v=ZIdyhycEzKs">YouTube</a></div>
+              <details class="video-details">
+                <summary>Embed video</summary>
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/ZIdyhycEzKs" title="MemGUI-Bench 8B Base"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <img src="https://img.youtube.com/vi/UiDCefR7MLw/hqdefault.jpg" alt="MemGUI-Bench 8B Ours video thumbnail" loading="lazy">
+            <div>
+              <span class="tag">MemGUI-Bench</span>
+              <h3>8B Ours</h3>
+              <p>MemGUI-8B-SFT trajectory on the same benchmark setting.</p>
+              <div class="video-meta"><span>0:53</span><a href="https://www.youtube.com/watch?v=UiDCefR7MLw">YouTube</a></div>
+              <details class="video-details">
+                <summary>Embed video</summary>
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/UiDCefR7MLw" title="MemGUI-Bench 8B Ours"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <img src="https://img.youtube.com/vi/vCmgjXkH6Zo/hqdefault.jpg" alt="MemGUI-Bench 235B Base video thumbnail" loading="lazy">
+            <div>
+              <span class="tag">MemGUI-Bench</span>
+              <h3>235B Base</h3>
+              <p>Qwen3-VL-235B-Thinking with ReAct-style prompting.</p>
+              <div class="video-meta"><span>0:26</span><a href="https://www.youtube.com/watch?v=vCmgjXkH6Zo">YouTube</a></div>
+              <details class="video-details">
+                <summary>Embed video</summary>
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/vCmgjXkH6Zo" title="MemGUI-Bench 235B Base"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <img src="https://img.youtube.com/vi/T7IutWSAOYw/hqdefault.jpg" alt="MemGUI-Bench 235B Ours video thumbnail" loading="lazy">
+            <div>
+              <span class="tag">MemGUI-Bench</span>
+              <h3>235B Ours</h3>
+              <p>Zero-shot ConAct with unchanged Qwen3-VL-235B-Thinking weights.</p>
+              <div class="video-meta"><span>0:26</span><a href="https://www.youtube.com/watch?v=T7IutWSAOYw">YouTube</a></div>
+              <details class="video-details">
+                <summary>Embed video</summary>
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/T7IutWSAOYw" title="MemGUI-Bench 235B Ours"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <img src="https://img.youtube.com/vi/7TyYGsyRgiY/hqdefault.jpg" alt="MobileWorld 8B Base video thumbnail" loading="lazy">
+            <div>
+              <span class="tag">MobileWorld</span>
+              <h3>8B Base</h3>
+              <p>Out-of-distribution mobile GUI task with the 8B baseline.</p>
+              <div class="video-meta"><span>0:19</span><a href="https://www.youtube.com/watch?v=7TyYGsyRgiY">YouTube</a></div>
+              <details class="video-details">
+                <summary>Embed video</summary>
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/7TyYGsyRgiY" title="MobileWorld 8B Base"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <img src="https://img.youtube.com/vi/IrzRkwLL-1Q/hqdefault.jpg" alt="MobileWorld 8B Ours video thumbnail" loading="lazy">
+            <div>
+              <span class="tag">MobileWorld</span>
+              <h3>8B Ours</h3>
+              <p>MemGUI-8B-SFT transfer behavior on MobileWorld GUI-Only.</p>
+              <div class="video-meta"><span>0:20</span><a href="https://www.youtube.com/watch?v=IrzRkwLL-1Q">YouTube</a></div>
+              <details class="video-details">
+                <summary>Embed video</summary>
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/IrzRkwLL-1Q" title="MobileWorld 8B Ours"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <img src="https://img.youtube.com/vi/vULAmIJZilc/hqdefault.jpg" alt="MobileWorld 235B Base video thumbnail" loading="lazy">
+            <div>
+              <span class="tag">MobileWorld</span>
+              <h3>235B Base</h3>
+              <p>Qwen3-VL-235B-Thinking baseline on MobileWorld.</p>
+              <div class="video-meta"><span>0:19</span><a href="https://www.youtube.com/watch?v=vULAmIJZilc">YouTube</a></div>
+              <details class="video-details">
+                <summary>Embed video</summary>
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/vULAmIJZilc" title="MobileWorld 235B Base"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <img src="https://img.youtube.com/vi/fmGleUUex4Q/hqdefault.jpg" alt="MobileWorld 235B Ours video thumbnail" loading="lazy">
+            <div>
+              <span class="tag">MobileWorld</span>
+              <h3>235B Ours</h3>
+              <p>Zero-shot ConAct transfer on MobileWorld GUI-Only.</p>
+              <div class="video-meta"><span>0:25</span><a href="https://www.youtube.com/watch?v=fmGleUUex4Q">YouTube</a></div>
+              <details class="video-details">
+                <summary>Embed video</summary>
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/fmGleUUex4Q" title="MobileWorld 235B Ours"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+              </details>
             </div>
           </article>
         </div>
@@ -213,7 +260,7 @@
         </div>
 
         <div class="result-panel">
-          <img class="result-image" src="images/results/main-performance.png"
+          <img class="result-image" src="images/results/main-performance.png" loading="lazy"
             alt="Context efficiency and benchmark performance of MemGUI-Agent">
           <div class="result-caption">
             Figure 1. Context efficiency and benchmark performance of MemGUI-Agent.
@@ -228,11 +275,11 @@
         </div>
         <div class="grid two">
           <div class="result-panel">
-            <img class="result-image" src="images/results/memgui-bench-leaderboard.png" alt="MemGUI-Bench leaderboard">
+            <img class="result-image" src="images/results/memgui-bench-leaderboard.png" alt="MemGUI-Bench leaderboard" loading="lazy">
             <div class="result-caption">MemGUI-Bench leaderboard.</div>
           </div>
           <div class="result-panel">
-            <img class="result-image" src="images/results/mobileworld-leaderboard.png" alt="MobileWorld leaderboard">
+            <img class="result-image" src="images/results/mobileworld-leaderboard.png" alt="MobileWorld leaderboard" loading="lazy">
             <div class="result-caption">MobileWorld GUI-Only leaderboard.</div>
           </div>
         </div>
@@ -295,6 +342,16 @@
             context updates explicit and executable inside each model response.
           </p>
         </div>
+
+        <div class="paper-figure">
+          <img src="images/paper/conact-framework.png" alt="ConAct framework" loading="lazy">
+          <div class="figure-caption">
+            ConAct treats context management as part of the action space: the
+            policy updates folded history, folded UI state, and the recent step
+            record while producing the next GUI action.
+          </div>
+        </div>
+
         <div class="grid three">
           <div class="card">
             <div class="card-body">
@@ -318,7 +375,40 @@
       </div>
     </section>
 
-    <section id="resources" class="section alt">
+    <section id="dataset" class="section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Dataset and Case Study</p>
+            <h2>MemGUI-3K supervision and trajectory evidence</h2>
+          </div>
+          <p class="lead">
+            MemGUI-3K supplies full ConAct annotations for supervised training
+            and offline skill analysis; the case study visualizes the resulting
+            long-horizon behavior.
+          </p>
+        </div>
+
+        <div class="grid two figure-grid">
+          <div class="paper-figure">
+            <img src="images/paper/dataset-statistics.png" alt="MemGUI-3K dataset statistics" loading="lazy">
+            <div class="figure-caption">
+              MemGUI-3K contains 2,956 trajectories and 64,430 reasonable-step
+              SFT samples across mobile GUI tasks.
+            </div>
+          </div>
+          <div class="paper-figure">
+            <img src="images/paper/case-study-good.png" alt="MemGUI-Agent case study" loading="lazy">
+            <div class="figure-caption">
+              Paper case study showing how MemGUI-Agent preserves task-relevant
+              state across a long mobile interaction.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources" class="section">
       <div class="wrap">
         <div class="section-head">
           <div>
