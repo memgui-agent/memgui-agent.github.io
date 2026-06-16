@@ -63,7 +63,10 @@
     <div class="hero-inner">
       <div class="hero-content">
         <p class="eyebrow">MemGUI-Agent</p>
-        <h1>MemGUI-Agent: An End-to-End Long-Horizon Mobile GUI Agent with Proactive Context Management</h1>
+        <h1>
+          <span class="title-line">MemGUI-Agent: An End-to-End Long-Horizon</span>
+          <span class="title-line">Mobile GUI Agent with Proactive Context Management</span>
+        </h1>
         <p class="hero-authors">
           Guangyi Liu<sup>1,2</sup>, Gao Wu<sup>1,2</sup>, Congxiao Liu<sup>1,2</sup>,
           Pengxiang Zhao<sup>1,2</sup>, Liang Liu<sup>1</sup>, Mading Li<sup>2</sup>,
@@ -74,6 +77,11 @@
         </p>
         <p class="hero-affiliations-text">
           <sup>1</sup>Zhejiang University &nbsp;&nbsp; <sup>2</sup>Kuaishou Technology
+        </p>
+        <p class="hero-contact">
+          <svg aria-hidden="true"><use href="#icon-mail"></use></svg>
+          Contact:
+          <a href="mailto:guangyiliu@zju.edu.cn">guangyiliu@zju.edu.cn</a>
         </p>
         <p class="hero-copy">
           MemGUI-Agent uses ConAct, a Context-as-Action interface that folds
@@ -119,7 +127,8 @@
             <h2>Case studies from the paper</h2>
           </div>
           <p class="lead">
-            Side-by-side and single-trajectory demos for the paper case studies.
+            Each task groups the baseline failure and our successful rollout, with
+            benchmark source, task query, and rollout length.
           </p>
         </div>
 
@@ -142,116 +151,140 @@
           </div>
         </div>
 
-        <div class="video-library">
-          <article class="video-card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/ZIdyhycEzKs" title="MemGUI-Bench 8B Base"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+        <div class="comparison-library">
+          <article class="comparison-card">
+            <div class="comparison-head">
+              <span class="bench-label">MemGUI-Bench · 8B · AP News Digest</span>
+              <h3>Long-horizon reading and note creation</h3>
+              <p class="task-query"><strong>Task query:</strong> In the AP News app, find the three most recent articles from the Technology section and the three most recent from the Business section. Read each full article, remember its title and main content, then create a Joplin note titled <em>Tech &amp; Business Digest</em> with sectioned summaries.</p>
             </div>
-            <div>
-              <span class="tag">MemGUI-Bench</span>
-              <h3>8B Base</h3>
-              <p>ReAct-style Qwen3-VL-8B-Instruct trajectory.</p>
-              <div class="video-meta"><span>0:40</span><a href="https://www.youtube.com/watch?v=ZIdyhycEzKs">YouTube</a></div>
-            </div>
-          </article>
-
-          <article class="video-card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/UiDCefR7MLw" title="MemGUI-Bench 8B Ours"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </div>
-            <div>
-              <span class="tag">MemGUI-Bench</span>
-              <h3>8B Ours</h3>
-              <p>MemGUI-8B-SFT trajectory on the same benchmark setting.</p>
-              <div class="video-meta"><span>0:53</span><a href="https://www.youtube.com/watch?v=UiDCefR7MLw">YouTube</a></div>
-            </div>
-          </article>
-
-          <article class="video-card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/vCmgjXkH6Zo" title="MemGUI-Bench 235B Base"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </div>
-            <div>
-              <span class="tag">MemGUI-Bench</span>
-              <h3>235B Base</h3>
-              <p>Qwen3-VL-235B-Thinking with ReAct-style prompting.</p>
-              <div class="video-meta"><span>0:26</span><a href="https://www.youtube.com/watch?v=vCmgjXkH6Zo">YouTube</a></div>
+            <div class="paired-videos">
+              <article class="video-card outcome-card">
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/ZIdyhycEzKs" title="MemGUI-Bench 8B Base"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+                <div>
+                  <div class="track-title"><h4>Qwen3-VL-8B-Instruct</h4><span class="status-pill failed">Failed · 191 steps</span></div>
+                  <p>ReAct-style baseline opens articles but loses the details before writing the Joplin note.</p>
+                  <div class="video-meta"><span>Base</span><a href="https://www.youtube.com/watch?v=ZIdyhycEzKs">YouTube</a></div>
+                </div>
+              </article>
+              <article class="video-card outcome-card">
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/UiDCefR7MLw" title="MemGUI-Bench 8B Ours"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+                <div>
+                  <div class="track-title"><h4>MemGUI-8B-SFT</h4><span class="status-pill success">Successful · 140 steps</span></div>
+                  <p>Our agent stores article evidence as structured memory and retrieves it when composing the final note.</p>
+                  <div class="video-meta"><span>Ours</span><a href="https://www.youtube.com/watch?v=UiDCefR7MLw">YouTube</a></div>
+                </div>
+              </article>
             </div>
           </article>
 
-          <article class="video-card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/T7IutWSAOYw" title="MemGUI-Bench 235B Ours"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+          <article class="comparison-card">
+            <div class="comparison-head">
+              <span class="bench-label">MemGUI-Bench · 235B · Compare Product Specs</span>
+              <h3>Collecting product specs and writing a note</h3>
+              <p class="task-query"><strong>Task query:</strong> Open Amazon, collect screen size, battery, and storage for iPhone 15 Pro, Galaxy S24 Ultra, and Pixel 8 Pro, then write all nine facts into a Joplin note named <em>Phone Spec Matrix</em>.</p>
             </div>
-            <div>
-              <span class="tag">MemGUI-Bench</span>
-              <h3>235B Ours</h3>
-              <p>Zero-shot ConAct with unchanged Qwen3-VL-235B-Thinking weights.</p>
-              <div class="video-meta"><span>0:26</span><a href="https://www.youtube.com/watch?v=T7IutWSAOYw">YouTube</a></div>
-            </div>
-          </article>
-
-          <article class="video-card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/7TyYGsyRgiY" title="MobileWorld 8B Base"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </div>
-            <div>
-              <span class="tag">MobileWorld</span>
-              <h3>8B Base</h3>
-              <p>Out-of-distribution mobile GUI task with the 8B baseline.</p>
-              <div class="video-meta"><span>0:19</span><a href="https://www.youtube.com/watch?v=7TyYGsyRgiY">YouTube</a></div>
-            </div>
-          </article>
-
-          <article class="video-card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/IrzRkwLL-1Q" title="MobileWorld 8B Ours"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-            </div>
-            <div>
-              <span class="tag">MobileWorld</span>
-              <h3>8B Ours</h3>
-              <p>MemGUI-8B-SFT transfer behavior on MobileWorld GUI-Only.</p>
-              <div class="video-meta"><span>0:20</span><a href="https://www.youtube.com/watch?v=IrzRkwLL-1Q">YouTube</a></div>
+            <div class="paired-videos">
+              <article class="video-card outcome-card">
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/vCmgjXkH6Zo" title="MemGUI-Bench 235B Base"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+                <div>
+                  <div class="track-title"><h4>Qwen3-VL-235B-Thinking</h4><span class="status-pill failed">Failed · 69 steps</span></div>
+                  <p>Baseline remains inside Amazon after repeated scrolling and never writes the final Joplin note.</p>
+                  <div class="video-meta"><span>Base</span><a href="https://www.youtube.com/watch?v=vCmgjXkH6Zo">YouTube</a></div>
+                </div>
+              </article>
+              <article class="video-card outcome-card">
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/T7IutWSAOYw" title="MemGUI-Bench 235B Ours"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+                <div>
+                  <div class="track-title"><h4>MemGUI-Agent-235B</h4><span class="status-pill success">Successful · 53 steps</span></div>
+                  <p>Our agent folds search spans, stores the nine facts, and completes the Joplin note.</p>
+                  <div class="video-meta"><span>Ours</span><a href="https://www.youtube.com/watch?v=T7IutWSAOYw">YouTube</a></div>
+                </div>
+              </article>
             </div>
           </article>
 
-          <article class="video-card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/vULAmIJZilc" title="MobileWorld 235B Base"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+          <article class="comparison-card">
+            <div class="comparison-head">
+              <span class="bench-label">MobileWorld · 8B · Alibaba Headquarters Contact</span>
+              <h3>Finding a business phone number and creating a contact</h3>
+              <p class="task-query"><strong>Task query:</strong> Find the phone number of Alibaba's Hangzhou headquarters on Google Maps, and based on that, create a new contact named Kevin Zhang with the company.</p>
             </div>
-            <div>
-              <span class="tag">MobileWorld</span>
-              <h3>235B Base</h3>
-              <p>Qwen3-VL-235B-Thinking baseline on MobileWorld.</p>
-              <div class="video-meta"><span>0:19</span><a href="https://www.youtube.com/watch?v=vULAmIJZilc">YouTube</a></div>
+            <div class="paired-videos">
+              <article class="video-card outcome-card">
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/7TyYGsyRgiY" title="MobileWorld 8B Base"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+                <div>
+                  <div class="track-title"><h4>Qwen3-VL-8B-Instruct</h4><span class="status-pill failed">Failed · 20 steps</span></div>
+                  <p>Baseline leaves Google Maps early and later hallucinates a phone number while editing Contacts.</p>
+                  <div class="video-meta"><span>Base</span><a href="https://www.youtube.com/watch?v=7TyYGsyRgiY">YouTube</a></div>
+                </div>
+              </article>
+              <article class="video-card outcome-card">
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/IrzRkwLL-1Q" title="MobileWorld 8B Ours"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+                <div>
+                  <div class="track-title"><h4>MemGUI-8B-SFT</h4><span class="status-pill success">Successful · 26 steps</span></div>
+                  <p>Our agent extracts and persists the real number before creating the contact.</p>
+                  <div class="video-meta"><span>Ours</span><a href="https://www.youtube.com/watch?v=IrzRkwLL-1Q">YouTube</a></div>
+                </div>
+              </article>
             </div>
           </article>
 
-          <article class="video-card">
-            <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/fmGleUUex4Q" title="MobileWorld 235B Ours"
-                allowfullscreen loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+          <article class="comparison-card">
+            <div class="comparison-head">
+              <span class="bench-label">MobileWorld · 235B · Mastodon Contact Update</span>
+              <h3>Updating contact details from a social post</h3>
+              <p class="task-query"><strong>Task query:</strong> Olivia left new phone and email information in her latest Mastodon post. Update Olivia in Contacts, then send her the text message: <em>Hello, how are you</em>. Set the email label to internet.</p>
             </div>
-            <div>
-              <span class="tag">MobileWorld</span>
-              <h3>235B Ours</h3>
-              <p>Zero-shot ConAct transfer on MobileWorld GUI-Only.</p>
-              <div class="video-meta"><span>0:25</span><a href="https://www.youtube.com/watch?v=fmGleUUex4Q">YouTube</a></div>
+            <div class="paired-videos">
+              <article class="video-card outcome-card">
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/vULAmIJZilc" title="MobileWorld 235B Base"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+                <div>
+                  <div class="track-title"><h4>Qwen3-VL-235B-Thinking</h4><span class="status-pill failed">Failed · 21 steps</span></div>
+                  <p>Baseline exits Mastodon before Olivia's post loads and later reuses stale contact information.</p>
+                  <div class="video-meta"><span>Base</span><a href="https://www.youtube.com/watch?v=vULAmIJZilc">YouTube</a></div>
+                </div>
+              </article>
+              <article class="video-card outcome-card">
+                <div class="video-frame">
+                  <iframe src="https://www.youtube.com/embed/fmGleUUex4Q" title="MobileWorld 235B Ours"
+                    allowfullscreen loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+                <div>
+                  <div class="track-title"><h4>MemGUI-Agent-235B</h4><span class="status-pill success">Successful · 36 steps</span></div>
+                  <p>Our agent stores Olivia's new phone and email, then uses them for Contacts and SMS.</p>
+                  <div class="video-meta"><span>Ours</span><a href="https://www.youtube.com/watch?v=fmGleUUex4Q">YouTube</a></div>
+                </div>
+              </article>
             </div>
           </article>
         </div>
@@ -394,6 +427,7 @@
   <footer>
     <div class="wrap">
       MemGUI-Agent. Code, data, and trained models are available for research use.
+      Contact: <a href="mailto:guangyiliu@zju.edu.cn">guangyiliu@zju.edu.cn</a>.
     </div>
   </footer>
 </body>
