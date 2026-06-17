@@ -235,6 +235,33 @@ h1 {
   font-size: 0.72em;
 }
 
+.author-role {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  margin-left: 5px;
+  padding: 0 7px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1;
+  vertical-align: 2px;
+  white-space: nowrap;
+}
+
+.project-lead {
+  border: 1px solid rgba(122, 72, 207, 0.22);
+  background: #f2ecff;
+  color: #6640b8;
+}
+
+.corresponding-author {
+  border: 1px solid rgba(0, 140, 131, 0.24);
+  background: #e9fbf8;
+  color: #08766f;
+}
+
 .hero-affiliations-text {
   margin: 8px auto 0;
   color: var(--muted);
